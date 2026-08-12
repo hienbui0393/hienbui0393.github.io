@@ -2,9 +2,12 @@
 title: "Contact"
 ---
 
-I’m open to internships and collaborations.
+I’m seeking entry-level opportunities as a Data Analyst, Business Intelligence (BI) Analyst, Healthcare Data Analyst, Reporting Analyst, Operations Analyst, or Junior Data Scientist. I’m also open to relevant collaborations.
 
 <p>
   <a href="mailto:hien.bui0393@gmail.com" class="btn btn-primary">Email</a>
-  <a href="https://www.linkedin.com/in/hien-emi-bui-6273b010a/" target="_blank" rel="noopener" class="btn btn-outline-secondary">LinkedIn</a>
+  <a href="https://www.linkedin.com/in/hien-bui-6273b010a/"
+     target="_blank"
+     rel="noopener"
+     class="btn btn-outline-secondary">LinkedIn</a>
 </p>

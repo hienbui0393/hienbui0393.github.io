@@ -1,16 +1,19 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: docs        # generated website folder used for publishing
   execute-dir: project
 
-# Publish these folders to docs/ so links work online
+# Publish these source folders to docs/ so linked files work online
 resources:
   - data/**
   - images/**
   - resume/**
+  - files/**              # presentation PDFs and downloadable documents
+  - videos/**             # project demonstration videos
 
 website:
   title: "Hien Bui"
+  site-url: "https://hienbui0393.github.io"  # public portfolio URL
   search: true
   page-navigation: true
   navbar:
@@ -23,22 +26,18 @@ website:
         href: resume.qmd
       - text: Projects
         menu:
+          - text: Predicting Emergency Department Demand
+            href: projects/predicting-emergency-department-demand.qmd
           - text: EV Adoption in WA
             href: projects/ev-adoption.qmd
-          - text: Movie Recommender
-            href: projects/movie-recommender.qmd
-          - text: Book Ratings
-            href: projects/book-ratings.qmd
           - text: Manga Sentiment
             href: projects/manga-sentiment.qmd
+          - text: Book Ratings
+            href: projects/book-ratings.qmd
           - text: Luxury Car Price
-            href: projects/luxury-car-price.qmd
-          - text: A Piece of Advice App
-            href: projects/piece-of-advice-app.qmd
+            href: projects/luxury-car-price.qmd  # include extension for reliable rendering
           - text: Object Detection
             href: projects/object-detection.qmd
-          - text: Student Performance
-            href: projects/static/student-performance/
       - text: Contact
         href: contact.qmd
     right:
@@ -46,11 +45,15 @@ website:
         href: "mailto:hien.bui0393@gmail.com"
         aria-label: "Email"
       - icon: linkedin
-        href: https://www.linkedin.com/in/hien-emi-bui-6273b010a/
+        href: "https://www.linkedin.com/in/hien-bui-6273b010a/"
+        aria-label: "LinkedIn"
+      - icon: github
+        href: "https://github.com/hienbui0393"  # current GitHub profile
+        aria-label: "GitHub"
 
 format:
   html:
-    theme: flatly 
+    theme: flatly
     toc: true
     toc-depth: 2
     link-external-newwindow: true

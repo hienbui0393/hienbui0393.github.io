@@ -1,17 +1,15 @@
 ---
-title: "Hien (Emi) Bui"
+title: "Hien Bui"
 subtitle: "Data Scientist | Turning complex data into practical decisions"
 ---
 
-# Hi, I'm Emi
-
-I am an M.S. Data Science candidate at Drew University, graduating in August 2026. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, audience sentiment analysis, and data storytelling.
+I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, audience sentiment analysis, and data storytelling.
 
 Before graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.
 
 [View Resume](resume.qmd){.btn .btn-primary}
-[LinkedIn](https://www.linkedin.com/in/hien-bui-emi-6273b010a/){.btn .btn-outline-secondary target="_blank"}
-[GitHub](https://github.com/krisauw){.btn .btn-outline-secondary target="_blank"}
+[LinkedIn](https://www.linkedin.com/in/hien-bui-6273b010a/){.btn .btn-outline-secondary target="_blank"}
+[GitHub](https://github.com/hienbui0393){.btn .btn-outline-secondary target="_blank"}
 
 ## Selected Projects
 
@@ -38,13 +36,14 @@ Analyzed more than 235,000 Washington State EV registration records to examine a
 
 ## Technical Skills
 
-- **Programming and data:** Python, SQL, Pandas, NumPy, Polars, MySQL
+- **Programming:** Python, SQL
+- **Data analysis:** Pandas, NumPy, Polars, MySQL, Excel
 - **Analytics and machine learning:** Scikit-learn, XGBoost, statistical analysis, forecasting, natural language processing
-- **Visualization and reporting:** Power BI, Tableau, Plotly, Excel, Quarto
-- **Development tools:** Jupyter Notebook, VS Code, Git, GitHub, Flask
+- **Visualization and reporting:** Power BI, Tableau, Plotly, Quarto
+- **Development and deployment:** Jupyter Notebook, VS Code, Git, GitHub, Flask, Render
 
 ## Let's Connect
 
 I am seeking entry-level data analyst and data scientist opportunities where I can combine technical analysis, clear communication, and project-delivery experience.
 
-[Connect on LinkedIn](https://www.linkedin.com/in/hien-bui-emi-6273b010a/){.btn .btn-primary target="_blank"}
+[Connect on LinkedIn](https://www.linkedin.com/in/hien-bui-6273b010a/){.btn .btn-primary target="_blank"}
