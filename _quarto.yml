@@ -37,6 +37,8 @@ website:
             href: projects/piece-of-advice-app.qmd
           - text: Object Detection
             href: projects/object-detection.qmd
+          - text: Student Performance
+            href: projects/static/student-performance/
       - text: Contact
         href: contact.qmd
     right:

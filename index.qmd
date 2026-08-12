@@ -1,32 +1,50 @@
 ---
-title: "Hi, I'm Hien (Emi) Bui"
+title: "Hien (Emi) Bui"
+subtitle: "Data Scientist | Turning complex data into practical decisions"
 ---
 
-# Welcome  
+# Hi, I'm Emi
 
-I’m a Data Science M.S. student (Drew, ’26) who builds practical analytics and ML. Recent work: EV adoption analysis on 235k+ Washington State records, a movie recommender that reaches ~80% accuracy, a desktop YOLOv11n detection app (images/video/webcam), and a manga sentiment pipeline (Selenium → NLTK/TextBlob → Tableau/Power BI). Before grad school, I spent 6+ years leading cross functional VFX/animation teams—experience I now apply to scoping data problems, shipping on time, and communicating results clearly.
+I am an M.S. Data Science candidate at Drew University, graduating in August 2026. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, audience sentiment analysis, and data storytelling.
 
-Interests: Data storytelling, recommender systems, computer vision, and launching small tools that make decisions faster.
+Before graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.
 
----
+[View Resume](resume.qmd){.btn .btn-primary}
+[LinkedIn](https://www.linkedin.com/in/hien-bui-emi-6273b010a/){.btn .btn-outline-secondary target="_blank"}
+[GitHub](https://github.com/krisauw){.btn .btn-outline-secondary target="_blank"}
 
-## Projects
-- Object Detection App (YOLOv11n) - Python, Tkinter, Torch, OpenCV: Built a real-time image/video/camera detection app using the YOLOv11n model, achieving mAP@0.5 > 85% and ~30 FPS; added object & people counting and before-after visualization. [Link](https://krisauw.github.io/website/projects/object-detection.html)
-- Manga Sentiment (Mashle, 90+ reviews) - Python, Selenium, TextBlob, NLTK, Power BI/Tableau: Scraped and analyzed audience reviews for Mashle; achieved 83% sentiment classification accuracy, visualizing polarity trends and reader emotions across platforms. [Link](https://krisauw.github.io/website/projects/manga-sentiment.html)				
-- EV Adoption (WA, 235k+ records) - Python (Polars, Plotly): Engineered brand- and city-level cohorts; surfaced Tesla’s >250 mi range (+20% vs next brand) and Seattle’s 3× lead, enabling a 4-chart narrative on EV range and adoption concentration. [Link](https://krisauw.github.io/website/projects/ev-adoption.html)
-- Movie Recommender (90 titles) - Python, R (KNN, DT, LR): Developed models to predict top-rated movies with ~80% accuracy; compared Euclidean vs. Manhattan similarity for top-5 recommendations. [Link](https://krisauw.github.io/website/projects/movie-recommender.html)
+## Selected Projects
+
+### Predicting Emergency Department Demand
+
+Built a one-quarter-ahead forecasting prototype for total ED encounters across 57 New York facility counties and 28 quarters. Developed a leakage-safe data pipeline, compared machine-learning models with operational benchmarks, and found that previous-quarter persistence achieved the best 2024 holdout performance (**MAE 1,253; WAPE 3.36%**). Deployed the stakeholder workflow as a Flask application on Render.
+
+**Tools:** Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render  
+[View Project](projects/predicting-emergency-department-demand.html) | [Open Live App](https://ny-quarterly-ed-demand-app.onrender.com/){target="_blank"}
+
+### Manga Sentiment Analysis
+
+Created an end-to-end text-analysis pipeline that collected more than 90 audience reviews using Selenium, processed the text with NLTK and TextBlob, and communicated sentiment patterns through Tableau and Power BI dashboards.
+
+**Tools:** Python, Selenium, NLTK, TextBlob, Tableau, Power BI  
+[View Project](projects/manga-sentiment.html)
+
+### EV Adoption in Washington
+
+Analyzed more than 235,000 Washington State EV registration records to examine adoption growth, leading brands, electric range, and geographic concentration. Transformed the findings into a focused four-visual data story using Polars and Plotly.
+
+**Tools:** Python, Polars, Plotly  
+[View Project](projects/ev-adoption.html)
 
 ## Technical Skills
-- **Programming & Tools:** Python · R · SQL · Jupyter Notebook · Quarto · VSCode · GitHub · MySQL · Scikit-learn  
-- **Visualization & BI:** Tableau · Power BI · Plotly · Excel · Data Wrangling  
-- **Machine Learning & Analytics:** ML Modeling · Statistical Analysis · Computer Vision  
-- **3D & Creative:** Maya · Blender · Substance Painter  
-- **Others**: Google Suite · Microsoft Office
 
-## Professional Strengths
-- Data Analysis · Data Visualization · Machine Learning · Statistical Modeling  
-- Project Management · Communication · Problem Solving · Teamwork · Research  
+- **Programming and data:** Python, SQL, Pandas, NumPy, Polars, MySQL
+- **Analytics and machine learning:** Scikit-learn, XGBoost, statistical analysis, forecasting, natural language processing
+- **Visualization and reporting:** Power BI, Tableau, Plotly, Excel, Quarto
+- **Development tools:** Jupyter Notebook, VS Code, Git, GitHub, Flask
 
----
+## Let's Connect
 
-View my [Resume](resume.qmd) or connect on [LinkedIn](https://www.linkedin.com/in/hien-bui-emi-6273b010a/)
+I am seeking entry-level data analyst and data scientist opportunities where I can combine technical analysis, clear communication, and project-delivery experience.
+
+[Connect on LinkedIn](https://www.linkedin.com/in/hien-bui-emi-6273b010a/){.btn .btn-primary target="_blank"}
