@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hi, I’m Hien (Emi) Bui – Hien Bui</title>
+<title>Hien (Emi) Bui – Hien Bui</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,6 +131,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./projects/object-detection.html">
  <span class="dropdown-text">Object Detection</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./projects/static/student-performance/">
+ <span class="dropdown-text">Student Performance</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -165,11 +169,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#hi-im-emi" id="toc-hi-im-emi" class="nav-link active" data-scroll-target="#hi-im-emi">Hi, I’m Emi</a>
   <ul class="collapse">
-  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a></li>
+  <li><a href="#selected-projects" id="toc-selected-projects" class="nav-link" data-scroll-target="#selected-projects">Selected Projects</a></li>
   <li><a href="#technical-skills" id="toc-technical-skills" class="nav-link" data-scroll-target="#technical-skills">Technical Skills</a></li>
-  <li><a href="#professional-strengths" id="toc-professional-strengths" class="nav-link" data-scroll-target="#professional-strengths">Professional Strengths</a></li>
+  <li><a href="#lets-connect" id="toc-lets-connect" class="nav-link" data-scroll-target="#lets-connect">Let’s Connect</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -179,7 +183,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Hi, I’m Hien (Emi) Bui</h1>
+<h1 class="title">Hien (Emi) Bui</h1>
+<p class="subtitle lead">Data Scientist | Turning complex data into practical decisions</p>
 </div>
 
 
@@ -196,44 +201,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome" class="level1">
-<h1>Welcome</h1>
-<p>I’m a Data Science M.S. student (Drew, ’26) who builds practical analytics and ML. Recent work: EV adoption analysis on 235k+ Washington State records, a movie recommender that reaches ~80% accuracy, a desktop YOLOv11n detection app (images/video/webcam), and a manga sentiment pipeline (Selenium → NLTK/TextBlob → Tableau/Power BI). Before grad school, I spent 6+ years leading cross functional VFX/animation teams—experience I now apply to scoping data problems, shipping on time, and communicating results clearly.</p>
-<p>Interests: Data storytelling, recommender systems, computer vision, and launching small tools that make decisions faster.</p>
-<hr>
-<section id="projects" class="level2">
-<h2 class="anchored" data-anchor-id="projects">Projects</h2>
-<ul>
-<li>Object Detection App (YOLOv11n) - Python, Tkinter, Torch, OpenCV: Built a real-time image/video/camera detection app using the YOLOv11n model, achieving mAP@0.5 &gt; 85% and ~30 FPS; added object &amp; people counting and before-after visualization. <a href="https://krisauw.github.io/website/projects/object-detection.html">Link</a></li>
-<li>Manga Sentiment (Mashle, 90+ reviews) - Python, Selenium, TextBlob, NLTK, Power BI/Tableau: Scraped and analyzed audience reviews for Mashle; achieved 83% sentiment classification accuracy, visualizing polarity trends and reader emotions across platforms. <a href="https://krisauw.github.io/website/projects/manga-sentiment.html">Link</a><br>
-</li>
-<li>EV Adoption (WA, 235k+ records) - Python (Polars, Plotly): Engineered brand- and city-level cohorts; surfaced Tesla’s &gt;250 mi range (+20% vs next brand) and Seattle’s 3× lead, enabling a 4-chart narrative on EV range and adoption concentration. <a href="https://krisauw.github.io/website/projects/ev-adoption.html">Link</a></li>
-<li>Movie Recommender (90 titles) - Python, R (KNN, DT, LR): Developed models to predict top-rated movies with ~80% accuracy; compared Euclidean vs.&nbsp;Manhattan similarity for top-5 recommendations. <a href="https://krisauw.github.io/website/projects/movie-recommender.html">Link</a></li>
-</ul>
+<section id="hi-im-emi" class="level1">
+<h1>Hi, I’m Emi</h1>
+<p>I am an M.S. Data Science candidate at Drew University, graduating in August 2026. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, audience sentiment analysis, and data storytelling.</p>
+<p>Before graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.</p>
+<p><a href="./resume.html" class="btn btn-primary">View Resume</a> <a href="https://www.linkedin.com/in/hien-bui-emi-6273b010a/" class="btn btn-outline-secondary" target="_blank">LinkedIn</a> <a href="https://github.com/krisauw" class="btn btn-outline-secondary" target="_blank">GitHub</a></p>
+<section id="selected-projects" class="level2">
+<h2 class="anchored" data-anchor-id="selected-projects">Selected Projects</h2>
+<section id="predicting-emergency-department-demand" class="level3">
+<h3 class="anchored" data-anchor-id="predicting-emergency-department-demand">Predicting Emergency Department Demand</h3>
+<p>Built a one-quarter-ahead forecasting prototype for total ED encounters across 57 New York facility counties and 28 quarters. Developed a leakage-safe data pipeline, compared machine-learning models with operational benchmarks, and found that previous-quarter persistence achieved the best 2024 holdout performance (<strong>MAE 1,253; WAPE 3.36%</strong>). Deployed the stakeholder workflow as a Flask application on Render.</p>
+<p><strong>Tools:</strong> Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render<br>
+<a href="projects/predicting-emergency-department-demand.html">View Project</a> | <a href="https://ny-quarterly-ed-demand-app.onrender.com/" target="_blank">Open Live App</a></p>
+</section>
+<section id="manga-sentiment-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="manga-sentiment-analysis">Manga Sentiment Analysis</h3>
+<p>Created an end-to-end text-analysis pipeline that collected more than 90 audience reviews using Selenium, processed the text with NLTK and TextBlob, and communicated sentiment patterns through Tableau and Power BI dashboards.</p>
+<p><strong>Tools:</strong> Python, Selenium, NLTK, TextBlob, Tableau, Power BI<br>
+<a href="projects/manga-sentiment.html">View Project</a></p>
+</section>
+<section id="ev-adoption-in-washington" class="level3">
+<h3 class="anchored" data-anchor-id="ev-adoption-in-washington">EV Adoption in Washington</h3>
+<p>Analyzed more than 235,000 Washington State EV registration records to examine adoption growth, leading brands, electric range, and geographic concentration. Transformed the findings into a focused four-visual data story using Polars and Plotly.</p>
+<p><strong>Tools:</strong> Python, Polars, Plotly<br>
+<a href="projects/ev-adoption.html">View Project</a></p>
+</section>
 </section>
 <section id="technical-skills" class="level2">
 <h2 class="anchored" data-anchor-id="technical-skills">Technical Skills</h2>
 <ul>
-<li><strong>Programming &amp; Tools:</strong> Python · R · SQL · Jupyter Notebook · Quarto · VSCode · GitHub · MySQL · Scikit-learn<br>
-</li>
-<li><strong>Visualization &amp; BI:</strong> Tableau · Power BI · Plotly · Excel · Data Wrangling<br>
-</li>
-<li><strong>Machine Learning &amp; Analytics:</strong> ML Modeling · Statistical Analysis · Computer Vision<br>
-</li>
-<li><strong>3D &amp; Creative:</strong> Maya · Blender · Substance Painter<br>
-</li>
-<li><strong>Others</strong>: Google Suite · Microsoft Office</li>
+<li><strong>Programming and data:</strong> Python, SQL, Pandas, NumPy, Polars, MySQL</li>
+<li><strong>Analytics and machine learning:</strong> Scikit-learn, XGBoost, statistical analysis, forecasting, natural language processing</li>
+<li><strong>Visualization and reporting:</strong> Power BI, Tableau, Plotly, Excel, Quarto</li>
+<li><strong>Development tools:</strong> Jupyter Notebook, VS Code, Git, GitHub, Flask</li>
 </ul>
 </section>
-<section id="professional-strengths" class="level2">
-<h2 class="anchored" data-anchor-id="professional-strengths">Professional Strengths</h2>
-<ul>
-<li>Data Analysis · Data Visualization · Machine Learning · Statistical Modeling<br>
-</li>
-<li>Project Management · Communication · Problem Solving · Teamwork · Research</li>
-</ul>
-<hr>
-<p>View my <a href="./resume.html">Resume</a> or connect on <a href="https://www.linkedin.com/in/hien-bui-emi-6273b010a/">LinkedIn</a></p>
+<section id="lets-connect" class="level2">
+<h2 class="anchored" data-anchor-id="lets-connect">Let’s Connect</h2>
+<p>I am seeking entry-level data analyst and data scientist opportunities where I can combine technical analysis, clear communication, and project-delivery experience.</p>
+<p><a href="https://www.linkedin.com/in/hien-bui-emi-6273b010a/" class="btn btn-primary" target="_blank">Connect on LinkedIn</a></p>
 
 
 </section>
@@ -312,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/krisauw\.github\.io\/website\/");
+        var filterRegex = new RegExp("https:\/\/hienbui0393\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
