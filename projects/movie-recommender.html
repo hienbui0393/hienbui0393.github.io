@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Thi Thanh Hien Bui (Emi)">
 
-<title>Movie Recommender System – Hien Bui</title>
+<title>TMDB Movie Recommender – Hien Bui</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,6 +109,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Predicting Emergency Department Demand</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../projects/movie-recommender.html">
+ <span class="dropdown-text">EV Adoption in WA</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../projects/ev-adoption.html">
  <span class="dropdown-text">EV Adoption in WA</span></a>
   </li>  
@@ -165,12 +170,25 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview"><span class="header-section-number">1</span> Project Overview</a></li>
-  <li><a href="#movie-recommendation-methods" id="toc-movie-recommendation-methods" class="nav-link" data-scroll-target="#movie-recommendation-methods"><span class="header-section-number">2</span> Movie Recommendation Methods</a></li>
-  <li><a href="#results-and-visualizations" id="toc-results-and-visualizations" class="nav-link" data-scroll-target="#results-and-visualizations"><span class="header-section-number">3</span> Results and Visualizations</a></li>
-  <li><a href="#ethics-privacy-considerations" id="toc-ethics-privacy-considerations" class="nav-link" data-scroll-target="#ethics-privacy-considerations"><span class="header-section-number">4</span> Ethics &amp; Privacy Considerations</a></li>
-  <li><a href="#future-improvements" id="toc-future-improvements" class="nav-link" data-scroll-target="#future-improvements"><span class="header-section-number">5</span> Future Improvements</a></li>
+  <ul class="collapse">
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview"><span class="header-section-number">1</span> Project Overview</a>
+  <ul class="collapse">
+  <li><a href="#watch-the-application-demo" id="toc-watch-the-application-demo" class="nav-link" data-scroll-target="#watch-the-application-demo"><span class="header-section-number">1.1</span> Watch the Application Demo</a></li>
+  <li><a href="#application-highlights" id="toc-application-highlights" class="nav-link" data-scroll-target="#application-highlights"><span class="header-section-number">1.2</span> Application Highlights</a></li>
+  </ul></li>
+  <li><a href="#project-scope" id="toc-project-scope" class="nav-link" data-scroll-target="#project-scope"><span class="header-section-number">2</span> Project Scope</a></li>
+  <li><a href="#data-and-recommendation-design" id="toc-data-and-recommendation-design" class="nav-link" data-scroll-target="#data-and-recommendation-design"><span class="header-section-number">3</span> Data and Recommendation Design</a>
+  <ul class="collapse">
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source"><span class="header-section-number">3.1</span> Data Source</a></li>
+  <li><a href="#tf-idf-and-cosine-similarity" id="toc-tf-idf-and-cosine-similarity" class="nav-link" data-scroll-target="#tf-idf-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF and Cosine Similarity</a></li>
+  </ul></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation"><span class="header-section-number">4</span> Evaluation</a>
+  <ul class="collapse">
+  <li><a href="#genre-overlap-at-10" id="toc-genre-overlap-at-10" class="nav-link" data-scroll-target="#genre-overlap-at-10"><span class="header-section-number">4.1</span> Genre Overlap at 10</a></li>
+  </ul></li>
+  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">5</span> Technologies</a></li>
+  <li><a href="#limitations-and-next-steps" id="toc-limitations-and-next-steps" class="nav-link" data-scroll-target="#limitations-and-next-steps"><span class="header-section-number">6</span> Limitations and Next Steps</a></li>
+  <li><a href="#final-takeaway" id="toc-final-takeaway" class="nav-link" data-scroll-target="#final-takeaway"><span class="header-section-number">7</span> Final Takeaway</a></li>
   </ul>
 </nav>
     </div>
@@ -179,13 +197,20 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Movie Recommender System</h1>
+<h1 class="title">TMDB Movie Recommender</h1>
+<p class="subtitle lead">A content-based recommendation system for discovering similar movies</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Thi Thanh Hien Bui (Emi) </p>
+          </div>
+  </div>
     
   
     
@@ -198,334 +223,191 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project-overview" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Project Overview</h1>
-<p>This project is a Chinese movie recommendation system that suggests movies based on genres, famous actors, endings, voting, and ratings.<br>
-The dataset consists of 90 Chinese movies from IMDb, and multiple machine learning techniques are used to analyze and predict movie popularity.</p>
-<section id="technologies-and-methods-used" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="technologies-and-methods-used"><span class="header-section-number">1.1</span> Technologies and Methods Used</h2>
-<section id="technologies" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="technologies"><span class="header-section-number">1.1.1</span> Technologies</h3>
+<p>Movie catalogs can be difficult to explore when users know one title they enjoy but do not know what to watch next. I built a content-based recommendation system that finds similar movies using plot descriptions and structured metadata from <strong>The Movie Database (TMDB)</strong>.</p>
+<p>The final catalog contains <strong>5,000 unique movies</strong>. For each title, I combined its overview, tagline, genres, keywords, director, and leading cast into a single content document. TF-IDF transformed these documents into a <strong>5,000 x 15,000 sparse feature matrix</strong>, and cosine similarity ranked the movies most closely aligned with a selected title.</p>
+<p>Across 100 sampled movies, <strong>90% of the top-10 recommendations shared at least one genre with the source movie</strong>. Manual review also identified strong franchise, director, theme, and story relationships while highlighting weaker matches for future improvement.</p>
+<section id="watch-the-application-demo" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="watch-the-application-demo"><span class="header-section-number">1.1</span> Watch the Application Demo</h2>
+<p>This short video shows the movie search, selected-title details, adjustable recommendation count, recommendation cards, and similarity explanations.</p>
+<video controls="" playsinline="" preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
+<source src="../videos/projects/movie-recommender/movie-recommender-app-demo.mp4" type="video/mp4">
+<p>Your browser does not support embedded video. You can <a href="../videos/projects/movie-recommender/movie-recommender-app-demo.mp4">open the demonstration video directly</a>. </p>
+<p><a href="https://tmdb-movie-recommender-app.onrender.com/" class="btn btn-primary" target="_blank">Open Live Application</a> <a href="https://github.com/hienbui0393/movie_recommender_app" class="btn btn-outline-secondary" target="_blank">View GitHub Repository</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Render application may take approximately 1-2 minutes to start after a period of inactivity.</p>
+</div>
+</div>
+</video></section>
+<section id="application-highlights" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="application-highlights"><span class="header-section-number">1.2</span> Application Highlights</h2>
 <ul>
-<li>Python (for data cleaning)</li>
-<li>Pandas (for data processing)</li>
-<li>Plotly (for interactive visualizations)</li>
-<li>R (for modeling and evaluation)</li>
+<li><strong>Searchable catalog:</strong> Find a title from the saved catalog of 5,000 movies.</li>
+<li><strong>Adjustable results:</strong> Display five to fifteen recommendations for the selected movie.</li>
+<li><strong>Recommendation context:</strong> Show similarity scores and shared genres, directors, or themes.</li>
+<li><strong>Movie details:</strong> Review posters, release years, plot summaries, ratings, genres, keywords, directors, and cast.</li>
 </ul>
 </section>
-<section id="methods" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">1.1.2</span> Methods</h3>
-<ul>
-<li>Calculate similarity using Euclidean and Manhattan distances to recommend the top 5 movies based on a list of 5 watched titles.</li>
-<li>Classify movie groups using k-means with different feature sets and k values.</li>
-<li>Use KNN to predict popular movies based on selected features with train/test splits.</li>
-<li>Apply a Decision Tree to predict high-rating movies using selected features.</li>
-<li>Fit a Logistic Regression to estimate the probability of high rating.</li>
-</ul>
 </section>
-</section>
-<section id="key-findings" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="key-findings"><span class="header-section-number">1.2</span> Key Findings</h2>
-<p>For recommendations, both Euclidean and Manhattan distances work effectively.<br>
-For unsupervised methods like K-Means, groupings can be inconsistent on this small dataset.<br>
-Famous leads may influence ratings, but the sample size limits strong conclusions.<br>
-For supervised methods (KNN, Decision Tree, Logistic Regression), accuracy rates are relatively high and similar; Decision Tree achieved the best accuracy in this study.</p>
-<p><img src="../images/projects/movie-recommender/accuracy.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="movie-recommendation-methods" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Movie Recommendation Methods</h1>
-<section id="based-on-euclidean-and-manhattan-distance-5-similar-movies" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="based-on-euclidean-and-manhattan-distance-5-similar-movies"><span class="header-section-number">2.1</span> Based on Euclidean and Manhattan distance: 5 similar movies</h2>
-<p>Example recommendations: - Kill Me Love Me - Love Me, Love My Voice - Here We Meet Again - The Imperial Coroner - Bohe zhi xia</p>
-</section>
-<section id="best-predictive-model" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="best-predictive-model"><span class="header-section-number">2.2</span> Best Predictive Model</h2>
-<ul>
-<li>Decision Tree achieved the highest accuracy (about 80% in this run).</li>
-<li>High voting count was the most important factor in predicting high-rated movies.</li>
-</ul>
-</section>
-<section id="clustering-insights" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="clustering-insights"><span class="header-section-number">2.3</span> Clustering Insights</h2>
-<ul>
-<li>Movies with high voting tend to have higher ratings.</li>
-<li>Happy-ending movies generally receive lower ratings than sad or open-ended movies.</li>
-</ul>
-</section>
-<section id="dataset" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="dataset"><span class="header-section-number">2.4</span> Dataset</h2>
-<section id="key-features" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="key-features"><span class="header-section-number">2.4.1</span> Key Features</h3>
-<ul>
-<li>Movies: 90 Chinese series (1998–2024)</li>
-<li>Genres: Comedy, Drama, Crime, Romance, Action, Adventure, Mystery, Fantasy</li>
-<li>Runtime: 40–90 minutes</li>
-<li>IMDb Ratings: 6.4–8.6</li>
-<li>Famous actors present in many titles</li>
-<li>Ending types: Happy, Sad, Open</li>
-<li>Voting data: 14–5,669 votes</li>
-</ul>
-</section>
-<section id="dataset-variables" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="dataset-variables"><span class="header-section-number">2.4.2</span> Dataset Variables</h3>
-<p>This dataset contains information on 90 Chinese movie series (1998–2024). Below is a detailed breakdown of variables:</p>
+<section id="project-scope" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Project Scope</h1>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>#</th>
-<th>Variable Name</th>
-<th>Description</th>
+<th style="text-align: left;">Project element</th>
+<th style="text-align: left;">Final scope</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>ID</td>
-<td>Index number.</td>
+<td style="text-align: left;">Recommendation type</td>
+<td style="text-align: left;">Content-based, movie-to-movie similarity</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>Title</td>
-<td>English title.</td>
+<td style="text-align: left;">Catalog</td>
+<td style="text-align: left;">5,000 unique TMDB movies</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>Original_Title</td>
-<td>Chinese title.</td>
+<td style="text-align: left;">Content features</td>
+<td style="text-align: left;">Overview, tagline, genres, keywords, director, and leading cast</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>Runtime</td>
-<td>Minutes per episode.</td>
+<td style="text-align: left;">Text representation</td>
+<td style="text-align: left;">TF-IDF with up to 15,000 features</td>
 </tr>
 <tr class="odd">
-<td>5</td>
-<td>Ending</td>
-<td><code>happy</code>, <code>sad</code>, or <code>open</code>.</td>
+<td style="text-align: left;">Ranking method</td>
+<td style="text-align: left;">Cosine similarity</td>
 </tr>
 <tr class="even">
-<td>6</td>
-<td>Ending_Happy</td>
-<td>1 if Ending is happy, else 0.</td>
+<td style="text-align: left;">Evaluation</td>
+<td style="text-align: left;">Genre overlap at 10 and manual recommendation review</td>
 </tr>
 <tr class="odd">
-<td>7</td>
-<td>Ending_Sad</td>
-<td>1 if Ending is sad, else 0.</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>Ending_Open</td>
-<td>1 if Ending is open, else 0.</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>Genres</td>
-<td>Main genre.</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>Genre_Comedy</td>
-<td>One-hot for Comedy.</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>Genre_Drama</td>
-<td>One-hot for Drama.</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>Genre_Crime</td>
-<td>One-hot for Crime.</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>Genre_Romance</td>
-<td>One-hot for Romance.</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>Genre_Action</td>
-<td>One-hot for Action.</td>
-</tr>
-<tr class="odd">
-<td>15</td>
-<td>Genre_Adventure</td>
-<td>One-hot for Adventure.</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>Genre_Mystery</td>
-<td>One-hot for Mystery.</td>
-</tr>
-<tr class="odd">
-<td>17</td>
-<td>Genre_Fantasy</td>
-<td>One-hot for Fantasy.</td>
-</tr>
-<tr class="even">
-<td>18</td>
-<td>Male_Lead</td>
-<td>Name of male lead.</td>
-</tr>
-<tr class="odd">
-<td>19</td>
-<td>Male_Famous</td>
-<td>1 if male lead is famous, else 0.</td>
-</tr>
-<tr class="even">
-<td>20</td>
-<td>Female_Lead</td>
-<td>Name of female lead.</td>
-</tr>
-<tr class="odd">
-<td>21</td>
-<td>Female_Famous</td>
-<td>1 if female lead is famous, else 0.</td>
-</tr>
-<tr class="even">
-<td>22</td>
-<td>Main_Famous</td>
-<td>1 if any main lead is famous.</td>
-</tr>
-<tr class="odd">
-<td>23</td>
-<td>Release_Date</td>
-<td>Date of release.</td>
-</tr>
-<tr class="even">
-<td>24</td>
-<td>Is_Summer</td>
-<td>1 if released in Jul–Sep.</td>
-</tr>
-<tr class="odd">
-<td>25</td>
-<td>Year</td>
-<td>Release year.</td>
-</tr>
-<tr class="even">
-<td>26</td>
-<td>Num_Votes</td>
-<td>Number of votes.</td>
-</tr>
-<tr class="odd">
-<td>27</td>
-<td>High_Voting</td>
-<td>1 if Num_Votes ≥ 1000.</td>
-</tr>
-<tr class="even">
-<td>28</td>
-<td>IMDB_Rating</td>
-<td>IMDb rating.</td>
-</tr>
-<tr class="odd">
-<td>29</td>
-<td>High_Rating</td>
-<td>1 if IMDb_Rating ≥ 8.</td>
-</tr>
-<tr class="even">
-<td>30</td>
-<td>Viet_Title</td>
-<td>Vietnamese title (personal reference).</td>
+<td style="text-align: left;">Application</td>
+<td style="text-align: left;">Streamlit deployed on Render</td>
 </tr>
 </tbody>
 </table>
-<p>Notes:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Similarity is not a predicted user rating or probability of enjoyment.</strong> It measures alignment between movie-content vectors. Because the dataset does not contain individual user histories, the system recommends similar content rather than personalized preferences.</p>
+</div>
+</div>
+</section>
+<section id="data-and-recommendation-design" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Data and Recommendation Design</h1>
+<section id="data-source" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data-source"><span class="header-section-number">3.1</span> Data Source</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TMDB movie endpoints</td>
+<td style="text-align: left;">Titles, release dates, plot summaries, taglines, ratings, and poster paths</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TMDB genre metadata</td>
+<td style="text-align: left;">Genre labels used as recommendation features and for diagnostic evaluation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TMDB keywords and credits</td>
+<td style="text-align: left;">Themes, directors, and leading cast used to enrich movie profiles</td>
+</tr>
+</tbody>
+</table>
+<p>The data pipeline cleaned text fields, standardized multi-value metadata, removed duplicate movie IDs, and created compact tokens for names and categories. Genres and directors were intentionally repeated in the combined content to give them greater influence in the final similarity ranking.</p>
+</section>
+<section id="tf-idf-and-cosine-similarity" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="tf-idf-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF and Cosine Similarity</h2>
+<p>TF-IDF assigns higher weights to terms that are informative for a movie but less common across the full catalog. This reduces the influence of generic words while preserving distinctive plots, themes, people, and genres.</p>
+<p>Cosine similarity then compares the direction of two TF-IDF vectors. For each selected movie, the application:</p>
+<ol type="1">
+<li>Locates the movie’s saved TF-IDF vector.</li>
+<li>Compares it with all 5,000 catalog vectors.</li>
+<li>Removes the selected movie itself from the ranking.</li>
+<li>Returns the highest-scoring titles in descending order.</li>
+</ol>
+<p>The fitted vectorizer, sparse matrix, and cleaned movie catalog were saved as a <strong>4.9 MB Joblib artifact</strong>, allowing the deployed application to return recommendations without calling the TMDB API at runtime.</p>
+</section>
+</section>
+<section id="evaluation" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Evaluation</h1>
+<section id="genre-overlap-at-10" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="genre-overlap-at-10"><span class="header-section-number">4.1</span> Genre Overlap at 10</h2>
+<p>For 100 sampled source movies, I evaluated whether each of the top-10 recommendations shared at least one genre with its source movie.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Diagnostic</th>
+<th style="text-align: right;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sampled source movies</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Recommendations per source</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Genre overlap at 10</td>
+<td style="text-align: right;"><strong>90.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This result indicates strong content consistency, but it is not classification accuracy and does not measure user satisfaction. Manual inspection therefore complemented the metric by reviewing representative strong, reasonable, and weak recommendations.</p>
+<p>Examples of strong relationships included franchise and character matches for <em>The Dark Knight</em>, sequel relationships for <em>The Avengers</em> and <em>Inside Out</em>, and similar psychological-thriller recommendations for <em>Gone Girl</em>. Weaker examples showed the limitation of relying on shared vocabulary and metadata without user-feedback signals.</p>
+</section>
+</section>
+<section id="technologies" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Technologies</h1>
 <ul>
-<li>Ending_* are derived from Ending.</li>
-<li>Genre_* are one-hot encodings of Genres.</li>
-<li>*Famous indicators are based on a predefined list.</li>
-<li>High_Voting and High_Rating are binary thresholds.</li>
+<li><strong>Data collection and analysis:</strong> Python, Pandas, NumPy, TMDB API</li>
+<li><strong>Recommendation system:</strong> Scikit-learn, TF-IDF, cosine similarity, SciPy, Joblib</li>
+<li><strong>Application:</strong> Streamlit</li>
+<li><strong>Deployment and reproducibility:</strong> Render, Git, GitHub, automated tests</li>
 </ul>
 </section>
+<section id="limitations-and-next-steps" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Limitations and Next Steps</h1>
+<p>The system recommends movies that resemble a selected title, but it does not learn an individual user’s preferences. Recommendation quality depends on the completeness of TMDB descriptions and metadata, and the manual weighting of genres and directors can favor franchises or closely related titles. The deployed catalog is also limited to the 5,000 movies saved during data collection.</p>
+<p>A future version could collect user likes, ratings, or clicks and combine them with content similarity in a hybrid recommender. Sentence embeddings could improve semantic matching between differently worded plot descriptions, while diversity controls could reduce repetitive franchise recommendations. Additional evaluation with real user feedback would be necessary to measure satisfaction and ranking quality.</p>
 </section>
-</section>
-<section id="results-and-visualizations" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Results and Visualizations</h1>
-<section id="general-data-distribution" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="general-data-distribution"><span class="header-section-number">3.1</span> General Data Distribution</h2>
-<p>Treemap summary of top-rated movies:</p>
-<p><img src="../images/projects/movie-recommender/image7.png" class="img-fluid"></p>
-<p>Pie chart of genre distribution (Drama is most dominant):</p>
-<p><img src="../images/projects/movie-recommender/image27.png" class="img-fluid"></p>
-</section>
-<section id="movie-recommendation-via-distance-metrics---euclidean-manhattan-distance" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="movie-recommendation-via-distance-metrics---euclidean-manhattan-distance"><span class="header-section-number">3.2</span> Movie Recommendation via Distance Metrics - Euclidean &amp; Manhattan distance</h2>
-<p>Firstly, 5 titles which are ‘Yuan lai wo hen ai ni’, ‘Lost You Forever’, ‘Mischievous Kiss’, ‘Amidst a Snowstorm of Love’, and ‘My Fair Princess’ are selected randomly in R from the list of 90 movie dataset as a list of watched movies.</p>
-<p>Secondly, distances of all movies are calculated including 5 watched movies using Euclidean and Manhattan. There are 15 features to find similarities between movies, which are ‘Title’, ‘Ending_Happy’, ‘Ending_Sad’, ‘Ending_Open’, ‘Genre_Comedy’, ‘Genre_Drama’, ‘Genre_Crime’, ‘Genre_Romance’, ‘Genre_Action’, ‘Genre_Adventure’, ‘Genre_Mystery’, ‘Genre_Fantasy’, ‘Female_Famous’, ‘Male_Famous’, ‘Main_Famous’, ‘Is_Summer’, ‘High_Voting’, and ‘High_Rating’. Except for Title, others are binary variables.</p>
-<p>Thirdly, there are 5 sub steps to get the list of 5 movie recommendations: - Step 1: Find distances for 5 watched movies - ‘’Yuan lai wo hen ai ni’, ‘Lost You Forever’, ‘Mischievous Kiss’, ‘Amidst a Snowstorm of Love’, and ‘My Fair Princess’ to every other movies from the calculated distance matric results. - Step 2: Average the distances of 5 watched movies to every other movies - Step 3: Order the distances to find the closest movies - Step 4: Get the top 5 recommendations excluding 5 watched movies</p>
-<p>Finally, the list of 5 movie suggestions is: - “Kill Me Love Me”<br>
-- “Love Me, Love My Voice” - “Here We Meet Again”<br>
-- “The Imperial Coroner”<br>
-- “Bohe zhi xia”</p>
-</section>
-<section id="k-means-clustering-for-classification" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="k-means-clustering-for-classification"><span class="header-section-number">3.3</span> K-Means Clustering for Classification</h2>
-<p>The genre grouping uses features as Genre_Comedy, Genre_Drama, Genre_Crime, Genre_Romance, Genre_Action, Genre_Adventure, Genre_Mystery, Genre_Fantasy, and High_Rating, with k = 12. The cluster sometimes does not make sense, for example, Cluster 3 - Genre_Romance has both high and not high ratings.</p>
-<p><img src="../images/projects/movie-recommender/k12.png" class="img-fluid"></p>
-<section id="group-movies-according-to-main_famous-high_rating" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="group-movies-according-to-main_famous-high_rating"><span class="header-section-number">3.3.1</span> Group movies according to Main_Famous, High_Rating</h3>
-<p>The genre grouping uses features such as Main_Famous and High_Rating, with k = 4. Movies with famous leads tend to influence ratings more than those without. However, in this small dataset, the percentage of high-rated and not-high-rated movies is almost equal. Therefore, it is unclear whether movies with famous actors or actresses are highly rated.</p>
-<p><img src="../images/projects/movie-recommender/k4.png" class="img-fluid"></p>
-</section>
-<section id="group-movies-according-to-ending-high_rating" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="group-movies-according-to-ending-high_rating"><span class="header-section-number">3.3.2</span> Group movies according to Ending, High_Rating</h3>
-<p>The genre grouping uses features such as Ending_Happy, Ending_Sad, Ending_Open, and High_Rating, with k = 6. It is evident that movies with happy endings tend to have lower ratings. However, sad and open endings show no significant difference in their high-rating percentages.</p>
-<p><img src="../images/projects/movie-recommender/k6.png" class="img-fluid"></p>
-</section>
-<section id="group-movies-according-to-high_voting-high_rating" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="group-movies-according-to-high_voting-high_rating"><span class="header-section-number">3.3.3</span> Group movies according to High_Voting, High_Rating*</h3>
-<p>The genre grouping uses features such as High_Voting, High_Rating, with k = 4. There is consistent evidence that movies with high voting tend to have high ratings and vice versa. However, low voting seems to impact ratings more than high voting.</p>
-<p><img src="../images/projects/movie-recommender/k4_2.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="machine-learning-models-for-popularity-prediction" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="machine-learning-models-for-popularity-prediction"><span class="header-section-number">3.4</span> Machine Learning Models for Popularity Prediction</h2>
-<section id="decision-tree" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">3.4.1</span> Decision Tree</h3>
-<p>This algorithm has features as Ending_Happy, Ending_Sad, Ending_Open, Main_Famous, and High_Voting to predict High_Rating. At first, the dataset is labeled as train and test dataset, which is done in KNN. Using R to run the tree model, we have the image as below:</p>
-<p><img src="../images/projects/movie-recommender/image3.png" class="img-fluid"></p>
-<p>The prediction result</p>
-<p><img src="../images/projects/movie-recommender/image21.png" class="img-fluid"></p>
-<p><img src="../images/projects/movie-recommender/image11.png" class="img-fluid"></p>
-<p>Accuracy: 80% | Misclassification: 20%</p>
-</section>
-<section id="logistic-regression" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="logistic-regression"><span class="header-section-number">3.4.2</span> Logistic Regression</h3>
-<p>This algorithm has features as Ending_Happy, Ending_Open, Ending_Sad, Male_Famous, Female_Famous, and High_Voting to predict High_Rating. The model is built in R and the result is as below:</p>
-<p><img src="../images/projects/movie-recommender/image8.png" class="img-fluid"></p>
-<p>log( p̂ / (1 - p̂) ) = -1.1550 - 0.5719 × Ending_Happy + 0.5185 × Ending_Open + 0.5650 × Male_Famous - 0.1104 × Female_Famous + 2.2302 × High_Voting</p>
-</section>
-</section>
-<section id="notes" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="notes"><span class="header-section-number">3.5</span> Notes:</h2>
-<p>p̂ / (1 - p̂): the predicted probability of High_Rating = 1</p>
-<p>Interpretation table</p>
-<p><img src="../images/projects/movie-recommender/image8_2.png" class="img-fluid"></p>
-<p>The confusion matrix</p>
-<p><img src="../images/projects/movie-recommender/image13.png" class="img-fluid"></p>
-<p>Based on the confusion matrix, the accuracy and misclassification rates are described as below:</p>
-<p><img src="../images/projects/movie-recommender/image13_2.png" class="img-fluid"></p>
-<p>Out of 61 not High_Rating movies, there are 52 correct predictions (true negatives) and 9 misclassifications (false positives). Out of 29 High_Rating movies, there are 17 correct predictions (true positives) and 12 misclassifications (false negatives). The accuracy rate is 76.7%, and the misclassification rate is 23.3%.</p>
-<p>Accuracy: 76.7% | Misclassification: 23.3%</p>
-</section>
-</section>
-<section id="ethics-privacy-considerations" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Ethics &amp; Privacy Considerations</h1>
-<ul>
-<li>The dataset is limited to 90 movies, which may introduce biases.</li>
-<li>Cultural bias exists as only Chinese movies are considered.</li>
-<li>The “Famous Actor” category is subjective and may change over time.</li>
-<li>Ratings are sourced from IMDb, but additional sources could strengthen the analysis.</li>
-</ul>
-</section>
-<section id="future-improvements" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Future Improvements</h1>
-<ul>
-<li>Expanding the dataset for better clustering results.</li>
-<li>Analyzing additional factors like critic reviews, audience comments, and streaming data.</li>
-<li>Exploring budget, revenue, and profit analysis to predict a movie’s success.</li>
-<li>Investigating seasonal movie trends and how audience preferences shift over time.</li>
-</ul>
+<section id="final-takeaway" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Final Takeaway</h1>
+<p>This project demonstrates the complete path from API-based data collection and text-feature engineering to recommendation evaluation and deployment. The final system provides fast, explainable movie-to-movie recommendations while establishing a reproducible baseline for future embedding-based or personalized models.</p>
 
 
 </section>

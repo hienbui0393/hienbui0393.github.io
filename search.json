@@ -60,21 +60,21 @@
     "href": "index.html",
     "title": "Hien Bui",
     "section": "",
-    "text": "I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, audience sentiment analysis, and data storytelling.\nBefore graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.\nView Resume LinkedIn GitHub"
+    "text": "I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, content-based recommendation, and data storytelling.\nBefore graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.\nView Resume LinkedIn GitHub"
   },
   {
     "objectID": "index.html#selected-projects",
     "href": "index.html#selected-projects",
     "title": "Hien Bui",
     "section": "Selected Projects",
-    "text": "Selected Projects\n\nPredicting Emergency Department Demand\nBuilt a one-quarter-ahead forecasting prototype for total ED encounters across 57 New York facility counties and 28 quarters. Developed a leakage-safe data pipeline, compared machine-learning models with operational benchmarks, and found that previous-quarter persistence achieved the best 2024 holdout performance (MAE 1,253; WAPE 3.36%). Deployed the stakeholder workflow as a Flask application on Render.\nTools: Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render\nView Project | Watch Demo | Open Live App\n\n\nManga Sentiment Analysis\nCreated an end-to-end text-analysis pipeline that collected more than 90 audience reviews using Selenium, processed the text with NLTK and TextBlob, and communicated sentiment patterns through Tableau and Power BI dashboards.\nTools: Python, Selenium, NLTK, TextBlob, Tableau, Power BI\nView Project\n\n\nEV Adoption in Washington\nAnalyzed more than 235,000 Washington State EV registration records to examine adoption growth, leading brands, electric range, and geographic concentration. Transformed the findings into a focused four-visual data story using Polars and Plotly.\nTools: Python, Polars, Plotly\nView Project"
+    "text": "Selected Projects\n\nPredicting Emergency Department Demand\nBuilt a one-quarter-ahead forecasting prototype for total ED encounters across 57 New York facility counties and 28 quarters. Developed a leakage-safe data pipeline, compared machine-learning models with operational benchmarks, and found that previous-quarter persistence achieved the best 2024 holdout performance (MAE 1,253; WAPE 3.36%). Deployed the stakeholder workflow as a Flask application on Render.\nTools: Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render\nView Project | Watch Demo | Open Live App\n\n\nTMDB Movie Recommender\nBuilt a content-based recommendation system for 5,000 TMDB movies using plot summaries, genres, keywords, directors, and leading cast. Applied TF-IDF and cosine similarity to rank related titles; 90% of top-10 recommendations shared at least one genre across 100 sampled movies. Deployed the interactive workflow as a Streamlit application on Render.\nTools: Python, Pandas, Scikit-learn, TF-IDF, Streamlit, Render\nView Project | Watch Demo | Open Live App\n\n\nEV Adoption in Washington\nAnalyzed more than 235,000 Washington State EV registration records to examine adoption growth, leading brands, electric range, and geographic concentration. Transformed the findings into a focused four-visual data story using Polars and Plotly.\nTools: Python, Polars, Plotly\nView Project"
   },
   {
     "objectID": "index.html#technical-skills",
     "href": "index.html#technical-skills",
     "title": "Hien Bui",
     "section": "Technical Skills",
-    "text": "Technical Skills\n\nProgramming: Python, SQL\nData analysis: Pandas, NumPy, Polars, MySQL, Excel\nAnalytics and machine learning: Scikit-learn, XGBoost, statistical analysis, forecasting, natural language processing\nVisualization and reporting: Power BI, Tableau, Plotly, Quarto\nDevelopment and deployment: Jupyter Notebook, VS Code, Git, GitHub, Flask, Render"
+    "text": "Technical Skills\n\nProgramming: Python, SQL\nData analysis: Pandas, NumPy, Polars, MySQL, Excel\nAnalytics and machine learning: Scikit-learn, XGBoost, statistical analysis, forecasting, natural language processing\nVisualization and reporting: Power BI, Tableau, Plotly, Quarto\nDevelopment and deployment: Jupyter Notebook, VS Code, Git, GitHub, Flask, Streamlit, Render"
   },
   {
     "objectID": "index.html#lets-connect",
@@ -170,86 +170,44 @@
   {
     "objectID": "projects/movie-recommender.html",
     "href": "projects/movie-recommender.html",
-    "title": "Movie Recommender System",
+    "title": "TMDB Movie Recommender",
     "section": "",
-    "text": "This project is a Chinese movie recommendation system that suggests movies based on genres, famous actors, endings, voting, and ratings.\nThe dataset consists of 90 Chinese movies from IMDb, and multiple machine learning techniques are used to analyze and predict movie popularity.\n\n\n\n\n\nPython (for data cleaning)\nPandas (for data processing)\nPlotly (for interactive visualizations)\nR (for modeling and evaluation)\n\n\n\n\n\nCalculate similarity using Euclidean and Manhattan distances to recommend the top 5 movies based on a list of 5 watched titles.\nClassify movie groups using k-means with different feature sets and k values.\nUse KNN to predict popular movies based on selected features with train/test splits.\nApply a Decision Tree to predict high-rating movies using selected features.\nFit a Logistic Regression to estimate the probability of high rating.\n\n\n\n\n\nFor recommendations, both Euclidean and Manhattan distances work effectively.\nFor unsupervised methods like K-Means, groupings can be inconsistent on this small dataset.\nFamous leads may influence ratings, but the sample size limits strong conclusions.\nFor supervised methods (KNN, Decision Tree, Logistic Regression), accuracy rates are relatively high and similar; Decision Tree achieved the best accuracy in this study."
+    "text": "Movie catalogs can be difficult to explore when users know one title they enjoy but do not know what to watch next. I built a content-based recommendation system that finds similar movies using plot descriptions and structured metadata from The Movie Database (TMDB).\nThe final catalog contains 5,000 unique movies. For each title, I combined its overview, tagline, genres, keywords, director, and leading cast into a single content document. TF-IDF transformed these documents into a 5,000 x 15,000 sparse feature matrix, and cosine similarity ranked the movies most closely aligned with a selected title.\nAcross 100 sampled movies, 90% of the top-10 recommendations shared at least one genre with the source movie. Manual review also identified strong franchise, director, theme, and story relationships while highlighting weaker matches for future improvement.\n\n\nThis short video shows the movie search, selected-title details, adjustable recommendation count, recommendation cards, and similarity explanations.\n\n\nYour browser does not support embedded video. You can open the demonstration video directly. \nOpen Live Application View GitHub Repository\n\n\n\n\n\n\nNote\n\n\n\nThe Render application may take approximately 1-2 minutes to start after a period of inactivity.\n\n\n\n\n\n\nSearchable catalog: Find a title from the saved catalog of 5,000 movies.\nAdjustable results: Display five to fifteen recommendations for the selected movie.\nRecommendation context: Show similarity scores and shared genres, directors, or themes.\nMovie details: Review posters, release years, plot summaries, ratings, genres, keywords, directors, and cast."
   },
   {
-    "objectID": "projects/movie-recommender.html#technologies-and-methods-used",
-    "href": "projects/movie-recommender.html#technologies-and-methods-used",
-    "title": "Movie Recommender System",
+    "objectID": "projects/movie-recommender.html#watch-the-application-demo",
+    "href": "projects/movie-recommender.html#watch-the-application-demo",
+    "title": "TMDB Movie Recommender",
     "section": "",
-    "text": "Python (for data cleaning)\nPandas (for data processing)\nPlotly (for interactive visualizations)\nR (for modeling and evaluation)\n\n\n\n\n\nCalculate similarity using Euclidean and Manhattan distances to recommend the top 5 movies based on a list of 5 watched titles.\nClassify movie groups using k-means with different feature sets and k values.\nUse KNN to predict popular movies based on selected features with train/test splits.\nApply a Decision Tree to predict high-rating movies using selected features.\nFit a Logistic Regression to estimate the probability of high rating."
+    "text": "This short video shows the movie search, selected-title details, adjustable recommendation count, recommendation cards, and similarity explanations.\n\n\nYour browser does not support embedded video. You can open the demonstration video directly. \nOpen Live Application View GitHub Repository\n\n\n\n\n\n\nNote\n\n\n\nThe Render application may take approximately 1-2 minutes to start after a period of inactivity."
   },
   {
-    "objectID": "projects/movie-recommender.html#key-findings",
-    "href": "projects/movie-recommender.html#key-findings",
-    "title": "Movie Recommender System",
+    "objectID": "projects/movie-recommender.html#application-highlights",
+    "href": "projects/movie-recommender.html#application-highlights",
+    "title": "TMDB Movie Recommender",
     "section": "",
-    "text": "For recommendations, both Euclidean and Manhattan distances work effectively.\nFor unsupervised methods like K-Means, groupings can be inconsistent on this small dataset.\nFamous leads may influence ratings, but the sample size limits strong conclusions.\nFor supervised methods (KNN, Decision Tree, Logistic Regression), accuracy rates are relatively high and similar; Decision Tree achieved the best accuracy in this study."
+    "text": "Searchable catalog: Find a title from the saved catalog of 5,000 movies.\nAdjustable results: Display five to fifteen recommendations for the selected movie.\nRecommendation context: Show similarity scores and shared genres, directors, or themes.\nMovie details: Review posters, release years, plot summaries, ratings, genres, keywords, directors, and cast."
   },
   {
-    "objectID": "projects/movie-recommender.html#based-on-euclidean-and-manhattan-distance-5-similar-movies",
-    "href": "projects/movie-recommender.html#based-on-euclidean-and-manhattan-distance-5-similar-movies",
-    "title": "Movie Recommender System",
-    "section": "2.1 Based on Euclidean and Manhattan distance: 5 similar movies",
-    "text": "2.1 Based on Euclidean and Manhattan distance: 5 similar movies\nExample recommendations: - Kill Me Love Me - Love Me, Love My Voice - Here We Meet Again - The Imperial Coroner - Bohe zhi xia"
+    "objectID": "projects/movie-recommender.html#data-source",
+    "href": "projects/movie-recommender.html#data-source",
+    "title": "TMDB Movie Recommender",
+    "section": "3.1 Data Source",
+    "text": "3.1 Data Source\n\n\n\n\n\n\n\nSource\nContribution\n\n\n\n\nTMDB movie endpoints\nTitles, release dates, plot summaries, taglines, ratings, and poster paths\n\n\nTMDB genre metadata\nGenre labels used as recommendation features and for diagnostic evaluation\n\n\nTMDB keywords and credits\nThemes, directors, and leading cast used to enrich movie profiles\n\n\n\nThe data pipeline cleaned text fields, standardized multi-value metadata, removed duplicate movie IDs, and created compact tokens for names and categories. Genres and directors were intentionally repeated in the combined content to give them greater influence in the final similarity ranking."
   },
   {
-    "objectID": "projects/movie-recommender.html#best-predictive-model",
-    "href": "projects/movie-recommender.html#best-predictive-model",
-    "title": "Movie Recommender System",
-    "section": "2.2 Best Predictive Model",
-    "text": "2.2 Best Predictive Model\n\nDecision Tree achieved the highest accuracy (about 80% in this run).\nHigh voting count was the most important factor in predicting high-rated movies."
+    "objectID": "projects/movie-recommender.html#tf-idf-and-cosine-similarity",
+    "href": "projects/movie-recommender.html#tf-idf-and-cosine-similarity",
+    "title": "TMDB Movie Recommender",
+    "section": "3.2 TF-IDF and Cosine Similarity",
+    "text": "3.2 TF-IDF and Cosine Similarity\nTF-IDF assigns higher weights to terms that are informative for a movie but less common across the full catalog. This reduces the influence of generic words while preserving distinctive plots, themes, people, and genres.\nCosine similarity then compares the direction of two TF-IDF vectors. For each selected movie, the application:\n\nLocates the movie’s saved TF-IDF vector.\nCompares it with all 5,000 catalog vectors.\nRemoves the selected movie itself from the ranking.\nReturns the highest-scoring titles in descending order.\n\nThe fitted vectorizer, sparse matrix, and cleaned movie catalog were saved as a 4.9 MB Joblib artifact, allowing the deployed application to return recommendations without calling the TMDB API at runtime."
   },
   {
-    "objectID": "projects/movie-recommender.html#clustering-insights",
-    "href": "projects/movie-recommender.html#clustering-insights",
-    "title": "Movie Recommender System",
-    "section": "2.3 Clustering Insights",
-    "text": "2.3 Clustering Insights\n\nMovies with high voting tend to have higher ratings.\nHappy-ending movies generally receive lower ratings than sad or open-ended movies."
-  },
-  {
-    "objectID": "projects/movie-recommender.html#dataset",
-    "href": "projects/movie-recommender.html#dataset",
-    "title": "Movie Recommender System",
-    "section": "2.4 Dataset",
-    "text": "2.4 Dataset\n\n2.4.1 Key Features\n\nMovies: 90 Chinese series (1998–2024)\nGenres: Comedy, Drama, Crime, Romance, Action, Adventure, Mystery, Fantasy\nRuntime: 40–90 minutes\nIMDb Ratings: 6.4–8.6\nFamous actors present in many titles\nEnding types: Happy, Sad, Open\nVoting data: 14–5,669 votes\n\n\n\n2.4.2 Dataset Variables\nThis dataset contains information on 90 Chinese movie series (1998–2024). Below is a detailed breakdown of variables:\n\n\n\n#\nVariable Name\nDescription\n\n\n\n\n1\nID\nIndex number.\n\n\n2\nTitle\nEnglish title.\n\n\n3\nOriginal_Title\nChinese title.\n\n\n4\nRuntime\nMinutes per episode.\n\n\n5\nEnding\nhappy, sad, or open.\n\n\n6\nEnding_Happy\n1 if Ending is happy, else 0.\n\n\n7\nEnding_Sad\n1 if Ending is sad, else 0.\n\n\n8\nEnding_Open\n1 if Ending is open, else 0.\n\n\n9\nGenres\nMain genre.\n\n\n10\nGenre_Comedy\nOne-hot for Comedy.\n\n\n11\nGenre_Drama\nOne-hot for Drama.\n\n\n12\nGenre_Crime\nOne-hot for Crime.\n\n\n13\nGenre_Romance\nOne-hot for Romance.\n\n\n14\nGenre_Action\nOne-hot for Action.\n\n\n15\nGenre_Adventure\nOne-hot for Adventure.\n\n\n16\nGenre_Mystery\nOne-hot for Mystery.\n\n\n17\nGenre_Fantasy\nOne-hot for Fantasy.\n\n\n18\nMale_Lead\nName of male lead.\n\n\n19\nMale_Famous\n1 if male lead is famous, else 0.\n\n\n20\nFemale_Lead\nName of female lead.\n\n\n21\nFemale_Famous\n1 if female lead is famous, else 0.\n\n\n22\nMain_Famous\n1 if any main lead is famous.\n\n\n23\nRelease_Date\nDate of release.\n\n\n24\nIs_Summer\n1 if released in Jul–Sep.\n\n\n25\nYear\nRelease year.\n\n\n26\nNum_Votes\nNumber of votes.\n\n\n27\nHigh_Voting\n1 if Num_Votes ≥ 1000.\n\n\n28\nIMDB_Rating\nIMDb rating.\n\n\n29\nHigh_Rating\n1 if IMDb_Rating ≥ 8.\n\n\n30\nViet_Title\nVietnamese title (personal reference).\n\n\n\nNotes:\n\nEnding_* are derived from Ending.\nGenre_* are one-hot encodings of Genres.\n*Famous indicators are based on a predefined list.\nHigh_Voting and High_Rating are binary thresholds."
-  },
-  {
-    "objectID": "projects/movie-recommender.html#general-data-distribution",
-    "href": "projects/movie-recommender.html#general-data-distribution",
-    "title": "Movie Recommender System",
-    "section": "3.1 General Data Distribution",
-    "text": "3.1 General Data Distribution\nTreemap summary of top-rated movies:\n\nPie chart of genre distribution (Drama is most dominant):"
-  },
-  {
-    "objectID": "projects/movie-recommender.html#movie-recommendation-via-distance-metrics---euclidean-manhattan-distance",
-    "href": "projects/movie-recommender.html#movie-recommendation-via-distance-metrics---euclidean-manhattan-distance",
-    "title": "Movie Recommender System",
-    "section": "3.2 Movie Recommendation via Distance Metrics - Euclidean & Manhattan distance",
-    "text": "3.2 Movie Recommendation via Distance Metrics - Euclidean & Manhattan distance\nFirstly, 5 titles which are ‘Yuan lai wo hen ai ni’, ‘Lost You Forever’, ‘Mischievous Kiss’, ‘Amidst a Snowstorm of Love’, and ‘My Fair Princess’ are selected randomly in R from the list of 90 movie dataset as a list of watched movies.\nSecondly, distances of all movies are calculated including 5 watched movies using Euclidean and Manhattan. There are 15 features to find similarities between movies, which are ‘Title’, ‘Ending_Happy’, ‘Ending_Sad’, ‘Ending_Open’, ‘Genre_Comedy’, ‘Genre_Drama’, ‘Genre_Crime’, ‘Genre_Romance’, ‘Genre_Action’, ‘Genre_Adventure’, ‘Genre_Mystery’, ‘Genre_Fantasy’, ‘Female_Famous’, ‘Male_Famous’, ‘Main_Famous’, ‘Is_Summer’, ‘High_Voting’, and ‘High_Rating’. Except for Title, others are binary variables.\nThirdly, there are 5 sub steps to get the list of 5 movie recommendations: - Step 1: Find distances for 5 watched movies - ‘’Yuan lai wo hen ai ni’, ‘Lost You Forever’, ‘Mischievous Kiss’, ‘Amidst a Snowstorm of Love’, and ‘My Fair Princess’ to every other movies from the calculated distance matric results. - Step 2: Average the distances of 5 watched movies to every other movies - Step 3: Order the distances to find the closest movies - Step 4: Get the top 5 recommendations excluding 5 watched movies\nFinally, the list of 5 movie suggestions is: - “Kill Me Love Me”\n- “Love Me, Love My Voice” - “Here We Meet Again”\n- “The Imperial Coroner”\n- “Bohe zhi xia”"
-  },
-  {
-    "objectID": "projects/movie-recommender.html#k-means-clustering-for-classification",
-    "href": "projects/movie-recommender.html#k-means-clustering-for-classification",
-    "title": "Movie Recommender System",
-    "section": "3.3 K-Means Clustering for Classification",
-    "text": "3.3 K-Means Clustering for Classification\nThe genre grouping uses features as Genre_Comedy, Genre_Drama, Genre_Crime, Genre_Romance, Genre_Action, Genre_Adventure, Genre_Mystery, Genre_Fantasy, and High_Rating, with k = 12. The cluster sometimes does not make sense, for example, Cluster 3 - Genre_Romance has both high and not high ratings.\n\n\n3.3.1 Group movies according to Main_Famous, High_Rating\nThe genre grouping uses features such as Main_Famous and High_Rating, with k = 4. Movies with famous leads tend to influence ratings more than those without. However, in this small dataset, the percentage of high-rated and not-high-rated movies is almost equal. Therefore, it is unclear whether movies with famous actors or actresses are highly rated.\n\n\n\n3.3.2 Group movies according to Ending, High_Rating\nThe genre grouping uses features such as Ending_Happy, Ending_Sad, Ending_Open, and High_Rating, with k = 6. It is evident that movies with happy endings tend to have lower ratings. However, sad and open endings show no significant difference in their high-rating percentages.\n\n\n\n3.3.3 Group movies according to High_Voting, High_Rating*\nThe genre grouping uses features such as High_Voting, High_Rating, with k = 4. There is consistent evidence that movies with high voting tend to have high ratings and vice versa. However, low voting seems to impact ratings more than high voting."
-  },
-  {
-    "objectID": "projects/movie-recommender.html#machine-learning-models-for-popularity-prediction",
-    "href": "projects/movie-recommender.html#machine-learning-models-for-popularity-prediction",
-    "title": "Movie Recommender System",
-    "section": "3.4 Machine Learning Models for Popularity Prediction",
-    "text": "3.4 Machine Learning Models for Popularity Prediction\n\n3.4.1 Decision Tree\nThis algorithm has features as Ending_Happy, Ending_Sad, Ending_Open, Main_Famous, and High_Voting to predict High_Rating. At first, the dataset is labeled as train and test dataset, which is done in KNN. Using R to run the tree model, we have the image as below:\n\nThe prediction result\n\n\nAccuracy: 80% | Misclassification: 20%\n\n\n3.4.2 Logistic Regression\nThis algorithm has features as Ending_Happy, Ending_Open, Ending_Sad, Male_Famous, Female_Famous, and High_Voting to predict High_Rating. The model is built in R and the result is as below:\n\nlog( p̂ / (1 - p̂) ) = -1.1550 - 0.5719 × Ending_Happy + 0.5185 × Ending_Open + 0.5650 × Male_Famous - 0.1104 × Female_Famous + 2.2302 × High_Voting"
-  },
-  {
-    "objectID": "projects/movie-recommender.html#notes",
-    "href": "projects/movie-recommender.html#notes",
-    "title": "Movie Recommender System",
-    "section": "3.5 Notes:",
-    "text": "3.5 Notes:\np̂ / (1 - p̂): the predicted probability of High_Rating = 1\nInterpretation table\n\nThe confusion matrix\n\nBased on the confusion matrix, the accuracy and misclassification rates are described as below:\n\nOut of 61 not High_Rating movies, there are 52 correct predictions (true negatives) and 9 misclassifications (false positives). Out of 29 High_Rating movies, there are 17 correct predictions (true positives) and 12 misclassifications (false negatives). The accuracy rate is 76.7%, and the misclassification rate is 23.3%.\nAccuracy: 76.7% | Misclassification: 23.3%"
+    "objectID": "projects/movie-recommender.html#genre-overlap-at-10",
+    "href": "projects/movie-recommender.html#genre-overlap-at-10",
+    "title": "TMDB Movie Recommender",
+    "section": "4.1 Genre Overlap at 10",
+    "text": "4.1 Genre Overlap at 10\nFor 100 sampled source movies, I evaluated whether each of the top-10 recommendations shared at least one genre with its source movie.\n\n\n\nDiagnostic\nResult\n\n\n\n\nSampled source movies\n100\n\n\nRecommendations per source\n10\n\n\nGenre overlap at 10\n90.0%\n\n\n\nThis result indicates strong content consistency, but it is not classification accuracy and does not measure user satisfaction. Manual inspection therefore complemented the metric by reviewing representative strong, reasonable, and weak recommendations.\nExamples of strong relationships included franchise and character matches for The Dark Knight, sequel relationships for The Avengers and Inside Out, and similar psychological-thriller recommendations for Gone Girl. Weaker examples showed the limitation of relying on shared vocabulary and metadata without user-feedback signals."
   },
   {
     "objectID": "projects/predicting-emergency-department-demand.html",
