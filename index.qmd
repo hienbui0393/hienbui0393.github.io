@@ -3,7 +3,7 @@ title: "Hien Bui"
 subtitle: "Data Scientist | Turning complex data into practical decisions"
 ---
 
-I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, audience sentiment analysis, and data storytelling.
+I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, content-based recommendation, and data storytelling.
 
 Before graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.
 
@@ -18,14 +18,14 @@ Before graduate school, I spent more than six years leading cross-functional VFX
 Built a one-quarter-ahead forecasting prototype for total ED encounters across 57 New York facility counties and 28 quarters. Developed a leakage-safe data pipeline, compared machine-learning models with operational benchmarks, and found that previous-quarter persistence achieved the best 2024 holdout performance (**MAE 1,253; WAPE 3.36%**). Deployed the stakeholder workflow as a Flask application on Render.
 
 **Tools:** Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render  
-[View Project](projects/predicting-emergency-department-demand.html) | [Open Live App](https://ny-quarterly-ed-demand-app.onrender.com/){target="_blank"}
+[View Project](projects/predicting-emergency-department-demand.html) | [Watch Demo](videos/projects/ed-demand/ed-demand-app-demo.mp4){target="_blank"} | [Open Live App](https://ny-quarterly-ed-demand-app.onrender.com/){target="_blank"}
 
-### Manga Sentiment Analysis
+### TMDB Movie Recommender
 
-Created an end-to-end text-analysis pipeline that collected more than 90 audience reviews using Selenium, processed the text with NLTK and TextBlob, and communicated sentiment patterns through Tableau and Power BI dashboards.
+Built a content-based recommendation system for 5,000 TMDB movies using plot summaries, genres, keywords, directors, and leading cast. Applied TF-IDF and cosine similarity to rank related titles; **90% of top-10 recommendations shared at least one genre** across 100 sampled movies. Deployed the interactive workflow as a Streamlit application on Render.
 
-**Tools:** Python, Selenium, NLTK, TextBlob, Tableau, Power BI  
-[View Project](projects/manga-sentiment.html)
+**Tools:** Python, Pandas, Scikit-learn, TF-IDF, Streamlit, Render  
+[View Project](projects/movie-recommender.html) | [Watch Demo](videos/projects/movie-recommender/movie-recommender-app-demo.mp4){target="_blank"} | [Open Live App](https://tmdb-movie-recommender-app.onrender.com/){target="_blank"}
 
 ### EV Adoption in Washington
 
@@ -40,7 +40,7 @@ Analyzed more than 235,000 Washington State EV registration records to examine a
 - **Data analysis:** Pandas, NumPy, Polars, MySQL, Excel
 - **Analytics and machine learning:** Scikit-learn, XGBoost, statistical analysis, forecasting, natural language processing
 - **Visualization and reporting:** Power BI, Tableau, Plotly, Quarto
-- **Development and deployment:** Jupyter Notebook, VS Code, Git, GitHub, Flask, Render
+- **Development and deployment:** Jupyter Notebook, VS Code, Git, GitHub, Flask, Streamlit, Render
 
 ## Let's Connect
 
