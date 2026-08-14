@@ -1,7 +1,12 @@
 ---
 title: "Hien Bui"
 subtitle: "Data Scientist | Turning complex data into practical decisions"
+toc: false
 ---
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-9}
 
 I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, content-based recommendation, and data storytelling.
 
@@ -10,6 +15,16 @@ Before graduate school, I spent more than six years leading cross-functional VFX
 [View Resume](resume.qmd){.btn .btn-primary}
 [LinkedIn](https://www.linkedin.com/in/hien-bui-6273b010a/){.btn .btn-outline-secondary target="_blank"}
 [GitHub](https://github.com/hienbui0393){.btn .btn-outline-secondary target="_blank"}
+
+:::
+
+::: {.g-col-12 .g-col-md-3 style="display: flex; align-items: center; justify-content: center;"}
+
+![Professional headshot of Hien Bui](images/projects/index.png){.img-fluid width="220" style="border-radius: 14px; box-shadow: 0 6px 18px rgba(44, 62, 80, 0.14);"}
+
+:::
+
+::::
 
 ## Selected Projects
 
