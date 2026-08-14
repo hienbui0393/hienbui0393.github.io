@@ -20,7 +20,7 @@ Before graduate school, I spent more than six years leading cross-functional VFX
 
 ::: {.g-col-12 .g-col-md-3 style="display: flex; align-items: center; justify-content: center;"}
 
-![Professional headshot of Hien Bui](images/projects/index.png){.img-fluid width="220" style="border-radius: 14px; box-shadow: 0 6px 18px rgba(44, 62, 80, 0.14);"}
+![Professional headshot of Hien Bui](images/projects/index/hien_bui.jpeg){.img-fluid width="220" style="border-radius: 14px; box-shadow: 0 6px 18px rgba(44, 62, 80, 0.14);"}
 
 :::
 
