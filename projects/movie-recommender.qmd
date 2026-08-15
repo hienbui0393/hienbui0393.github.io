@@ -18,13 +18,13 @@ execute:
 
 Movie catalogs can be difficult to explore when users know one title they enjoy but do not know what to watch next. I built a content-based recommendation system that finds similar movies using plot descriptions and structured metadata from **The Movie Database (TMDB)**.
 
-The final catalog contains **5,000 unique movies**. For each title, I combined its overview, tagline, genres, keywords, director, and leading cast into a single content document. TF-IDF transformed these documents into a **5,000 x 15,000 sparse feature matrix**, and cosine similarity ranked the movies most closely aligned with a selected title.
+The final catalog contains **5,000 unique movies**. For each title, I combined its overview, tagline, genres, keywords, director, and leading cast. I compared weighted TF-IDF—a **5,000 x 15,000 sparse feature matrix**—with `all-MiniLM-L6-v2` sentence embeddings, using cosine similarity to rank the movies most closely aligned with a selected title.
 
-Across 100 sampled movies, **90% of the top-10 recommendations shared at least one genre with the source movie**. Manual review also identified strong franchise, director, theme, and story relationships while highlighting weaker matches for future improvement.
+Both methods were evaluated on the same 100 sampled movies and their top 10 recommendations. Embeddings produced slightly higher broad genre overlap (**92.3% versus 90.3%**), but TF-IDF performed better on genre-set agreement, keyword, director, and cast overlap, recommendation diversity, and explainability. **TF-IDF was therefore retained as the final deployed method.**
 
-## Watch the Application Demo
+## Application Demo and Live App
 
-This short video shows the movie search, selected-title details, adjustable recommendation count, recommendation cards, and similarity explanations.
+Watch this short demo first for a quick look at the movie search, selected-title details, adjustable recommendation count, recommendation cards, and similarity explanations.
 
 <video controls playsinline preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
   <source src="../videos/projects/movie-recommender/movie-recommender-app-demo.mp4" type="video/mp4">
@@ -32,11 +32,10 @@ This short video shows the movie search, selected-title details, adjustable reco
   <a href="../videos/projects/movie-recommender/movie-recommender-app-demo.mp4">open the demonstration video directly</a>.
 </video>
 
-[Open Live Application](https://tmdb-movie-recommender-app.onrender.com/){.btn .btn-primary target="_blank"}
-[View GitHub Repository](https://github.com/hienbui0393/movie_recommender_app){.btn .btn-outline-secondary target="_blank"}
+::: {.callout-note title="Try the Live Application"}
+Want to explore the recommender yourself? Open the live app below. Because it is hosted on Render, it may take approximately **1–2 minutes to start** after a period of inactivity.
 
-::: {.callout-note}
-The Render application may take approximately 1-2 minutes to start after a period of inactivity.
+[Open Live App](https://tmdb-movie-recommender-app.onrender.com/){.btn .btn-primary target="_blank"}
 :::
 
 ## Application Highlights
@@ -53,9 +52,9 @@ The Render application may take approximately 1-2 minutes to start after a perio
 | Recommendation type | Content-based, movie-to-movie similarity |
 | Catalog | 5,000 unique TMDB movies |
 | Content features | Overview, tagline, genres, keywords, director, and leading cast |
-| Text representation | TF-IDF with up to 15,000 features |
+| Text representation | Weighted TF-IDF compared with `all-MiniLM-L6-v2` sentence embeddings |
 | Ranking method | Cosine similarity |
-| Evaluation | Genre overlap at 10 and manual recommendation review |
+| Evaluation | Six content-consistency and diversity diagnostics across the same 100 seed movies, plus manual review |
 | Application | Streamlit deployed on Render |
 
 ::: {.callout-important}
@@ -74,9 +73,11 @@ The Render application may take approximately 1-2 minutes to start after a perio
 
 The data pipeline cleaned text fields, standardized multi-value metadata, removed duplicate movie IDs, and created compact tokens for names and categories. Genres and directors were intentionally repeated in the combined content to give them greater influence in the final similarity ranking.
 
-## TF-IDF and Cosine Similarity
+## TF-IDF, Sentence Embeddings, and Cosine Similarity
 
 TF-IDF assigns higher weights to terms that are informative for a movie but less common across the full catalog. This reduces the influence of generic words while preserving distinctive plots, themes, people, and genres.
+
+Sentence embeddings represent each movie as a dense 384-value vector and can recognize related meaning even when descriptions use different words. Both methods used the same 5,000-movie candidate catalog and the same underlying movie information for a fair comparison.
 
 Cosine similarity then compares the direction of two TF-IDF vectors. For each selected movie, the application:
 
@@ -85,28 +86,31 @@ Cosine similarity then compares the direction of two TF-IDF vectors. For each se
 3. Removes the selected movie itself from the ranking.
 4. Returns the highest-scoring titles in descending order.
 
-The fitted vectorizer, sparse matrix, and cleaned movie catalog were saved as a **4.9 MB Joblib artifact**, allowing the deployed application to return recommendations without calling the TMDB API at runtime.
+The selected sparse matrix and cleaned movie catalog were saved as a compact Joblib artifact, allowing the deployed application to return recommendations without calling the TMDB API or running the embedding model at runtime.
 
 # Evaluation
 
-## Genre Overlap at 10
+## TF-IDF and Embeddings Comparison
 
-For 100 sampled source movies, I evaluated whether each of the top-10 recommendations shared at least one genre with its source movie.
+Both methods were evaluated on the same 100 sampled source movies and 10 recommendations per source.
 
-| Diagnostic | Result |
-|:--|--:|
-| Sampled source movies | 100 |
-| Recommendations per source | 10 |
-| Genre overlap at 10 | **90.0%** |
+| Diagnostic | TF-IDF | Embeddings |
+|:--|--:|--:|
+| At least one shared genre | 90.3% | **92.3%** |
+| Mean genre Jaccard similarity | **48.9%** | 47.6% |
+| At least one shared keyword | **57.0%** | 51.6% |
+| Same director | **29.5%** | 5.3% |
+| At least one shared cast member | **15.5%** | 10.4% |
+| Unique recommendation rate | **88.5%** | 80.2% |
 
-This result indicates strong content consistency, but it is not classification accuracy and does not measure user satisfaction. Manual inspection therefore complemented the metric by reviewing representative strong, reasonable, and weak recommendations.
+These results are content-consistency diagnostics, not classification accuracy or the probability that a user will enjoy a recommendation. Embeddings performed best only on the broad shared-genre measure; TF-IDF was stronger across the remaining diagnostics and produced clearer metadata-based explanations.
 
 Examples of strong relationships included franchise and character matches for *The Dark Knight*, sequel relationships for *The Avengers* and *Inside Out*, and similar psychological-thriller recommendations for *Gone Girl*. Weaker examples showed the limitation of relying on shared vocabulary and metadata without user-feedback signals.
 
 # Technologies
 
 - **Data collection and analysis:** Python, Pandas, NumPy, TMDB API
-- **Recommendation system:** Scikit-learn, TF-IDF, cosine similarity, SciPy, Joblib
+- **Recommendation system:** Scikit-learn, TF-IDF, cosine similarity, Sentence Transformers, SciPy, Joblib
 - **Application:** Streamlit
 - **Deployment and reproducibility:** Render, Git, GitHub, automated tests
 
@@ -114,8 +118,8 @@ Examples of strong relationships included franchise and character matches for *T
 
 The system recommends movies that resemble a selected title, but it does not learn an individual user's preferences. Recommendation quality depends on the completeness of TMDB descriptions and metadata, and the manual weighting of genres and directors can favor franchises or closely related titles. The deployed catalog is also limited to the 5,000 movies saved during data collection.
 
-A future version could collect user likes, ratings, or clicks and combine them with content similarity in a hybrid recommender. Sentence embeddings could improve semantic matching between differently worded plot descriptions, while diversity controls could reduce repetitive franchise recommendations. Additional evaluation with real user feedback would be necessary to measure satisfaction and ranking quality.
+A future version could collect user likes, ratings, or clicks and combine them with content similarity in a hybrid recommender. Diversity controls could also reduce repetitive franchise recommendations. Evaluation with real user feedback would be necessary to measure satisfaction and ranking quality.
 
 # Final Takeaway
 
-This project demonstrates the complete path from API-based data collection and text-feature engineering to recommendation evaluation and deployment. The final system provides fast, explainable movie-to-movie recommendations while establishing a reproducible baseline for future embedding-based or personalized models.
+This project demonstrates the complete path from API-based data collection and text-feature engineering through model comparison, evaluation, and deployment. The final system provides fast, explainable movie-to-movie recommendations while showing why a simpler TF-IDF model can remain the stronger deployment choice after comparison with sentence embeddings.

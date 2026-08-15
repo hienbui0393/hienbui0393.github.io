@@ -22,9 +22,9 @@ The analysis covers **1,536 county-quarter observations**, **57 facility countie
 
 The key result was that **previous-quarter persistence outperformed tuned XGBoost and seasonal persistence**. It achieved a 2024 holdout MAE of **1,253 encounters** and WAPE of **3.36%**. The application therefore uses persistence for its one-quarter-ahead prototype and retains XGBoost for historical evaluation and diagnostics.
 
-## Watch the Application Demo
+## Application Demo and Live App
 
-This short video shows the county and period selection, forecast generation, historical comparison, and result interpretation.
+Watch this short demo first for a quick look at the county and period selection, forecast generation, historical comparison, multi-county evaluation, and result interpretation.
 
 <video controls playsinline preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
   <source src="../videos/projects/ed-demand/ed-demand-app-demo.mp4" type="video/mp4">
@@ -32,11 +32,12 @@ This short video shows the county and period selection, forecast generation, his
   <a href="../videos/projects/ed-demand/ed-demand-app-demo.mp4">open the demonstration video directly</a>.
 </video>
 
-[Open Live Application](https://ny-quarterly-ed-demand-app.onrender.com/){.btn .btn-primary target="_blank"}
-[View Presentation](../files/ED_Demand_ThiThanhHienBui_Emi_Final.pdf){.btn .btn-outline-secondary target="_blank"}
+::: {.callout-note title="Try the Live Application"}
+Want to explore the forecasting prototype yourself? Open the live app below. Because it is hosted on Render, it may take approximately **1–2 minutes to start** after a period of inactivity.
 
-::: {.callout-note}
-The Render application may take approximately 1-2 minutes to start after a period of inactivity.
+[Open Live App](https://ny-quarterly-ed-demand-app.onrender.com/){.btn .btn-primary target="_blank"}
+
+[View Presentation](../files/ED_Demand_ThiThanhHienBui_Emi_Final.pdf){.btn .btn-outline-secondary target="_blank"}
 :::
 
 ## Application Highlights
@@ -62,6 +63,24 @@ The Render application may take approximately 1-2 minutes to start after a perio
 
 ::: {.callout-important}
 **Facility county is not necessarily the patient's county of residence.** The target represents encounters reported by facilities located within a county, so this project supports facility-location planning rather than resident-level utilization analysis.
+:::
+
+# Exploratory Insights
+
+## Statewide Demand Through the COVID Disruption
+
+Quarterly statewide encounters were relatively stable near 2.1 million before 2020, then fell sharply to about 1.19 million in 2020 Q2. Volume recovered gradually and reached about 2.08 million by 2023 Q4, showing why chronological validation and explicit COVID-period handling were necessary.
+
+![New York statewide quarterly ED encounters](../images/projects/predicting-emergency-department-demand/statewide_trend.png){fig-alt="Line chart of statewide quarterly emergency department encounters showing a sharp decline in 2020 and recovery through 2023." fig-align="center" width="95%"}
+
+## County Concentration and Seasonality
+
+New York, Kings, and Bronx were the three highest-volume facility counties in 2023, so statewide totals are strongly influenced by a small number of large counties. Median county volume also shows a modest Q3 peak, but this seasonal pattern was not strong enough for seasonal persistence to outperform the previous-quarter benchmark.
+
+::: {layout-ncol=2}
+![Highest-volume facility counties in 2023](../images/projects/predicting-emergency-department-demand/top_counties.png){fig-alt="Horizontal bar chart showing New York, Kings, and Bronx as the highest-volume facility counties in 2023."}
+
+![Median county ED volume by quarter](../images/projects/predicting-emergency-department-demand/seasonality.png){fig-alt="Bar chart showing the highest pre-holdout median county emergency department volume in quarter three."}
 :::
 
 # Data and Forecast Design
@@ -91,6 +110,12 @@ Expanding training windows used only information available before each forecast 
 
 # Model Evaluation
 
+## Pre-Holdout Model Selection
+
+Previous-quarter persistence achieved the lowest mean rolling-validation MAE at **2,419 encounters**, ahead of tuned XGBoost and Random Forest at about 2,989 and 2,993. This result was established before opening the locked 2024 holdout and supported using persistence as the operational benchmark.
+
+![Pre-holdout rolling-validation MAE by method](../images/projects/predicting-emergency-department-demand/rolling_validation_mae.png){fig-alt="Horizontal bar chart showing previous-quarter persistence with the lowest mean rolling-validation MAE." fig-align="center" width="90%"}
+
 ## Final 2024 Holdout
 
 | Method | MAE | WAPE | R-squared | Skill |
@@ -102,6 +127,16 @@ Expanding training windows used only information available before each forecast 
 **MAE** is the average absolute miss in encounter units. **WAPE** expresses total absolute error as a percentage of total observed volume. **Skill** is the relative reduction in MAE compared with previous-quarter persistence: positive skill favors the competing model, while negative skill favors persistence. For example, -0.72 means 72% more MAE than the benchmark.
 
 XGBoost captured the broad volume differences between small and large counties, which explains its high R-squared. However, persistence produced substantially smaller point-by-point errors. This is an important modeling result: the most accurate evaluated method was also transparent and easy for stakeholders to audit.
+
+## XGBoost Diagnostic Views
+
+The 2024 actual-versus-predicted points mostly follow the diagonal, confirming that XGBoost captured the large differences in scale across counties. Its largest misses occurred among high-volume observations, which is why a high R-squared did not translate into the lowest MAE or WAPE.
+
+![Actual versus XGBoost-predicted ED encounters in 2024](../images/projects/predicting-emergency-department-demand/actual_vs_predicted.png){fig-alt="Scatter plot of actual versus predicted 2024 emergency department encounters with most points near the diagonal and several larger high-volume errors." fig-align="center" width="90%"}
+
+SHAP analysis shows that the previous quarter's encounter volume was the dominant XGBoost signal, followed by lagged population and older demand lags. Weather and socioeconomic features contributed less, reinforcing the practical strength of the simple persistence benchmark.
+
+![XGBoost SHAP feature importance](../images/projects/predicting-emergency-department-demand/shap_importance.png){fig-alt="SHAP importance chart showing previous-quarter demand as the strongest XGBoost feature, followed by lagged population and earlier demand lags." fig-align="center" width="90%"}
 
 # Technologies
 
