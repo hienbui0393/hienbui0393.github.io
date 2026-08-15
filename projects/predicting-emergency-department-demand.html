@@ -173,22 +173,29 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview"><span class="header-section-number">1</span> Project Overview</a>
   <ul class="collapse">
-  <li><a href="#watch-the-application-demo" id="toc-watch-the-application-demo" class="nav-link" data-scroll-target="#watch-the-application-demo"><span class="header-section-number">1.1</span> Watch the Application Demo</a></li>
+  <li><a href="#application-demo-and-live-app" id="toc-application-demo-and-live-app" class="nav-link" data-scroll-target="#application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</a></li>
   <li><a href="#application-highlights" id="toc-application-highlights" class="nav-link" data-scroll-target="#application-highlights"><span class="header-section-number">1.2</span> Application Highlights</a></li>
   </ul></li>
   <li><a href="#project-scope" id="toc-project-scope" class="nav-link" data-scroll-target="#project-scope"><span class="header-section-number">2</span> Project Scope</a></li>
-  <li><a href="#data-and-forecast-design" id="toc-data-and-forecast-design" class="nav-link" data-scroll-target="#data-and-forecast-design"><span class="header-section-number">3</span> Data and Forecast Design</a>
+  <li><a href="#exploratory-insights" id="toc-exploratory-insights" class="nav-link" data-scroll-target="#exploratory-insights"><span class="header-section-number">3</span> Exploratory Insights</a>
   <ul class="collapse">
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">3.1</span> Data Sources</a></li>
-  <li><a href="#leakage-safe-features" id="toc-leakage-safe-features" class="nav-link" data-scroll-target="#leakage-safe-features"><span class="header-section-number">3.2</span> Leakage-Safe Features</a></li>
+  <li><a href="#statewide-demand-through-the-covid-disruption" id="toc-statewide-demand-through-the-covid-disruption" class="nav-link" data-scroll-target="#statewide-demand-through-the-covid-disruption"><span class="header-section-number">3.1</span> Statewide Demand Through the COVID Disruption</a></li>
+  <li><a href="#county-concentration-and-seasonality" id="toc-county-concentration-and-seasonality" class="nav-link" data-scroll-target="#county-concentration-and-seasonality"><span class="header-section-number">3.2</span> County Concentration and Seasonality</a></li>
   </ul></li>
-  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation"><span class="header-section-number">4</span> Model Evaluation</a>
+  <li><a href="#data-and-forecast-design" id="toc-data-and-forecast-design" class="nav-link" data-scroll-target="#data-and-forecast-design"><span class="header-section-number">4</span> Data and Forecast Design</a>
   <ul class="collapse">
-  <li><a href="#final-2024-holdout" id="toc-final-2024-holdout" class="nav-link" data-scroll-target="#final-2024-holdout"><span class="header-section-number">4.1</span> Final 2024 Holdout</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">4.1</span> Data Sources</a></li>
+  <li><a href="#leakage-safe-features" id="toc-leakage-safe-features" class="nav-link" data-scroll-target="#leakage-safe-features"><span class="header-section-number">4.2</span> Leakage-Safe Features</a></li>
   </ul></li>
-  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">5</span> Technologies</a></li>
-  <li><a href="#limitations-and-next-steps" id="toc-limitations-and-next-steps" class="nav-link" data-scroll-target="#limitations-and-next-steps"><span class="header-section-number">6</span> Limitations and Next Steps</a></li>
-  <li><a href="#final-takeaway" id="toc-final-takeaway" class="nav-link" data-scroll-target="#final-takeaway"><span class="header-section-number">7</span> Final Takeaway</a></li>
+  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation"><span class="header-section-number">5</span> Model Evaluation</a>
+  <ul class="collapse">
+  <li><a href="#pre-holdout-model-selection" id="toc-pre-holdout-model-selection" class="nav-link" data-scroll-target="#pre-holdout-model-selection"><span class="header-section-number">5.1</span> Pre-Holdout Model Selection</a></li>
+  <li><a href="#final-2024-holdout" id="toc-final-2024-holdout" class="nav-link" data-scroll-target="#final-2024-holdout"><span class="header-section-number">5.2</span> Final 2024 Holdout</a></li>
+  <li><a href="#xgboost-diagnostic-views" id="toc-xgboost-diagnostic-views" class="nav-link" data-scroll-target="#xgboost-diagnostic-views"><span class="header-section-number">5.3</span> XGBoost Diagnostic Views</a></li>
+  </ul></li>
+  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">6</span> Technologies</a></li>
+  <li><a href="#limitations-and-next-steps" id="toc-limitations-and-next-steps" class="nav-link" data-scroll-target="#limitations-and-next-steps"><span class="header-section-number">7</span> Limitations and Next Steps</a></li>
+  <li><a href="#final-takeaway" id="toc-final-takeaway" class="nav-link" data-scroll-target="#final-takeaway"><span class="header-section-number">8</span> Final Takeaway</a></li>
   </ul>
 </nav>
     </div>
@@ -226,24 +233,25 @@ ul.task-list li input[type="checkbox"] {
 <p>Emergency departments need reliable demand estimates to support staffing and capacity-planning discussions. For my DATA 975 capstone, I built a reproducible forecasting pipeline and Flask application for total emergency department encounters by <strong>New York facility county and quarter</strong>.</p>
 <p>The analysis covers <strong>1,536 county-quarter observations</strong>, <strong>57 facility counties</strong>, and <strong>28 quarters from 2018 Q1 through 2024 Q4</strong>. I evaluated machine-learning models against transparent forecasting benchmarks using chronological validation and a locked 2024 holdout.</p>
 <p>The key result was that <strong>previous-quarter persistence outperformed tuned XGBoost and seasonal persistence</strong>. It achieved a 2024 holdout MAE of <strong>1,253 encounters</strong> and WAPE of <strong>3.36%</strong>. The application therefore uses persistence for its one-quarter-ahead prototype and retains XGBoost for historical evaluation and diagnostics.</p>
-<section id="watch-the-application-demo" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="watch-the-application-demo"><span class="header-section-number">1.1</span> Watch the Application Demo</h2>
-<p>This short video shows the county and period selection, forecast generation, historical comparison, and result interpretation.</p>
+<section id="application-demo-and-live-app" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</h2>
+<p>Watch this short demo first for a quick look at the county and period selection, forecast generation, historical comparison, multi-county evaluation, and result interpretation.</p>
 <video controls="" playsinline="" preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
 <source src="../videos/projects/ed-demand/ed-demand-app-demo.mp4" type="video/mp4">
 <p>Your browser does not support embedded video. You can <a href="../videos/projects/ed-demand/ed-demand-app-demo.mp4">open the demonstration video directly</a>. </p>
-<p><a href="https://ny-quarterly-ed-demand-app.onrender.com/" class="btn btn-primary" target="_blank">Open Live Application</a> <a href="../files/ED_Demand_ThiThanhHienBui_Emi_Final.pdf" class="btn btn-outline-secondary" target="_blank">View Presentation</a></p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="Try the Live Application">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Try the Live Application
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The Render application may take approximately 1-2 minutes to start after a period of inactivity.</p>
+<p>Want to explore the forecasting prototype yourself? Open the live app below. Because it is hosted on Render, it may take approximately <strong>1–2 minutes to start</strong> after a period of inactivity.</p>
+<p><a href="https://ny-quarterly-ed-demand-app.onrender.com/" class="btn btn-primary" target="_blank">Open Live App</a></p>
+<p><a href="../files/ED_Demand_ThiThanhHienBui_Emi_Final.pdf" class="btn btn-outline-secondary" target="_blank">View Presentation</a></p>
 </div>
 </div>
 </video></section>
@@ -319,10 +327,47 @@ Important
 </div>
 </div>
 </section>
-<section id="data-and-forecast-design" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Data and Forecast Design</h1>
-<section id="data-sources" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">3.1</span> Data Sources</h2>
+<section id="exploratory-insights" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exploratory Insights</h1>
+<section id="statewide-demand-through-the-covid-disruption" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="statewide-demand-through-the-covid-disruption"><span class="header-section-number">3.1</span> Statewide Demand Through the COVID Disruption</h2>
+<p>Quarterly statewide encounters were relatively stable near 2.1 million before 2020, then fell sharply to about 1.19 million in 2020 Q2. Volume recovered gradually and reached about 2.08 million by 2023 Q4, showing why chronological validation and explicit COVID-period handling were necessary.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/predicting-emergency-department-demand/statewide_trend.png" class="img-fluid figure-img" style="width:95.0%" alt="Line chart of statewide quarterly emergency department encounters showing a sharp decline in 2020 and recovery through 2023."></p>
+<figcaption>New York statewide quarterly ED encounters</figcaption>
+</figure>
+</div>
+</section>
+<section id="county-concentration-and-seasonality" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="county-concentration-and-seasonality"><span class="header-section-number">3.2</span> County Concentration and Seasonality</h2>
+<p>New York, Kings, and Bronx were the three highest-volume facility counties in 2023, so statewide totals are strongly influenced by a small number of large counties. Median county volume also shows a modest Q3 peak, but this seasonal pattern was not strong enough for seasonal persistence to outperform the previous-quarter benchmark.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/predicting-emergency-department-demand/top_counties.png" class="img-fluid figure-img" alt="Horizontal bar chart showing New York, Kings, and Bronx as the highest-volume facility counties in 2023."></p>
+<figcaption>Highest-volume facility counties in 2023</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/predicting-emergency-department-demand/seasonality.png" class="img-fluid figure-img" alt="Bar chart showing the highest pre-holdout median county emergency department volume in quarter three."></p>
+<figcaption>Median county ED volume by quarter</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-and-forecast-design" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Data and Forecast Design</h1>
+<section id="data-sources" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">4.1</span> Data Sources</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -355,8 +400,8 @@ Important
 </table>
 <p>Exploratory analysis identified a major COVID-era break, recovery in later quarters, concentration in high-volume counties, and a seasonal peak in median Q3 demand. These findings supported chronological evaluation rather than a random train-test split.</p>
 </section>
-<section id="leakage-safe-features" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="leakage-safe-features"><span class="header-section-number">3.2</span> Leakage-Safe Features</h2>
+<section id="leakage-safe-features" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="leakage-safe-features"><span class="header-section-number">4.2</span> Leakage-Safe Features</h2>
 <p>I screened 25 candidate predictors and selected 20 using pre-holdout validation. The features included:</p>
 <ul>
 <li>Demand history from the previous one to four quarters</li>
@@ -368,10 +413,20 @@ Important
 <p>Expanding training windows used only information available before each forecast quarter. Feature selection and model tuning were completed before the full 2024 holdout was evaluated. Recent demand—especially the previous quarter—was the strongest signal in the XGBoost diagnostics.</p>
 </section>
 </section>
-<section id="model-evaluation" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Model Evaluation</h1>
-<section id="final-2024-holdout" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="final-2024-holdout"><span class="header-section-number">4.1</span> Final 2024 Holdout</h2>
+<section id="model-evaluation" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Model Evaluation</h1>
+<section id="pre-holdout-model-selection" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="pre-holdout-model-selection"><span class="header-section-number">5.1</span> Pre-Holdout Model Selection</h2>
+<p>Previous-quarter persistence achieved the lowest mean rolling-validation MAE at <strong>2,419 encounters</strong>, ahead of tuned XGBoost and Random Forest at about 2,989 and 2,993. This result was established before opening the locked 2024 holdout and supported using persistence as the operational benchmark.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/predicting-emergency-department-demand/rolling_validation_mae.png" class="img-fluid figure-img" style="width:90.0%" alt="Horizontal bar chart showing previous-quarter persistence with the lowest mean rolling-validation MAE."></p>
+<figcaption>Pre-holdout rolling-validation MAE by method</figcaption>
+</figure>
+</div>
+</section>
+<section id="final-2024-holdout" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="final-2024-holdout"><span class="header-section-number">5.2</span> Final 2024 Holdout</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -416,9 +471,26 @@ Important
 <p><strong>MAE</strong> is the average absolute miss in encounter units. <strong>WAPE</strong> expresses total absolute error as a percentage of total observed volume. <strong>Skill</strong> is the relative reduction in MAE compared with previous-quarter persistence: positive skill favors the competing model, while negative skill favors persistence. For example, -0.72 means 72% more MAE than the benchmark.</p>
 <p>XGBoost captured the broad volume differences between small and large counties, which explains its high R-squared. However, persistence produced substantially smaller point-by-point errors. This is an important modeling result: the most accurate evaluated method was also transparent and easy for stakeholders to audit.</p>
 </section>
+<section id="xgboost-diagnostic-views" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="xgboost-diagnostic-views"><span class="header-section-number">5.3</span> XGBoost Diagnostic Views</h2>
+<p>The 2024 actual-versus-predicted points mostly follow the diagonal, confirming that XGBoost captured the large differences in scale across counties. Its largest misses occurred among high-volume observations, which is why a high R-squared did not translate into the lowest MAE or WAPE.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/predicting-emergency-department-demand/actual_vs_predicted.png" class="img-fluid figure-img" style="width:90.0%" alt="Scatter plot of actual versus predicted 2024 emergency department encounters with most points near the diagonal and several larger high-volume errors."></p>
+<figcaption>Actual versus XGBoost-predicted ED encounters in 2024</figcaption>
+</figure>
+</div>
+<p>SHAP analysis shows that the previous quarter’s encounter volume was the dominant XGBoost signal, followed by lagged population and older demand lags. Weather and socioeconomic features contributed less, reinforcing the practical strength of the simple persistence benchmark.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/predicting-emergency-department-demand/shap_importance.png" class="img-fluid figure-img" style="width:90.0%" alt="SHAP importance chart showing previous-quarter demand as the strongest XGBoost feature, followed by lagged population and earlier demand lags."></p>
+<figcaption>XGBoost SHAP feature importance</figcaption>
+</figure>
+</div>
 </section>
-<section id="technologies" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Technologies</h1>
+</section>
+<section id="technologies" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Technologies</h1>
 <ul>
 <li><strong>Analysis:</strong> Python, Pandas, NumPy, Scikit-learn, XGBoost, SHAP</li>
 <li><strong>Data:</strong> SPARCS, U.S. Census ACS, Open-Meteo, Census Gazetteer</li>
@@ -426,13 +498,13 @@ Important
 <li><strong>Deployment and reproducibility:</strong> Render, Git, GitHub, automated smoke testing</li>
 </ul>
 </section>
-<section id="limitations-and-next-steps" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Limitations and Next Steps</h1>
+<section id="limitations-and-next-steps" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Limitations and Next Steps</h1>
 <p>This is a retrospective prototype built from public quarterly data, not a live hospital operations system. Public suppression may understate totals in affected facility county-quarters, and quarterly aggregation cannot represent daily or hourly arrival peaks. The data also lacks patient acuity, staffed beds, shift coverage, and other hospital-specific constraints.</p>
 <p>A production version would require a current internal encounter feed, automated predictor refreshes, performance monitoring, access controls, and stakeholder governance. Hospital-level staffing, capacity, acuity, and arrival-pattern data would be necessary before translating demand forecasts into operational staffing recommendations.</p>
 </section>
-<section id="final-takeaway" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Final Takeaway</h1>
+<section id="final-takeaway" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Final Takeaway</h1>
 <p>This project demonstrates the full path from public-data integration and leakage-safe forecasting to a deployed stakeholder application. The final recommendation is deliberately evidence-based: <strong>use previous-quarter persistence for the prototype forecast and retain XGBoost for historical evaluation and diagnostics</strong>.</p>
 
 
