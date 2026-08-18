@@ -177,18 +177,25 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#application-highlights" id="toc-application-highlights" class="nav-link" data-scroll-target="#application-highlights"><span class="header-section-number">1.2</span> Application Highlights</a></li>
   </ul></li>
   <li><a href="#project-scope" id="toc-project-scope" class="nav-link" data-scroll-target="#project-scope"><span class="header-section-number">2</span> Project Scope</a></li>
-  <li><a href="#data-and-recommendation-design" id="toc-data-and-recommendation-design" class="nav-link" data-scroll-target="#data-and-recommendation-design"><span class="header-section-number">3</span> Data and Recommendation Design</a>
+  <li><a href="#exploratory-insights" id="toc-exploratory-insights" class="nav-link" data-scroll-target="#exploratory-insights"><span class="header-section-number">3</span> Exploratory Insights</a>
   <ul class="collapse">
-  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source"><span class="header-section-number">3.1</span> Data Source</a></li>
-  <li><a href="#tf-idf-sentence-embeddings-and-cosine-similarity" id="toc-tf-idf-sentence-embeddings-and-cosine-similarity" class="nav-link" data-scroll-target="#tf-idf-sentence-embeddings-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF, Sentence Embeddings, and Cosine Similarity</a></li>
+  <li><a href="#genre-coverage" id="toc-genre-coverage" class="nav-link" data-scroll-target="#genre-coverage"><span class="header-section-number">3.1</span> Genre Coverage</a></li>
+  <li><a href="#release-years-and-ratings" id="toc-release-years-and-ratings" class="nav-link" data-scroll-target="#release-years-and-ratings"><span class="header-section-number">3.2</span> Release Years and Ratings</a></li>
+  <li><a href="#popularity-distribution" id="toc-popularity-distribution" class="nav-link" data-scroll-target="#popularity-distribution"><span class="header-section-number">3.3</span> Popularity Distribution</a></li>
+  <li><a href="#frequent-cast-and-directors" id="toc-frequent-cast-and-directors" class="nav-link" data-scroll-target="#frequent-cast-and-directors"><span class="header-section-number">3.4</span> Frequent Cast and Directors</a></li>
   </ul></li>
-  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation"><span class="header-section-number">4</span> Evaluation</a>
+  <li><a href="#data-and-recommendation-design" id="toc-data-and-recommendation-design" class="nav-link" data-scroll-target="#data-and-recommendation-design"><span class="header-section-number">4</span> Data and Recommendation Design</a>
   <ul class="collapse">
-  <li><a href="#tf-idf-and-embeddings-comparison" id="toc-tf-idf-and-embeddings-comparison" class="nav-link" data-scroll-target="#tf-idf-and-embeddings-comparison"><span class="header-section-number">4.1</span> TF-IDF and Embeddings Comparison</a></li>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source"><span class="header-section-number">4.1</span> Data Source</a></li>
+  <li><a href="#tf-idf-sentence-embeddings-and-cosine-similarity" id="toc-tf-idf-sentence-embeddings-and-cosine-similarity" class="nav-link" data-scroll-target="#tf-idf-sentence-embeddings-and-cosine-similarity"><span class="header-section-number">4.2</span> TF-IDF, Sentence Embeddings, and Cosine Similarity</a></li>
   </ul></li>
-  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">5</span> Technologies</a></li>
-  <li><a href="#limitations-and-next-steps" id="toc-limitations-and-next-steps" class="nav-link" data-scroll-target="#limitations-and-next-steps"><span class="header-section-number">6</span> Limitations and Next Steps</a></li>
-  <li><a href="#final-takeaway" id="toc-final-takeaway" class="nav-link" data-scroll-target="#final-takeaway"><span class="header-section-number">7</span> Final Takeaway</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation"><span class="header-section-number">5</span> Evaluation</a>
+  <ul class="collapse">
+  <li><a href="#tf-idf-and-embeddings-comparison" id="toc-tf-idf-and-embeddings-comparison" class="nav-link" data-scroll-target="#tf-idf-and-embeddings-comparison"><span class="header-section-number">5.1</span> TF-IDF and Embeddings Comparison</a></li>
+  </ul></li>
+  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">6</span> Technologies</a></li>
+  <li><a href="#limitations-and-next-steps" id="toc-limitations-and-next-steps" class="nav-link" data-scroll-target="#limitations-and-next-steps"><span class="header-section-number">7</span> Limitations and Next Steps</a></li>
+  <li><a href="#final-takeaway" id="toc-final-takeaway" class="nav-link" data-scroll-target="#final-takeaway"><span class="header-section-number">8</span> Final Takeaway</a></li>
   </ul>
 </nav>
     </div>
@@ -315,10 +322,60 @@ Important
 </div>
 </div>
 </section>
-<section id="data-and-recommendation-design" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Data and Recommendation Design</h1>
-<section id="data-source" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="data-source"><span class="header-section-number">3.1</span> Data Source</h2>
+<section id="exploratory-insights" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exploratory Insights</h1>
+<section id="genre-coverage" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="genre-coverage"><span class="header-section-number">3.1</span> Genre Coverage</h2>
+<p>Drama is the most common genre in the 5,000-movie catalog, followed by Comedy and Action. Because some genres appear much more often than others, I evaluated recommendations with several content-overlap and diversity measures rather than relying on genre overlap alone.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/movie-recommender/most_common_genres.png" class="img-fluid figure-img" style="width:90.0%" alt="Horizontal bar chart showing Drama as the most common genre, followed by Comedy and Action."></p>
+<figcaption>Most common genres in the movie catalog</figcaption>
+</figure>
+</div>
+</section>
+<section id="release-years-and-ratings" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="release-years-and-ratings"><span class="header-section-number">3.2</span> Release Years and Ratings</h2>
+<p>The catalog spans more than a century, but it contains many more recent movies, especially titles released after 2000. TMDB ratings are concentrated around 6 to 7, while very low or very high averages are uncommon. Ratings describe audience response and are displayed in the app, but they are not used to calculate content similarity.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/movie-recommender/release_year_and_ratings.png" class="img-fluid figure-img" style="width:95.0%" alt="Two histograms showing that the catalog contains more recent releases and that most TMDB vote averages fall between 6 and 7.5."></p>
+<figcaption>Movie release years and TMDB rating distributions</figcaption>
+</figure>
+</div>
+</section>
+<section id="popularity-distribution" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="popularity-distribution"><span class="header-section-number">3.3</span> Popularity Distribution</h2>
+<p>TMDB popularity is strongly right-skewed: most movies have modest popularity scores, while a small group attracts much more attention. The chart is capped at the 99th percentile so the main distribution remains visible. Popularity was not included in the similarity features, preventing blockbuster status from automatically determining recommendations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/movie-recommender/popularity_distribution.png" class="img-fluid figure-img" style="width:90.0%" alt="Right-skewed histogram of TMDB popularity scores, displayed through the 99th percentile."></p>
+<figcaption>Distribution of TMDB movie popularity</figcaption>
+</figure>
+</div>
+</section>
+<section id="frequent-cast-and-directors" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="frequent-cast-and-directors"><span class="header-section-number">3.4</span> Frequent Cast and Directors</h2>
+<p>Robert De Niro, Nicolas Cage, Tom Hanks, and Samuel L. Jackson are among the most frequent leading actors in the catalog. Cast information helps the system recognize related films and recurring collaborations when it is relevant to a selected title.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/movie-recommender/top_actors.png" class="img-fluid figure-img" style="width:90.0%" alt="Horizontal bar chart showing Robert De Niro, Nicolas Cage, Tom Hanks, and Samuel L. Jackson among the most frequent leading actors."></p>
+<figcaption>Most frequent leading actors in the movie catalog</figcaption>
+</figure>
+</div>
+<p>Steven Spielberg appears most often among the listed directors, followed by Ridley Scott and Clint Eastwood. Director information was intentionally given additional weight in the TF-IDF movie profiles because directorial style can be a meaningful signal of content similarity.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/movie-recommender/top_directors.png" class="img-fluid figure-img" style="width:90.0%" alt="Horizontal bar chart showing Steven Spielberg, Ridley Scott, and Clint Eastwood as the most frequent directors."></p>
+<figcaption>Most frequent directors in the movie catalog</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="data-and-recommendation-design" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Data and Recommendation Design</h1>
+<section id="data-source" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="data-source"><span class="header-section-number">4.1</span> Data Source</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -347,8 +404,8 @@ Important
 </table>
 <p>The data pipeline cleaned text fields, standardized multi-value metadata, removed duplicate movie IDs, and created compact tokens for names and categories. Genres and directors were intentionally repeated in the combined content to give them greater influence in the final similarity ranking.</p>
 </section>
-<section id="tf-idf-sentence-embeddings-and-cosine-similarity" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="tf-idf-sentence-embeddings-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF, Sentence Embeddings, and Cosine Similarity</h2>
+<section id="tf-idf-sentence-embeddings-and-cosine-similarity" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="tf-idf-sentence-embeddings-and-cosine-similarity"><span class="header-section-number">4.2</span> TF-IDF, Sentence Embeddings, and Cosine Similarity</h2>
 <p>TF-IDF assigns higher weights to terms that are informative for a movie but less common across the full catalog. This reduces the influence of generic words while preserving distinctive plots, themes, people, and genres.</p>
 <p>Sentence embeddings represent each movie as a dense 384-value vector and can recognize related meaning even when descriptions use different words. Both methods used the same 5,000-movie candidate catalog and the same underlying movie information for a fair comparison.</p>
 <p>Cosine similarity then compares the direction of two TF-IDF vectors. For each selected movie, the application:</p>
@@ -361,10 +418,10 @@ Important
 <p>The selected sparse matrix and cleaned movie catalog were saved as a compact Joblib artifact, allowing the deployed application to return recommendations without calling the TMDB API or running the embedding model at runtime.</p>
 </section>
 </section>
-<section id="evaluation" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Evaluation</h1>
-<section id="tf-idf-and-embeddings-comparison" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="tf-idf-and-embeddings-comparison"><span class="header-section-number">4.1</span> TF-IDF and Embeddings Comparison</h2>
+<section id="evaluation" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Evaluation</h1>
+<section id="tf-idf-and-embeddings-comparison" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="tf-idf-and-embeddings-comparison"><span class="header-section-number">5.1</span> TF-IDF and Embeddings Comparison</h2>
 <p>Both methods were evaluated on the same 100 sampled source movies and 10 recommendations per source.</p>
 <table class="caption-top table">
 <thead>
@@ -411,8 +468,8 @@ Important
 <p>Examples of strong relationships included franchise and character matches for <em>The Dark Knight</em>, sequel relationships for <em>The Avengers</em> and <em>Inside Out</em>, and similar psychological-thriller recommendations for <em>Gone Girl</em>. Weaker examples showed the limitation of relying on shared vocabulary and metadata without user-feedback signals.</p>
 </section>
 </section>
-<section id="technologies" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Technologies</h1>
+<section id="technologies" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Technologies</h1>
 <ul>
 <li><strong>Data collection and analysis:</strong> Python, Pandas, NumPy, TMDB API</li>
 <li><strong>Recommendation system:</strong> Scikit-learn, TF-IDF, cosine similarity, Sentence Transformers, SciPy, Joblib</li>
@@ -420,13 +477,13 @@ Important
 <li><strong>Deployment and reproducibility:</strong> Render, Git, GitHub, automated tests</li>
 </ul>
 </section>
-<section id="limitations-and-next-steps" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Limitations and Next Steps</h1>
+<section id="limitations-and-next-steps" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Limitations and Next Steps</h1>
 <p>The system recommends movies that resemble a selected title, but it does not learn an individual user’s preferences. Recommendation quality depends on the completeness of TMDB descriptions and metadata, and the manual weighting of genres and directors can favor franchises or closely related titles. The deployed catalog is also limited to the 5,000 movies saved during data collection.</p>
 <p>A future version could collect user likes, ratings, or clicks and combine them with content similarity in a hybrid recommender. Diversity controls could also reduce repetitive franchise recommendations. Evaluation with real user feedback would be necessary to measure satisfaction and ranking quality.</p>
 </section>
-<section id="final-takeaway" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Final Takeaway</h1>
+<section id="final-takeaway" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Final Takeaway</h1>
 <p>This project demonstrates the complete path from API-based data collection and text-feature engineering through model comparison, evaluation, and deployment. The final system provides fast, explainable movie-to-movie recommendations while showing why a simpler TF-IDF model can remain the stronger deployment choice after comparison with sentence embeddings.</p>
 
 

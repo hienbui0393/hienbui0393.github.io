@@ -189,25 +189,53 @@
     "text": "Searchable catalog: Find a title from the saved catalog of 5,000 movies.\nAdjustable results: Display five to fifteen recommendations for the selected movie.\nRecommendation context: Show similarity scores and shared genres, directors, or themes.\nMovie details: Review posters, release years, plot summaries, ratings, genres, keywords, directors, and cast."
   },
   {
+    "objectID": "projects/movie-recommender.html#genre-coverage",
+    "href": "projects/movie-recommender.html#genre-coverage",
+    "title": "TMDB Movie Recommender",
+    "section": "3.1 Genre Coverage",
+    "text": "3.1 Genre Coverage\nDrama is the most common genre in the 5,000-movie catalog, followed by Comedy and Action. Because some genres appear much more often than others, I evaluated recommendations with several content-overlap and diversity measures rather than relying on genre overlap alone.\n\n\n\nMost common genres in the movie catalog"
+  },
+  {
+    "objectID": "projects/movie-recommender.html#release-years-and-ratings",
+    "href": "projects/movie-recommender.html#release-years-and-ratings",
+    "title": "TMDB Movie Recommender",
+    "section": "3.2 Release Years and Ratings",
+    "text": "3.2 Release Years and Ratings\nThe catalog spans more than a century, but it contains many more recent movies, especially titles released after 2000. TMDB ratings are concentrated around 6 to 7, while very low or very high averages are uncommon. Ratings describe audience response and are displayed in the app, but they are not used to calculate content similarity.\n\n\n\nMovie release years and TMDB rating distributions"
+  },
+  {
+    "objectID": "projects/movie-recommender.html#popularity-distribution",
+    "href": "projects/movie-recommender.html#popularity-distribution",
+    "title": "TMDB Movie Recommender",
+    "section": "3.3 Popularity Distribution",
+    "text": "3.3 Popularity Distribution\nTMDB popularity is strongly right-skewed: most movies have modest popularity scores, while a small group attracts much more attention. The chart is capped at the 99th percentile so the main distribution remains visible. Popularity was not included in the similarity features, preventing blockbuster status from automatically determining recommendations.\n\n\n\nDistribution of TMDB movie popularity"
+  },
+  {
+    "objectID": "projects/movie-recommender.html#frequent-cast-and-directors",
+    "href": "projects/movie-recommender.html#frequent-cast-and-directors",
+    "title": "TMDB Movie Recommender",
+    "section": "3.4 Frequent Cast and Directors",
+    "text": "3.4 Frequent Cast and Directors\nRobert De Niro, Nicolas Cage, Tom Hanks, and Samuel L. Jackson are among the most frequent leading actors in the catalog. Cast information helps the system recognize related films and recurring collaborations when it is relevant to a selected title.\n\n\n\nMost frequent leading actors in the movie catalog\n\n\nSteven Spielberg appears most often among the listed directors, followed by Ridley Scott and Clint Eastwood. Director information was intentionally given additional weight in the TF-IDF movie profiles because directorial style can be a meaningful signal of content similarity.\n\n\n\nMost frequent directors in the movie catalog"
+  },
+  {
     "objectID": "projects/movie-recommender.html#data-source",
     "href": "projects/movie-recommender.html#data-source",
     "title": "TMDB Movie Recommender",
-    "section": "3.1 Data Source",
-    "text": "3.1 Data Source\n\n\n\n\n\n\n\nSource\nContribution\n\n\n\n\nTMDB movie endpoints\nTitles, release dates, plot summaries, taglines, ratings, and poster paths\n\n\nTMDB genre metadata\nGenre labels used as recommendation features and for diagnostic evaluation\n\n\nTMDB keywords and credits\nThemes, directors, and leading cast used to enrich movie profiles\n\n\n\nThe data pipeline cleaned text fields, standardized multi-value metadata, removed duplicate movie IDs, and created compact tokens for names and categories. Genres and directors were intentionally repeated in the combined content to give them greater influence in the final similarity ranking."
+    "section": "4.1 Data Source",
+    "text": "4.1 Data Source\n\n\n\n\n\n\n\nSource\nContribution\n\n\n\n\nTMDB movie endpoints\nTitles, release dates, plot summaries, taglines, ratings, and poster paths\n\n\nTMDB genre metadata\nGenre labels used as recommendation features and for diagnostic evaluation\n\n\nTMDB keywords and credits\nThemes, directors, and leading cast used to enrich movie profiles\n\n\n\nThe data pipeline cleaned text fields, standardized multi-value metadata, removed duplicate movie IDs, and created compact tokens for names and categories. Genres and directors were intentionally repeated in the combined content to give them greater influence in the final similarity ranking."
   },
   {
     "objectID": "projects/movie-recommender.html#tf-idf-sentence-embeddings-and-cosine-similarity",
     "href": "projects/movie-recommender.html#tf-idf-sentence-embeddings-and-cosine-similarity",
     "title": "TMDB Movie Recommender",
-    "section": "3.2 TF-IDF, Sentence Embeddings, and Cosine Similarity",
-    "text": "3.2 TF-IDF, Sentence Embeddings, and Cosine Similarity\nTF-IDF assigns higher weights to terms that are informative for a movie but less common across the full catalog. This reduces the influence of generic words while preserving distinctive plots, themes, people, and genres.\nSentence embeddings represent each movie as a dense 384-value vector and can recognize related meaning even when descriptions use different words. Both methods used the same 5,000-movie candidate catalog and the same underlying movie information for a fair comparison.\nCosine similarity then compares the direction of two TF-IDF vectors. For each selected movie, the application:\n\nLocates the movie’s saved TF-IDF vector.\nCompares it with all 5,000 catalog vectors.\nRemoves the selected movie itself from the ranking.\nReturns the highest-scoring titles in descending order.\n\nThe selected sparse matrix and cleaned movie catalog were saved as a compact Joblib artifact, allowing the deployed application to return recommendations without calling the TMDB API or running the embedding model at runtime."
+    "section": "4.2 TF-IDF, Sentence Embeddings, and Cosine Similarity",
+    "text": "4.2 TF-IDF, Sentence Embeddings, and Cosine Similarity\nTF-IDF assigns higher weights to terms that are informative for a movie but less common across the full catalog. This reduces the influence of generic words while preserving distinctive plots, themes, people, and genres.\nSentence embeddings represent each movie as a dense 384-value vector and can recognize related meaning even when descriptions use different words. Both methods used the same 5,000-movie candidate catalog and the same underlying movie information for a fair comparison.\nCosine similarity then compares the direction of two TF-IDF vectors. For each selected movie, the application:\n\nLocates the movie’s saved TF-IDF vector.\nCompares it with all 5,000 catalog vectors.\nRemoves the selected movie itself from the ranking.\nReturns the highest-scoring titles in descending order.\n\nThe selected sparse matrix and cleaned movie catalog were saved as a compact Joblib artifact, allowing the deployed application to return recommendations without calling the TMDB API or running the embedding model at runtime."
   },
   {
     "objectID": "projects/movie-recommender.html#tf-idf-and-embeddings-comparison",
     "href": "projects/movie-recommender.html#tf-idf-and-embeddings-comparison",
     "title": "TMDB Movie Recommender",
-    "section": "4.1 TF-IDF and Embeddings Comparison",
-    "text": "4.1 TF-IDF and Embeddings Comparison\nBoth methods were evaluated on the same 100 sampled source movies and 10 recommendations per source.\n\n\n\nDiagnostic\nTF-IDF\nEmbeddings\n\n\n\n\nAt least one shared genre\n90.3%\n92.3%\n\n\nMean genre Jaccard similarity\n48.9%\n47.6%\n\n\nAt least one shared keyword\n57.0%\n51.6%\n\n\nSame director\n29.5%\n5.3%\n\n\nAt least one shared cast member\n15.5%\n10.4%\n\n\nUnique recommendation rate\n88.5%\n80.2%\n\n\n\nThese results are content-consistency diagnostics, not classification accuracy or the probability that a user will enjoy a recommendation. Embeddings performed best only on the broad shared-genre measure; TF-IDF was stronger across the remaining diagnostics and produced clearer metadata-based explanations.\nExamples of strong relationships included franchise and character matches for The Dark Knight, sequel relationships for The Avengers and Inside Out, and similar psychological-thriller recommendations for Gone Girl. Weaker examples showed the limitation of relying on shared vocabulary and metadata without user-feedback signals."
+    "section": "5.1 TF-IDF and Embeddings Comparison",
+    "text": "5.1 TF-IDF and Embeddings Comparison\nBoth methods were evaluated on the same 100 sampled source movies and 10 recommendations per source.\n\n\n\nDiagnostic\nTF-IDF\nEmbeddings\n\n\n\n\nAt least one shared genre\n90.3%\n92.3%\n\n\nMean genre Jaccard similarity\n48.9%\n47.6%\n\n\nAt least one shared keyword\n57.0%\n51.6%\n\n\nSame director\n29.5%\n5.3%\n\n\nAt least one shared cast member\n15.5%\n10.4%\n\n\nUnique recommendation rate\n88.5%\n80.2%\n\n\n\nThese results are content-consistency diagnostics, not classification accuracy or the probability that a user will enjoy a recommendation. Embeddings performed best only on the broad shared-genre measure; TF-IDF was stronger across the remaining diagnostics and produced clearer metadata-based explanations.\nExamples of strong relationships included franchise and character matches for The Dark Knight, sequel relationships for The Avengers and Inside Out, and similar psychological-thriller recommendations for Gone Girl. Weaker examples showed the limitation of relying on shared vocabulary and metadata without user-feedback signals."
   },
   {
     "objectID": "projects/predicting-emergency-department-demand.html",
