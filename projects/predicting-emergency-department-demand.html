@@ -174,28 +174,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview"><span class="header-section-number">1</span> Project Overview</a>
   <ul class="collapse">
   <li><a href="#application-demo-and-live-app" id="toc-application-demo-and-live-app" class="nav-link" data-scroll-target="#application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</a></li>
-  <li><a href="#application-highlights" id="toc-application-highlights" class="nav-link" data-scroll-target="#application-highlights"><span class="header-section-number">1.2</span> Application Highlights</a></li>
   </ul></li>
-  <li><a href="#project-scope" id="toc-project-scope" class="nav-link" data-scroll-target="#project-scope"><span class="header-section-number">2</span> Project Scope</a></li>
-  <li><a href="#exploratory-insights" id="toc-exploratory-insights" class="nav-link" data-scroll-target="#exploratory-insights"><span class="header-section-number">3</span> Exploratory Insights</a>
-  <ul class="collapse">
-  <li><a href="#statewide-demand-through-the-covid-disruption" id="toc-statewide-demand-through-the-covid-disruption" class="nav-link" data-scroll-target="#statewide-demand-through-the-covid-disruption"><span class="header-section-number">3.1</span> Statewide Demand Through the COVID Disruption</a></li>
-  <li><a href="#county-concentration-and-seasonality" id="toc-county-concentration-and-seasonality" class="nav-link" data-scroll-target="#county-concentration-and-seasonality"><span class="header-section-number">3.2</span> County Concentration and Seasonality</a></li>
-  </ul></li>
-  <li><a href="#data-and-forecast-design" id="toc-data-and-forecast-design" class="nav-link" data-scroll-target="#data-and-forecast-design"><span class="header-section-number">4</span> Data and Forecast Design</a>
-  <ul class="collapse">
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">4.1</span> Data Sources</a></li>
-  <li><a href="#leakage-safe-features" id="toc-leakage-safe-features" class="nav-link" data-scroll-target="#leakage-safe-features"><span class="header-section-number">4.2</span> Leakage-Safe Features</a></li>
-  </ul></li>
-  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation"><span class="header-section-number">5</span> Model Evaluation</a>
-  <ul class="collapse">
-  <li><a href="#pre-holdout-model-selection" id="toc-pre-holdout-model-selection" class="nav-link" data-scroll-target="#pre-holdout-model-selection"><span class="header-section-number">5.1</span> Pre-Holdout Model Selection</a></li>
-  <li><a href="#final-2024-holdout" id="toc-final-2024-holdout" class="nav-link" data-scroll-target="#final-2024-holdout"><span class="header-section-number">5.2</span> Final 2024 Holdout</a></li>
-  <li><a href="#xgboost-diagnostic-views" id="toc-xgboost-diagnostic-views" class="nav-link" data-scroll-target="#xgboost-diagnostic-views"><span class="header-section-number">5.3</span> XGBoost Diagnostic Views</a></li>
-  </ul></li>
-  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">6</span> Technologies</a></li>
-  <li><a href="#limitations-and-next-steps" id="toc-limitations-and-next-steps" class="nav-link" data-scroll-target="#limitations-and-next-steps"><span class="header-section-number">7</span> Limitations and Next Steps</a></li>
-  <li><a href="#final-takeaway" id="toc-final-takeaway" class="nav-link" data-scroll-target="#final-takeaway"><span class="header-section-number">8</span> Final Takeaway</a></li>
   </ul>
 </nav>
     </div>
@@ -235,6 +214,12 @@ ul.task-list li input[type="checkbox"] {
 <p>The key result was that <strong>previous-quarter persistence outperformed tuned XGBoost and seasonal persistence</strong>. It achieved a 2024 holdout MAE of <strong>1,253 encounters</strong> and WAPE of <strong>3.36%</strong>. The application therefore uses persistence for its one-quarter-ahead prototype and retains XGBoost for historical evaluation and diagnostics.</p>
 <section id="application-demo-and-live-app" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</h2>
+<p>Watch this short demo first for a quick look at the county and period selection, forecast generation, historical comparison, multi-county evaluation, and result interpretation.</p>
+<div style="max-width: 760px; margin: 0 auto 1.5rem auto;">
+<video controls="" playsinline="" preload="metadata" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; border-radius: 8px;">
+<source src="../videos/projects/ed-demand/ed-demand-app-demo.mp4" type="video/mp4">
+<p>Your browser does not support embedded video. You can <a href="../videos/projects/ed-demand/ed-demand-app-demo.mp4">open the demonstration video directly</a>. </p>
+</video></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Try the Live Application">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -245,16 +230,11 @@ Try the Live Application
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Want to explore the forecasting prototype yourself? Open the live app below. Because it is hosted on Render, it may take approximately <strong>1–2 minutes to start</strong> after a period of inactivity.</p>
+<p>Want to explore the forecasting prototype yourself? Because it is hosted on Render, it may take approximately <strong>1–2 minutes to start</strong> after a period of inactivity.</p>
 <p><a href="https://ny-quarterly-ed-demand-app.onrender.com/" class="btn btn-primary" target="_blank">Open Live App</a></p>
 <p><a href="../files/ED_Demand_ThiThanhHienBui_Emi_Final.pdf" class="btn btn-outline-secondary" target="_blank">View Presentation</a></p>
 </div>
 </div>
-<p>Watch this short demo for a quick look at the county and period selection, forecast generation, historical comparison, multi-county evaluation, and result interpretation.</p>
-<video controls="" playsinline="" preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
-<source src="../videos/projects/ed-demand/ed-demand-app-demo.mp4" type="video/mp4">
-<p>Your browser does not support embedded video. You can <a href="../videos/projects/ed-demand/ed-demand-app-demo.mp4">open the demonstration video directly</a>. </p>
-</video></section>
 <section id="application-highlights" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="application-highlights"><span class="header-section-number">1.2</span> Application Highlights</h2>
 <ul>
@@ -263,7 +243,6 @@ Try the Live Application
 <li><strong>Multi-county evaluation:</strong> Compare XGBoost and previous-quarter persistence across two to ten selected counties.</li>
 <li><strong>Clear interpretation:</strong> Distinguish retrospective evaluation from a live current-quarter forecast.</li>
 </ul>
-</section>
 </section>
 <section id="project-scope" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Project Scope</h1>
@@ -509,8 +488,11 @@ Important
 
 
 </section>
+</section></section></main></div>
 
-</main> <!-- /main -->
+
+
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -915,7 +897,7 @@ Important
     }
   });
   </script>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 
