@@ -61,6 +61,36 @@ Want to explore the recommender yourself? Open the live app below. Because it is
 **Similarity is not a predicted user rating or probability of enjoyment.** It measures alignment between movie-content vectors. Because the dataset does not contain individual user histories, the system recommends similar content rather than personalized preferences.
 :::
 
+# Exploratory Insights
+
+## Genre Coverage
+
+Drama is the most common genre in the 5,000-movie catalog, followed by Comedy and Action. Because some genres appear much more often than others, I evaluated recommendations with several content-overlap and diversity measures rather than relying on genre overlap alone.
+
+![Most common genres in the movie catalog](../images/projects/movie-recommender/most_common_genres.png){fig-alt="Horizontal bar chart showing Drama as the most common genre, followed by Comedy and Action." fig-align="center" width="90%"}
+
+## Release Years and Ratings
+
+The catalog spans more than a century, but it contains many more recent movies, especially titles released after 2000. TMDB ratings are concentrated around 6 to 7, while very low or very high averages are uncommon. Ratings describe audience response and are displayed in the app, but they are not used to calculate content similarity.
+
+![Movie release years and TMDB rating distributions](../images/projects/movie-recommender/release_year_and_ratings.png){fig-alt="Two histograms showing that the catalog contains more recent releases and that most TMDB vote averages fall between 6 and 7.5." fig-align="center" width="95%"}
+
+## Popularity Distribution
+
+TMDB popularity is strongly right-skewed: most movies have modest popularity scores, while a small group attracts much more attention. The chart is capped at the 99th percentile so the main distribution remains visible. Popularity was not included in the similarity features, preventing blockbuster status from automatically determining recommendations.
+
+![Distribution of TMDB movie popularity](../images/projects/movie-recommender/popularity_distribution.png){fig-alt="Right-skewed histogram of TMDB popularity scores, displayed through the 99th percentile." fig-align="center" width="90%"}
+
+## Frequent Cast and Directors
+
+Robert De Niro, Nicolas Cage, Tom Hanks, and Samuel L. Jackson are among the most frequent leading actors in the catalog. Cast information helps the system recognize related films and recurring collaborations when it is relevant to a selected title.
+
+![Most frequent leading actors in the movie catalog](../images/projects/movie-recommender/top_actors.png){fig-alt="Horizontal bar chart showing Robert De Niro, Nicolas Cage, Tom Hanks, and Samuel L. Jackson among the most frequent leading actors." fig-align="center" width="90%"}
+
+Steven Spielberg appears most often among the listed directors, followed by Ridley Scott and Clint Eastwood. Director information was intentionally given additional weight in the TF-IDF movie profiles because directorial style can be a meaningful signal of content similarity.
+
+![Most frequent directors in the movie catalog](../images/projects/movie-recommender/top_directors.png){fig-alt="Horizontal bar chart showing Steven Spielberg, Ridley Scott, and Clint Eastwood as the most frequent directors." fig-align="center" width="90%"}
+
 # Data and Recommendation Design
 
 ## Data Source

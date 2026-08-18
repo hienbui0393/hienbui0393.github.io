@@ -173,18 +173,18 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview"><span class="header-section-number">1</span> Project Overview</a>
   <ul class="collapse">
-  <li><a href="#watch-the-application-demo" id="toc-watch-the-application-demo" class="nav-link" data-scroll-target="#watch-the-application-demo"><span class="header-section-number">1.1</span> Watch the Application Demo</a></li>
+  <li><a href="#application-demo-and-live-app" id="toc-application-demo-and-live-app" class="nav-link" data-scroll-target="#application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</a></li>
   <li><a href="#application-highlights" id="toc-application-highlights" class="nav-link" data-scroll-target="#application-highlights"><span class="header-section-number">1.2</span> Application Highlights</a></li>
   </ul></li>
   <li><a href="#project-scope" id="toc-project-scope" class="nav-link" data-scroll-target="#project-scope"><span class="header-section-number">2</span> Project Scope</a></li>
   <li><a href="#data-and-recommendation-design" id="toc-data-and-recommendation-design" class="nav-link" data-scroll-target="#data-and-recommendation-design"><span class="header-section-number">3</span> Data and Recommendation Design</a>
   <ul class="collapse">
   <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source"><span class="header-section-number">3.1</span> Data Source</a></li>
-  <li><a href="#tf-idf-and-cosine-similarity" id="toc-tf-idf-and-cosine-similarity" class="nav-link" data-scroll-target="#tf-idf-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF and Cosine Similarity</a></li>
+  <li><a href="#tf-idf-sentence-embeddings-and-cosine-similarity" id="toc-tf-idf-sentence-embeddings-and-cosine-similarity" class="nav-link" data-scroll-target="#tf-idf-sentence-embeddings-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF, Sentence Embeddings, and Cosine Similarity</a></li>
   </ul></li>
   <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation"><span class="header-section-number">4</span> Evaluation</a>
   <ul class="collapse">
-  <li><a href="#genre-overlap-at-10" id="toc-genre-overlap-at-10" class="nav-link" data-scroll-target="#genre-overlap-at-10"><span class="header-section-number">4.1</span> Genre Overlap at 10</a></li>
+  <li><a href="#tf-idf-and-embeddings-comparison" id="toc-tf-idf-and-embeddings-comparison" class="nav-link" data-scroll-target="#tf-idf-and-embeddings-comparison"><span class="header-section-number">4.1</span> TF-IDF and Embeddings Comparison</a></li>
   </ul></li>
   <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">5</span> Technologies</a></li>
   <li><a href="#limitations-and-next-steps" id="toc-limitations-and-next-steps" class="nav-link" data-scroll-target="#limitations-and-next-steps"><span class="header-section-number">6</span> Limitations and Next Steps</a></li>
@@ -224,26 +224,26 @@ ul.task-list li input[type="checkbox"] {
 <section id="project-overview" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Project Overview</h1>
 <p>Movie catalogs can be difficult to explore when users know one title they enjoy but do not know what to watch next. I built a content-based recommendation system that finds similar movies using plot descriptions and structured metadata from <strong>The Movie Database (TMDB)</strong>.</p>
-<p>The final catalog contains <strong>5,000 unique movies</strong>. For each title, I combined its overview, tagline, genres, keywords, director, and leading cast into a single content document. TF-IDF transformed these documents into a <strong>5,000 x 15,000 sparse feature matrix</strong>, and cosine similarity ranked the movies most closely aligned with a selected title.</p>
-<p>Across 100 sampled movies, <strong>90% of the top-10 recommendations shared at least one genre with the source movie</strong>. Manual review also identified strong franchise, director, theme, and story relationships while highlighting weaker matches for future improvement.</p>
-<section id="watch-the-application-demo" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="watch-the-application-demo"><span class="header-section-number">1.1</span> Watch the Application Demo</h2>
-<p>This short video shows the movie search, selected-title details, adjustable recommendation count, recommendation cards, and similarity explanations.</p>
+<p>The final catalog contains <strong>5,000 unique movies</strong>. For each title, I combined its overview, tagline, genres, keywords, director, and leading cast. I compared weighted TF-IDF—a <strong>5,000 x 15,000 sparse feature matrix</strong>—with <code>all-MiniLM-L6-v2</code> sentence embeddings, using cosine similarity to rank the movies most closely aligned with a selected title.</p>
+<p>Both methods were evaluated on the same 100 sampled movies and their top 10 recommendations. Embeddings produced slightly higher broad genre overlap (<strong>92.3% versus 90.3%</strong>), but TF-IDF performed better on genre-set agreement, keyword, director, and cast overlap, recommendation diversity, and explainability. <strong>TF-IDF was therefore retained as the final deployed method.</strong></p>
+<section id="application-demo-and-live-app" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</h2>
+<p>Watch this short demo first for a quick look at the movie search, selected-title details, adjustable recommendation count, recommendation cards, and similarity explanations.</p>
 <video controls="" playsinline="" preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
 <source src="../videos/projects/movie-recommender/movie-recommender-app-demo.mp4" type="video/mp4">
 <p>Your browser does not support embedded video. You can <a href="../videos/projects/movie-recommender/movie-recommender-app-demo.mp4">open the demonstration video directly</a>. </p>
-<p><a href="https://tmdb-movie-recommender-app.onrender.com/" class="btn btn-primary" target="_blank">Open Live Application</a> <a href="https://github.com/hienbui0393/movie_recommender_app" class="btn btn-outline-secondary" target="_blank">View GitHub Repository</a></p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="Try the Live Application">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Try the Live Application
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The Render application may take approximately 1-2 minutes to start after a period of inactivity.</p>
+<p>Want to explore the recommender yourself? Open the live app below. Because it is hosted on Render, it may take approximately <strong>1–2 minutes to start</strong> after a period of inactivity.</p>
+<p><a href="https://tmdb-movie-recommender-app.onrender.com/" class="btn btn-primary" target="_blank">Open Live App</a></p>
 </div>
 </div>
 </video></section>
@@ -285,7 +285,7 @@ Note
 </tr>
 <tr class="even">
 <td style="text-align: left;">Text representation</td>
-<td style="text-align: left;">TF-IDF with up to 15,000 features</td>
+<td style="text-align: left;">Weighted TF-IDF compared with <code>all-MiniLM-L6-v2</code> sentence embeddings</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Ranking method</td>
@@ -293,7 +293,7 @@ Note
 </tr>
 <tr class="even">
 <td style="text-align: left;">Evaluation</td>
-<td style="text-align: left;">Genre overlap at 10 and manual recommendation review</td>
+<td style="text-align: left;">Six content-consistency and diversity diagnostics across the same 100 seed movies, plus manual review</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Application</td>
@@ -347,9 +347,10 @@ Important
 </table>
 <p>The data pipeline cleaned text fields, standardized multi-value metadata, removed duplicate movie IDs, and created compact tokens for names and categories. Genres and directors were intentionally repeated in the combined content to give them greater influence in the final similarity ranking.</p>
 </section>
-<section id="tf-idf-and-cosine-similarity" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="tf-idf-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF and Cosine Similarity</h2>
+<section id="tf-idf-sentence-embeddings-and-cosine-similarity" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="tf-idf-sentence-embeddings-and-cosine-similarity"><span class="header-section-number">3.2</span> TF-IDF, Sentence Embeddings, and Cosine Similarity</h2>
 <p>TF-IDF assigns higher weights to terms that are informative for a movie but less common across the full catalog. This reduces the influence of generic words while preserving distinctive plots, themes, people, and genres.</p>
+<p>Sentence embeddings represent each movie as a dense 384-value vector and can recognize related meaning even when descriptions use different words. Both methods used the same 5,000-movie candidate catalog and the same underlying movie information for a fair comparison.</p>
 <p>Cosine similarity then compares the direction of two TF-IDF vectors. For each selected movie, the application:</p>
 <ol type="1">
 <li>Locates the movie’s saved TF-IDF vector.</li>
@@ -357,37 +358,56 @@ Important
 <li>Removes the selected movie itself from the ranking.</li>
 <li>Returns the highest-scoring titles in descending order.</li>
 </ol>
-<p>The fitted vectorizer, sparse matrix, and cleaned movie catalog were saved as a <strong>4.9 MB Joblib artifact</strong>, allowing the deployed application to return recommendations without calling the TMDB API at runtime.</p>
+<p>The selected sparse matrix and cleaned movie catalog were saved as a compact Joblib artifact, allowing the deployed application to return recommendations without calling the TMDB API or running the embedding model at runtime.</p>
 </section>
 </section>
 <section id="evaluation" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Evaluation</h1>
-<section id="genre-overlap-at-10" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="genre-overlap-at-10"><span class="header-section-number">4.1</span> Genre Overlap at 10</h2>
-<p>For 100 sampled source movies, I evaluated whether each of the top-10 recommendations shared at least one genre with its source movie.</p>
+<section id="tf-idf-and-embeddings-comparison" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="tf-idf-and-embeddings-comparison"><span class="header-section-number">4.1</span> TF-IDF and Embeddings Comparison</h2>
+<p>Both methods were evaluated on the same 100 sampled source movies and 10 recommendations per source.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Diagnostic</th>
-<th style="text-align: right;">Result</th>
+<th style="text-align: right;">TF-IDF</th>
+<th style="text-align: right;">Embeddings</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Sampled source movies</td>
-<td style="text-align: right;">100</td>
+<td style="text-align: left;">At least one shared genre</td>
+<td style="text-align: right;">90.3%</td>
+<td style="text-align: right;"><strong>92.3%</strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Recommendations per source</td>
-<td style="text-align: right;">10</td>
+<td style="text-align: left;">Mean genre Jaccard similarity</td>
+<td style="text-align: right;"><strong>48.9%</strong></td>
+<td style="text-align: right;">47.6%</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Genre overlap at 10</td>
-<td style="text-align: right;"><strong>90.0%</strong></td>
+<td style="text-align: left;">At least one shared keyword</td>
+<td style="text-align: right;"><strong>57.0%</strong></td>
+<td style="text-align: right;">51.6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Same director</td>
+<td style="text-align: right;"><strong>29.5%</strong></td>
+<td style="text-align: right;">5.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">At least one shared cast member</td>
+<td style="text-align: right;"><strong>15.5%</strong></td>
+<td style="text-align: right;">10.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unique recommendation rate</td>
+<td style="text-align: right;"><strong>88.5%</strong></td>
+<td style="text-align: right;">80.2%</td>
 </tr>
 </tbody>
 </table>
-<p>This result indicates strong content consistency, but it is not classification accuracy and does not measure user satisfaction. Manual inspection therefore complemented the metric by reviewing representative strong, reasonable, and weak recommendations.</p>
+<p>These results are content-consistency diagnostics, not classification accuracy or the probability that a user will enjoy a recommendation. Embeddings performed best only on the broad shared-genre measure; TF-IDF was stronger across the remaining diagnostics and produced clearer metadata-based explanations.</p>
 <p>Examples of strong relationships included franchise and character matches for <em>The Dark Knight</em>, sequel relationships for <em>The Avengers</em> and <em>Inside Out</em>, and similar psychological-thriller recommendations for <em>Gone Girl</em>. Weaker examples showed the limitation of relying on shared vocabulary and metadata without user-feedback signals.</p>
 </section>
 </section>
@@ -395,7 +415,7 @@ Important
 <h1 data-number="5"><span class="header-section-number">5</span> Technologies</h1>
 <ul>
 <li><strong>Data collection and analysis:</strong> Python, Pandas, NumPy, TMDB API</li>
-<li><strong>Recommendation system:</strong> Scikit-learn, TF-IDF, cosine similarity, SciPy, Joblib</li>
+<li><strong>Recommendation system:</strong> Scikit-learn, TF-IDF, cosine similarity, Sentence Transformers, SciPy, Joblib</li>
 <li><strong>Application:</strong> Streamlit</li>
 <li><strong>Deployment and reproducibility:</strong> Render, Git, GitHub, automated tests</li>
 </ul>
@@ -403,11 +423,11 @@ Important
 <section id="limitations-and-next-steps" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Limitations and Next Steps</h1>
 <p>The system recommends movies that resemble a selected title, but it does not learn an individual user’s preferences. Recommendation quality depends on the completeness of TMDB descriptions and metadata, and the manual weighting of genres and directors can favor franchises or closely related titles. The deployed catalog is also limited to the 5,000 movies saved during data collection.</p>
-<p>A future version could collect user likes, ratings, or clicks and combine them with content similarity in a hybrid recommender. Sentence embeddings could improve semantic matching between differently worded plot descriptions, while diversity controls could reduce repetitive franchise recommendations. Additional evaluation with real user feedback would be necessary to measure satisfaction and ranking quality.</p>
+<p>A future version could collect user likes, ratings, or clicks and combine them with content similarity in a hybrid recommender. Diversity controls could also reduce repetitive franchise recommendations. Evaluation with real user feedback would be necessary to measure satisfaction and ranking quality.</p>
 </section>
 <section id="final-takeaway" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Final Takeaway</h1>
-<p>This project demonstrates the complete path from API-based data collection and text-feature engineering to recommendation evaluation and deployment. The final system provides fast, explainable movie-to-movie recommendations while establishing a reproducible baseline for future embedding-based or personalized models.</p>
+<p>This project demonstrates the complete path from API-based data collection and text-feature engineering through model comparison, evaluation, and deployment. The final system provides fast, explainable movie-to-movie recommendations while showing why a simpler TF-IDF model can remain the stronger deployment choice after comparison with sentence embeddings.</p>
 
 
 </section>
