@@ -31,7 +31,7 @@ website:
           - text: TMDB Movie Recommender
             href: projects/movie-recommender.qmd
           - text: Student Performance Analysis
-            href: projects/student-performance.qmd
+            href: projects/student-performance-statistical-analysis.qmd
           - text: EV Adoption in WA
             href: projects/ev-adoption.qmd
           - text: Manga Sentiment
