@@ -42,19 +42,20 @@ Built a content-based recommendation system for 5,000 TMDB movies using plot sum
 **Tools:** Python, Pandas, Scikit-learn, TF-IDF, Streamlit, Render  
 [View Project](projects/movie-recommender.html) | [Watch Demo](videos/projects/movie-recommender/movie-recommender-app-demo.mp4){target="_blank"} | [Open Live App](https://tmdb-movie-recommender-app.onrender.com/){target="_blank"}
 
-### EV Adoption in Washington
+### News Headline Topic Modeling
 
-Analyzed more than 235,000 Washington State EV registration records to examine adoption growth, leading brands, electric range, and geographic concentration. Transformed the findings into a focused four-visual data story using Polars and Plotly.
+Built a semantic topic-modeling pipeline for 996 ABC News headlines using SentenceTransformer embeddings, t-SNE, HDBSCAN, c-TF-IDF, and MMR. Reduced an initial fragmented 29-cluster solution to **6 better-supported topics**, then trained a Linear SVM for live headline assignment (**CV Macro F1 0.846**). Deployed the interactive workflow as a Streamlit application on Render.
 
-**Tools:** Python, Polars, Plotly  
-[View Project](projects/ev-adoption.html)
+**Tools:** Python, SentenceTransformers, Scikit-learn, t-SNE, HDBSCAN, c-TF-IDF, MMR, Streamlit, Render  
+[View Project](projects/news-headline-topic-modeling.html) | [Watch Demo](videos/projects/news-headline-topic-modeling/news-topic-app-demo.mp4){target="_blank"} | [Open Live App](https://news-topic-app.onrender.com/){target="_blank"}
 
 ## Technical Skills
 
-- **Programming:** Python, SQL
-- **Data analysis:** Pandas, NumPy, Polars, MySQL, Excel
-- **Analytics and machine learning:** Scikit-learn, XGBoost, statistical analysis, forecasting, natural language processing
-- **Visualization and reporting:** Power BI, Tableau, Plotly, Quarto
+- **Programming:** Python, SQL, R
+- **Data analysis and databases:** Pandas, NumPy, Polars, MySQL, Excel
+- **Machine learning and statistics:** Scikit-learn, XGBoost, regression, classification, clustering, forecasting, SHAP
+- **NLP and recommender systems:** SentenceTransformers, TF-IDF, cosine similarity, topic modeling, HDBSCAN, MMR
+- **Visualization and reporting:** Power BI, Tableau, Plotly, Matplotlib, Quarto
 - **Development and deployment:** Jupyter Notebook, VS Code, Git, GitHub, Flask, Streamlit, Render
 
 ## Let's Connect
