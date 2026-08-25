@@ -30,9 +30,8 @@ website:
             href: projects/predicting-emergency-department-demand.qmd
           - text: TMDB Movie Recommender
             href: projects/movie-recommender.qmd
-            
           - text: Student Performance Analysis
-            href: projects/student-performance-statistical-analysis.qmd
+            href: projects/student-performance.qmd
           - text: EV Adoption in WA
             href: projects/ev-adoption.qmd
           - text: Manga Sentiment
