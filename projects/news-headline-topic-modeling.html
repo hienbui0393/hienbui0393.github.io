@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Thi Thanh Hien Bui (Emi)">
+
+<title>News Headline Topic Discovery – Hien Bui</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950fb53b3922a3f7ce53f108ebb10a5d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Hien Bui</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="../projects/predicting-emergency-department-demand.html">
+ <span class="dropdown-text">Predicting Emergency Department Demand</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/movie-recommender.html">
+ <span class="dropdown-text">TMDB Movie Recommender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/student-performance-statistical-analysis.qmd">
+ <span class="dropdown-text">Student Performance Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/ev-adoption.html">
+ <span class="dropdown-text">EV Adoption in WA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/manga-sentiment.html">
+ <span class="dropdown-text">Manga Sentiment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/book-ratings.html">
+ <span class="dropdown-text">Book Ratings</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/luxury-car-price.html">
+ <span class="dropdown-text">Luxury Car Price</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/object-detection.html">
+ <span class="dropdown-text">Object Detection</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:hien.bui0393@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/hien-bui-6273b010a/"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/hienbui0393"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview"><span class="header-section-number">1</span> Project Overview</a>
+  <ul class="collapse">
+  <li><a href="#application-demo-and-live-app" id="toc-application-demo-and-live-app" class="nav-link" data-scroll-target="#application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">News Headline Topic Discovery</h1>
+<p class="subtitle lead">Semantic topic discovery and live headline assignment</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Thi Thanh Hien Bui (Emi) </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="project-overview" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Project Overview</h1>
+<p>News headlines are short and context-limited, so meaningful topic discovery requires more than grouping documents by repeated words. I built a <strong>BERTopic-style semantic topic-discovery pipeline</strong> that combines SentenceTransformer embeddings, t-SNE, HDBSCAN, c-TF-IDF, and Maximal Marginal Relevance (MMR), then trained a downstream classifier to assign new headlines to the discovered topic structure.</p>
+<p>The final revision directly addresses the main weaknesses of the original project. Dimensionality reduction now occurs <strong>before HDBSCAN</strong>, MMR is used to improve automatic topic representation, and topic coherence is checked with centroid-nearest representative headlines. The revised solution reduces the original <strong>29 fragmented clusters to 6 better-supported topics</strong>, lowers the noise rate from <strong>68.6% to 32.5%</strong>, and retains <strong>672 of 996 cleaned headlines</strong> in discovered topics.</p>
+<p>For downstream topic assignment, <strong>Linear SVM</strong> provided the strongest cross-validated Macro F1 at <strong>0.846</strong>, with a holdout Macro F1 of <strong>0.869</strong>.</p>
+<section id="application-demo-and-live-app" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</h2>
+<p>Watch this short demo first for a quick look at entering a headline, receiving a user-friendly topic assignment, reviewing topic keywords and related headlines, and browsing the discovered topics.</p>
+<div style="max-width: 760px; margin: 0 auto 1.5rem auto;">
+<video controls="" playsinline="" preload="metadata" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; border-radius: 8px;">
+<source src="../videos/projects/news-headline-topic-modeling/news-topic-app-demo.mp4" type="video/mp4">
+<p>Your browser does not support embedded video. You can <a href="../videos/projects/news-headline-topic-modeling/news-topic-app-demo.mp4">open the demonstration video directly</a>. </p>
+</video></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Try the Live Application">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Try the Live Application
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The live app is designed for users and stakeholders rather than as a technical model report. Enter a headline to receive a topic assignment, or browse the discovered topics and representative headlines.</p>
+<p>Because the application is hosted on Render’s free tier, it may take approximately <strong>1–2 minutes to start</strong> after a period of inactivity. The embedding model is loaded only when headline analysis is first requested.</p>
+<p><a href="https://news-topic-app.onrender.com/" class="btn btn-primary" target="_blank">Open Live App</a></p>
+<p><a href="https://github.com/hienbui0393/news-topic-app" class="btn btn-outline-secondary" target="_blank">View GitHub Project</a></p>
+</div>
+</div>
+<section id="application-highlights" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="application-highlights"><span class="header-section-number">1.2</span> Application Highlights</h2>
+<ul>
+<li><strong>Headline assignment:</strong> Enter a new English-language headline and receive a clear topic label.</li>
+<li><strong>Related examples:</strong> Review representative headlines from the assigned topic.</li>
+<li><strong>Topic browsing:</strong> Explore six discovered topic groups with concise descriptions and keywords.</li>
+<li><strong>Stakeholder-focused presentation:</strong> The live app keeps the modeling details on this project page and focuses on the user experience.</li>
+</ul>
+</section>
+<section id="project-scope" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Project Scope</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Project element</th>
+<th style="text-align: left;">Final scope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Source sample</td>
+<td style="text-align: left;">1,000 news headlines</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clean modeling sample</td>
+<td style="text-align: left;">996 unique headlines</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Semantic representation</td>
+<td style="text-align: left;">SentenceTransformer <code>all-MiniLM-L12-v2</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Embedding size</td>
+<td style="text-align: left;">384 dimensions</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dimensionality reduction</td>
+<td style="text-align: left;">3-dimensional t-SNE before HDBSCAN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Topic discovery</td>
+<td style="text-align: left;">HDBSCAN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Final topic count</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clustered headlines</td>
+<td style="text-align: left;">672</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Noise / unassigned</td>
+<td style="text-align: left;">324 (32.5%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Topic representation</td>
+<td style="text-align: left;">c-TF-IDF candidates + MMR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Topic validation</td>
+<td style="text-align: left;">Centroid-nearest representative headlines</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Downstream assignment</td>
+<td style="text-align: left;">Linear SVM on original semantic embeddings</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Live inference</td>
+<td style="text-align: left;">ONNX-optimized MiniLM + trained Linear SVM</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Purpose</td>
+<td style="text-align: left;">Exploratory topic discovery and interactive topic assignment</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-and-topic-discovery-design" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Data and Topic-Discovery Design</h1>
+<section id="data-source-and-preparation" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data-source-and-preparation"><span class="header-section-number">3.1</span> Data Source and Preparation</h2>
+<p>The project uses a <strong>1,000-headline sample</strong> from the <em>A Million News Headlines</em> dataset, sourced from <strong>ABC News via Kaggle</strong>. After whitespace cleaning and duplicate removal, <strong>996 unique headlines</strong> remain for modeling.</p>
+<p><a href="https://www.kaggle.com/datasets/therohk/million-headlines" target="_blank">View data source on Kaggle</a></p>
+<p>Duplicate removal is especially important for density-based clustering because repeated headlines can artificially increase local density without adding new semantic information.</p>
+</section>
+<section id="final-modeling-workflow" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="final-modeling-workflow"><span class="header-section-number">3.2</span> Final Modeling Workflow</h2>
+<p>The revised workflow is:</p>
+<p><strong>SentenceTransformer embeddings → t-SNE → HDBSCAN → c-TF-IDF → MMR → centroid-based topic inspection → downstream classifier</strong></p>
+<p>The key methodological change is moving t-SNE <strong>before HDBSCAN</strong>. The original 384-dimensional embedding space was too sparse for effective density estimation, contributing to many small clusters. Reducing the embeddings to three dimensions first gives HDBSCAN a more useful local neighborhood structure.</p>
+</section>
+</section>
+<section id="hdbscan-model-selection" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> HDBSCAN Model Selection</h1>
+<p>I compared a small, interpretable grid of <code>min_cluster_size</code> and <code>min_samples</code> values rather than accepting one HDBSCAN configuration without evaluation. Candidate solutions were compared using topic count, noise rate, silhouette score, and cluster support.</p>
+<p>The selected configuration uses <strong><code>min_cluster_size = 30</code></strong> and <strong><code>min_samples = 1</code></strong>, producing <strong>6 topics</strong>, <strong>32.5% noise</strong>, and a silhouette score of <strong>0.161</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/news-headline-topic-modeling/cluster_selection.png" class="img-fluid figure-img" style="width:90.0%" alt="Scatter plot comparing HDBSCAN candidate solutions by noise percentage and silhouette score, with the selected six-topic solution highlighted."></p>
+<figcaption>HDBSCAN candidate solutions</figcaption>
+</figure>
+</div>
+<p>Some candidates achieved a higher silhouette only by labeling most observations as noise. The selected solution provides a more useful balance: it retains <strong>672 headlines</strong> while producing larger, more trainable topic groups.</p>
+<section id="topic-support" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="topic-support"><span class="header-section-number">4.1</span> Topic Support</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/news-headline-topic-modeling/topic_sizes.png" class="img-fluid figure-img" style="width:88.0%" alt="Horizontal bar chart showing the number of headlines assigned to each of the six discovered HDBSCAN topics."></p>
+<figcaption>Discovered topic sizes</figcaption>
+</figure>
+</div>
+<p>The smallest final topic contains <strong>35 headlines</strong>, a substantial improvement over the very small classes in the original 29-topic solution. The distribution remains uneven, however: the largest regional-news cluster contains <strong>353 headlines</strong>, so it is interpreted as a broader exploratory grouping rather than a narrowly defined category.</p>
+</section>
+</section>
+<section id="topic-representation-and-interpretation" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Topic Representation and Interpretation</h1>
+<section id="c-tf-idf-and-mmr" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="c-tf-idf-and-mmr"><span class="header-section-number">5.1</span> c-TF-IDF and MMR</h2>
+<p>c-TF-IDF identifies terms that are characteristic of each discovered cluster. MMR then selects a smaller set that balances <strong>relevance to the topic</strong> with <strong>diversity from terms already selected</strong>, reducing repetitive automatic labels.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/news-headline-topic-modeling/mmr_comparison.png" class="img-fluid figure-img" style="width:95.0%" alt="Comparison showing the top c-TF-IDF candidate terms and the more diverse terms selected with Maximal Marginal Relevance."></p>
+<figcaption>c-TF-IDF versus MMR topic terms</figcaption>
+</figure>
+</div>
+<p>MMR improves interpretability without replacing c-TF-IDF. For example, the crime cluster expands from generic high-frequency terms to a more specific representation including <em>murder</em>, <em>granted bail</em>, <em>police</em>, and <em>man charged</em>.</p>
+</section>
+<section id="final-topic-review" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="final-topic-review"><span class="header-section-number">5.2</span> Final Topic Review</h2>
+<p>For each topic, I calculated a centroid in the original semantic embedding space and selected the five headlines with the highest cosine similarity to that centroid. This makes the qualitative review more representative than simply displaying the first records in dataset order.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Topic</th>
+<th style="text-align: left;">Portfolio label</th>
+<th style="text-align: left;">Automatic MMR representation</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: left;">Representative headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Interviews &amp; Program Segments</td>
+<td style="text-align: left;">January Interview · Chris · Thursday</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: left;">the drum monday 3 june</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">International Conflict</td>
+<td style="text-align: left;">Iraq · Qaeda · Libyan Sanctions</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: left;">al qaeda claims wave of baghdad attacks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Sports</td>
+<td style="text-align: left;">Final Sydney · British Open · Rugby</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: left;">young wallabies finish fourth</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Crime &amp; Courts</td>
+<td style="text-align: left;">Murder · Granted Bail · Police</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: left;">mps killer ordered to face supreme court</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Regional Education &amp; Community</td>
+<td style="text-align: left;">Rural News · Students · Extended Nsw</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">rural qld teacher rego</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Regional Australia &amp; Current Affairs</td>
+<td style="text-align: left;">Nsw · Farmers · Bushfire</td>
+<td style="text-align: right;">353</td>
+<td style="text-align: left;">qld flood victims donate to vic bushfire appeal</td>
+</tr>
+</tbody>
+</table>
+<p>The portfolio labels above are reader-friendly descriptions for presentation. The clustering model, classifier targets, MMR terms, and representative-headline selections remain unchanged.</p>
+</section>
+</section>
+<section id="topic-map" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Topic Map</h1>
+<p>The first two t-SNE dimensions provide a compact visual diagnostic of the discovered structure.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/news-headline-topic-modeling/topic_map.png" class="img-fluid figure-img" style="width:95.0%" alt="Two-dimensional t-SNE map of clustered news headlines with automatic MMR-based labels displayed at the HDBSCAN cluster centers."></p>
+<figcaption>t-SNE view of the six discovered news topics</figcaption>
+</figure>
+</div>
+<p>Several groups form visibly concentrated regions, particularly the international-conflict, crime, sports, and interview/program topics. The large regional-news cluster is more diffuse, which agrees with the representative-headline review and supports treating it as a broader grouping.</p>
+</section>
+<section id="downstream-topic-assignment" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Downstream Topic Assignment</h1>
+<p>The topic IDs discovered by HDBSCAN are <strong>pseudo-labels</strong>, not independently human-labeled news categories. I therefore treat the supervised models as a downstream diagnostic: they measure how consistently the discovered topic structure can be reproduced from the original 384-dimensional semantic embeddings.</p>
+<p>I compared Logistic Regression, Random Forest, Linear SVM, and RBF SVM using stratified holdout evaluation and stratified cross-validation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/news-headline-topic-modeling/classifier_comparison.png" class="img-fluid figure-img" style="width:88.0%" alt="Horizontal bar chart comparing cross-validated Macro F1 for Logistic Regression, Random Forest, Linear SVM, and RBF SVM."></p>
+<figcaption>Cross-validated topic-assignment model comparison</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: right;">Holdout Accuracy</th>
+<th style="text-align: right;">Holdout Macro F1</th>
+<th style="text-align: right;">CV Macro F1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SVM (Linear)</td>
+<td style="text-align: right;">0.881</td>
+<td style="text-align: right;">0.869</td>
+<td style="text-align: right;">0.846</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Logistic Regression</td>
+<td style="text-align: right;">0.867</td>
+<td style="text-align: right;">0.844</td>
+<td style="text-align: right;">0.845</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SVM (RBF)</td>
+<td style="text-align: right;">0.889</td>
+<td style="text-align: right;">0.875</td>
+<td style="text-align: right;">0.833</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: right;">0.607</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">0.298</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Linear SVM</strong> was selected because it achieved the best cross-validated Macro F1 (<strong>0.846</strong>), narrowly ahead of Logistic Regression (<strong>0.845</strong>). RBF SVM produced the strongest single holdout Macro F1 (<strong>0.875</strong>) but lower cross-validated performance, making Linear SVM the more stable choice for the live application.</p>
+<section id="live-assignment-design" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="live-assignment-design"><span class="header-section-number">7.1</span> Live Assignment Design</h2>
+<p>The live application does <strong>not</strong> attempt to send a new headline through t-SNE. Scikit-learn t-SNE does not provide a stable out-of-sample <code>transform()</code>.</p>
+<p>Instead, new headlines follow this deployment path:</p>
+<p><strong>New headline → ONNX-optimized MiniLM embedding → trained Linear SVM → assigned discovered topic</strong></p>
+<p>The notebook uses SentenceTransformer <code>all-MiniLM-L12-v2</code> embeddings for model development and evaluation. For deployment, the live application uses an ONNX-optimized version of the same MiniLM model for memory-efficient live inference.</p>
+<p>This separates corpus-level topic discovery from live inference: t-SNE + HDBSCAN are used to discover the topic structure, while the trained Linear SVM assigns new headlines to that structure.</p>
+</section>
+</section>
+<section id="technologies" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Technologies</h1>
+<ul>
+<li><strong>NLP:</strong> SentenceTransformers</li>
+<li><strong>Dimensionality reduction:</strong> t-SNE</li>
+<li><strong>Clustering:</strong> HDBSCAN</li>
+<li><strong>Topic representation:</strong> CountVectorizer, c-TF-IDF, Maximal Marginal Relevance</li>
+<li><strong>Classification:</strong> Logistic Regression, Random Forest, Linear SVM, RBF SVM</li>
+<li><strong>Evaluation:</strong> Silhouette score, topic support, Accuracy, Macro F1, stratified cross-validation</li>
+<li><strong>Application:</strong> Streamlit, Joblib</li>
+<li><strong>Deployment inference:</strong> ONNX Runtime, LightEmbed</li>
+<li><strong>Deployment and reproducibility:</strong> Render, Git, GitHub, Google Colab, Quarto</li>
+</ul>
+</section>
+<section id="limitations-and-next-steps" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Limitations and Next Steps</h1>
+<p>The discovered topics are exploratory groups rather than independently verified categories. The largest cluster remains broad, and the automatic MMR labels are descriptive summaries rather than ground-truth topic names.</p>
+<p>t-SNE is useful for corpus-level discovery but does not provide a standard out-of-sample transform for new observations. The live application therefore relies on the trained Linear SVM to reproduce the discovered topic structure from the original semantic embeddings.</p>
+<p>A production news-classification system would require independently defined categories, a substantially larger and more current labeled corpus, external validation, model monitoring, and a clearer policy for headlines that do not fit an existing topic.</p>
+</section>
+<section id="final-takeaway" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Final Takeaway</h1>
+<p>This project demonstrates a complete NLP workflow from semantic representation and density-based topic discovery to interpretable topic descriptions and a deployed user-facing application. The revision materially improved the original project by reducing fragmentation, adding MMR, strengthening topic-coherence review, and selecting a stable Linear SVM for live headline assignment.</p>
+
+
+</section>
+</section></section></main></div>
+
+
+
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/hienbui0393\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+ <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
