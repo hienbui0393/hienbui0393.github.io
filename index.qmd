@@ -16,9 +16,11 @@ M.S. Data Science graduate with a B.A. in Economics and 3 years of project manag
 
 :::
 
-::: {.g-col-12 .g-col-md-4 style="display: flex; align-items: flex-start; justify-content: center; padding-top: 0.25rem;"}
+::: {.g-col-12 .g-col-md-4 style="display:flex; justify-content:center; align-items:flex-start; margin-top:-0.8rem;"}
 
-![](images/projects/index/hien_bui.jpeg){.img-fluid fig-alt="Professional headshot of Hien Bui" width="250" style="max-width: 100%; border-radius: 14px; box-shadow: 0 6px 18px rgba(44, 62, 80, 0.14);"}
+<img src="images/projects/index/hien_bui.jpeg"
+     alt="Professional headshot of Hien Bui"
+     style="width:280px; max-width:100%; border-radius:14px; box-shadow:0 6px 18px rgba(44, 62, 80, 0.14);" />
 
 :::
 
