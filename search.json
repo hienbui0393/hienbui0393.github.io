@@ -165,14 +165,14 @@
     "href": "index.html",
     "title": "Hien Bui",
     "section": "",
-    "text": "I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, content-based recommendation, and data storytelling.\nBefore graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.\nView Resume LinkedIn GitHub"
+    "text": "M.S. Data Science graduate with a B.A. in Economics and 3 years of project management experience. I use SQL, Power BI, Python, and statistical analysis to build dashboards and decision-support tools from multi-source data.\nView Resume LinkedIn GitHub"
   },
   {
     "objectID": "index.html#selected-projects",
     "href": "index.html#selected-projects",
     "title": "Hien Bui",
     "section": "Selected Projects",
-    "text": "Selected Projects\n\nPredicting Emergency Department Demand\nBuilt a one-quarter-ahead forecasting prototype for total ED encounters across 57 New York facility counties and 28 quarters. Developed a leakage-safe data pipeline, compared machine-learning models with operational benchmarks, and found that previous-quarter persistence achieved the best 2024 holdout performance (MAE 1,253; WAPE 3.36%). Deployed the stakeholder workflow as a Flask application on Render.\nTools: Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render\nView Project | Watch Demo | Open Live App\n\n\nTMDB Movie Recommender\nBuilt a content-based recommendation system for 5,000 TMDB movies using plot summaries, genres, keywords, directors, and leading cast. Applied TF-IDF and cosine similarity to rank related titles; 90% of top-10 recommendations shared at least one genre across 100 sampled movies. Deployed the interactive workflow as a Streamlit application on Render.\nTools: Python, Pandas, Scikit-learn, TF-IDF, Streamlit, Render\nView Project | Watch Demo | Open Live App\n\n\nNews Headline Topic Modeling\nBuilt a semantic topic-modeling pipeline for 996 ABC News headlines using SentenceTransformer embeddings, t-SNE, HDBSCAN, c-TF-IDF, and MMR. Reduced an initial fragmented 29-cluster solution to 6 better-supported topics, then trained a Linear SVM for live headline assignment (CV Macro F1 0.846). Deployed the interactive workflow as a Streamlit application on Render.\nTools: Python, SentenceTransformers, Scikit-learn, t-SNE, HDBSCAN, c-TF-IDF, MMR, Streamlit, Render\nView Project | Watch Demo | Open Live App"
+    "text": "Selected Projects\n\nPredicting Emergency Department Demand\nBuilt an end-to-end healthcare analytics and forecasting project for New York facility-county ED demand. Used Oracle SQL to prepare a county-quarter analytical dataset, Power BI for stakeholder reporting, and Python to compare forecasting benchmarks with tuned XGBoost. Previous-quarter persistence achieved the best 2024 holdout performance (MAE 1,253; WAPE 3.36%). Deployed the forecasting workflow as a Flask application on Render.\nTools: Oracle SQL, Power BI, DAX, Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render\nView Project | Power BI Demo | App Demo | Open Live App\n\n\nTMDB Movie Recommender\nBuilt a content-based recommendation system for 5,000 TMDB movies using plot summaries, genres, keywords, directors, and leading cast. Applied TF-IDF and cosine similarity to rank related titles; 90% of top-10 recommendations shared at least one genre across 100 sampled movies. Deployed the interactive workflow as a Streamlit application on Render.\nTools: Python, Pandas, Scikit-learn, TF-IDF, Streamlit, Render\nView Project | Watch Demo | Open Live App\n\n\nNews Headline Topic Modeling\nBuilt a semantic topic-modeling pipeline for 996 ABC News headlines using SentenceTransformer embeddings, t-SNE, HDBSCAN, c-TF-IDF, and MMR. Reduced an initial fragmented 29-cluster solution to 6 better-supported topics, then trained a Linear SVM for live headline assignment (CV Macro F1 0.846). Deployed the interactive workflow as a Streamlit application on Render.\nTools: Python, SentenceTransformers, Scikit-learn, t-SNE, HDBSCAN, c-TF-IDF, MMR, Streamlit, Render\nView Project | Watch Demo | Open Live App"
   },
   {
     "objectID": "index.html#technical-skills",
@@ -186,7 +186,7 @@
     "href": "index.html#lets-connect",
     "title": "Hien Bui",
     "section": "Let’s Connect",
-    "text": "Let’s Connect\nI am seeking entry-level data analyst and data scientist opportunities where I can combine technical analysis, clear communication, and project-delivery experience.\nConnect on LinkedIn"
+    "text": "Let’s Connect\nI am seeking entry-level data analyst and BI opportunities where I can combine technical analysis, clear communication, and project-delivery experience.\nConnect on LinkedIn"
   },
   {
     "objectID": "contact.html",
