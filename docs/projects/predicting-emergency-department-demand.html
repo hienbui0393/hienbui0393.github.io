@@ -177,8 +177,9 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview"><span class="header-section-number">1</span> Project Overview</a>
   <ul class="collapse">
-  <li><a href="#application-demo-and-live-app" id="toc-application-demo-and-live-app" class="nav-link" data-scroll-target="#application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</a></li>
+  <li><a href="#end-to-end-workflow" id="toc-end-to-end-workflow" class="nav-link" data-scroll-target="#end-to-end-workflow"><span class="header-section-number">1.1</span> End-to-End Workflow</a></li>
   </ul></li>
+  <li><a href="#application-demo-and-live-app" id="toc-application-demo-and-live-app" class="nav-link" data-scroll-target="#application-demo-and-live-app"><span class="header-section-number">2</span> Application Demo and Live App</a></li>
   </ul>
 </nav>
     </div>
@@ -188,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Predicting Emergency Department Demand</h1>
-<p class="subtitle lead">A quarterly forecasting and planning prototype for New York facility counties</p>
+<p class="subtitle lead">A quarterly forecasting, BI, and planning prototype for New York facility counties</p>
 </div>
 
 
@@ -213,12 +214,29 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project-overview" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Project Overview</h1>
-<p>Emergency departments need reliable demand estimates to support staffing and capacity-planning discussions. For my DATA 975 capstone, I built a reproducible forecasting pipeline and Flask application for total emergency department encounters by <strong>New York facility county and quarter</strong>.</p>
-<p>The analysis covers <strong>1,536 county-quarter observations</strong>, <strong>57 facility counties</strong>, and <strong>28 quarters from 2018 Q1 through 2024 Q4</strong>. I evaluated machine-learning models against transparent forecasting benchmarks using chronological validation and a locked 2024 holdout.</p>
-<p>The key result was that <strong>previous-quarter persistence outperformed tuned XGBoost and seasonal persistence</strong>. It achieved a 2024 holdout MAE of <strong>1,253 encounters</strong> and WAPE of <strong>3.36%</strong>. The application therefore uses persistence for its one-quarter-ahead prototype and retains XGBoost for historical evaluation and diagnostics.</p>
-<section id="application-demo-and-live-app" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="application-demo-and-live-app"><span class="header-section-number">1.1</span> Application Demo and Live App</h2>
-<p>Watch this short demo first for a quick look at the county and period selection, forecast generation, historical comparison, multi-county evaluation, and result interpretation.</p>
+<p>Emergency departments need reliable demand estimates to support staffing and capacity-planning discussions. For my DATA 975 capstone, I built an end-to-end analytics workflow for total emergency department encounters by <strong>New York facility county and quarter</strong>, combining <strong>Oracle SQL, Python machine learning, Power BI, and a deployed Flask application</strong>.</p>
+<p>The analysis contains <strong>1,536 county-quarter observations</strong> spanning <strong>57 facility counties</strong> and <strong>28 quarters from 2018 Q1 through 2024 Q4</strong>. I evaluated machine-learning models against transparent forecasting benchmarks using chronological validation and a locked 2024 holdout.</p>
+<p>The key result was that <strong>previous-quarter persistence outperformed tuned XGBoost and seasonal persistence</strong>. It achieved a 2024 holdout MAE of <strong>1,253 encounters</strong> and WAPE of <strong>3.36%</strong>, compared with <strong>2,144 MAE</strong> and <strong>5.75% WAPE</strong> for tuned XGBoost. The application therefore uses persistence for its one-quarter-ahead prototype and retains XGBoost for historical evaluation and diagnostics.</p>
+<section id="end-to-end-workflow" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="end-to-end-workflow"><span class="header-section-number">1.1</span> End-to-End Workflow</h2>
+<pre class="text"><code>Public data sources
+        ↓
+Oracle SQL
+staging → cleaning → joins → lag features → analytical county-quarter table
+        ↓
+Python
+validation → benchmark comparison → XGBoost tuning → holdout evaluation
+        ↓
+Power BI                     Flask
+BI reporting                 forecasting prototype
+        ↓                         ↓
+Portfolio dashboard          live deployed application</code></pre>
+<p>This separation keeps stable data preparation in SQL, model development in Python, and interactive reporting in Power BI.</p>
+</section>
+</section>
+<section id="application-demo-and-live-app" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Application Demo and Live App</h1>
+<p>Watch this short demo for a quick look at county and period selection, forecast generation, historical comparison, multi-county evaluation, and result interpretation.</p>
 <div style="max-width: 760px; margin: 0 auto 1.5rem auto;">
 <video controls="" playsinline="" preload="metadata" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; border-radius: 8px;">
 <source src="../videos/projects/ed-demand/ed-demand-app-demo.mp4" type="video/mp4">
@@ -239,8 +257,8 @@ Try the Live Application
 <p><a href="../files/ED_Demand_ThiThanhHienBui_Emi_Final.pdf" class="btn btn-outline-secondary" target="_blank">View Presentation</a></p>
 </div>
 </div>
-<section id="application-highlights" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="application-highlights"><span class="header-section-number">1.2</span> Application Highlights</h2>
+<section id="application-highlights" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="application-highlights"><span class="header-section-number">2.1</span> Application Highlights</h2>
 <ul>
 <li><strong>Prototype forecast:</strong> Generate a one-quarter-ahead estimate using the recommended persistence method.</li>
 <li><strong>Historical result:</strong> Compare observed demand with XGBoost and both persistence benchmarks.</li>
@@ -248,9 +266,44 @@ Try the Live Application
 <li><strong>Clear interpretation:</strong> Distinguish retrospective evaluation from a live current-quarter forecast.</li>
 </ul>
 </section>
-<section id="project-scope" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Project Scope</h1>
+<section id="power-bi-analytics-dashboard" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Power BI Analytics Dashboard</h1>
+<p>I also built a three-page Power BI report to translate the analytical dataset and model evaluation into a stakeholder-facing BI experience.</p>
+<p>The report includes:</p>
+<ul>
+<li><strong>Executive Overview:</strong> statewide KPIs, quarterly demand trend, county map, Top 10 counties by ED encounters per 100K, regional comparison, and counties with the largest quarter-over-quarter increases.</li>
+<li><strong>County Analysis:</strong> county and snapshot-period selection, historical demand trend, demographic context, lagged weather context, and comparison with regional and statewide benchmarks.</li>
+<li><strong>Forecast &amp; Planning:</strong> recommended forecasting method, holdout performance, actual-versus-forecast comparison, quarterly MAE, method comparison, and largest XGBoost errors.</li>
+</ul>
+<section id="power-bi-demo" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="power-bi-demo"><span class="header-section-number">3.1</span> Power BI Demo</h2>
+<p>Watch this short demo to see the report navigation, slicers, cross-filtering, county map, benchmark comparisons, and 2024 holdout evaluation in action.</p>
+<div style="max-width: 900px; margin: 0 auto 1.5rem auto;">
+<video controls="" playsinline="" preload="metadata" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; border-radius: 8px;">
+<source src="../videos/projects/ed-demand/ed-demand-powerbi-demo.mp4" type="video/mp4">
+<p>Your browser does not support embedded video. You can <a href="../videos/projects/ed-demand/ed-demand-powerbi-demo.mp4">open the Power BI demonstration video directly</a>. </p>
+</video></div>
+<div class="callout callout-style-default callout-tip callout-titled" title="View the Power BI Dashboard">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+View the Power BI Dashboard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The portfolio version is shared as a <strong>PDF export</strong> of the Power BI report. The original <code>.pbix</code> contains interactive page navigation, slicers, tooltips, cross-filtering, and map interactions; those interactions are not preserved in PDF.</p>
+<p><a href="../files/ED_Demand_PowerBI_Dashboard.pdf" class="btn btn-primary" target="_blank">View Power BI Dashboard (PDF)</a></p>
+</div>
+</div>
+<section id="project-scope" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Project Scope</h1>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Project element</th>
@@ -268,23 +321,23 @@ Try the Live Application
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Full analysis period</td>
-<td style="text-align: left;">2018 Q1-2024 Q4</td>
+<td style="text-align: left;">2018 Q1–2024 Q4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Deployed model-ready panel</td>
-<td style="text-align: left;">2019 Q1-2024 Q4</td>
+<td style="text-align: left;">2019 Q1–2024 Q4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Coverage</td>
-<td style="text-align: left;">57 facility counties; 1,536 analysis rows</td>
+<td style="text-align: left;">1,536 county-quarter observations spanning 57 facility counties</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Final holdout</td>
-<td style="text-align: left;">2024 Q1-Q4</td>
+<td style="text-align: left;">2024 Q1–Q4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Selected ML model</td>
-<td style="text-align: left;">Tuned XGBoost - level</td>
+<td style="text-align: left;">Tuned XGBoost — level</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Recommended method</td>
@@ -310,10 +363,10 @@ Important
 </div>
 </div>
 </section>
-<section id="exploratory-insights" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Exploratory Insights</h1>
-<section id="statewide-demand-through-the-covid-disruption" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="statewide-demand-through-the-covid-disruption"><span class="header-section-number">3.1</span> Statewide Demand Through the COVID Disruption</h2>
+<section id="exploratory-insights" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Exploratory Insights</h1>
+<section id="statewide-demand-through-the-covid-disruption" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="statewide-demand-through-the-covid-disruption"><span class="header-section-number">5.1</span> Statewide Demand Through the COVID Disruption</h2>
 <p>Quarterly statewide encounters were relatively stable near 2.1 million before 2020, then fell sharply to about 1.19 million in 2020 Q2. Volume recovered gradually and reached about 2.08 million by 2023 Q4, showing why chronological validation and explicit COVID-period handling were necessary.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -322,8 +375,8 @@ Important
 </figure>
 </div>
 </section>
-<section id="county-concentration-and-seasonality" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="county-concentration-and-seasonality"><span class="header-section-number">3.2</span> County Concentration and Seasonality</h2>
+<section id="county-concentration-and-seasonality" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="county-concentration-and-seasonality"><span class="header-section-number">5.2</span> County Concentration and Seasonality</h2>
 <p>New York, Kings, and Bronx were the three highest-volume facility counties in 2023, so statewide totals are strongly influenced by a small number of large counties. Median county volume also shows a modest Q3 peak, but this seasonal pattern was not strong enough for seasonal persistence to outperform the previous-quarter benchmark.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -347,10 +400,10 @@ Important
 </div>
 </section>
 </section>
-<section id="data-and-forecast-design" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Data and Forecast Design</h1>
-<section id="data-sources" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">4.1</span> Data Sources</h2>
+<section id="data-and-forecast-design" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Data and Forecast Design</h1>
+<section id="data-sources" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">6.1</span> Data Sources</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -383,24 +436,38 @@ Important
 </table>
 <p>Exploratory analysis identified a major COVID-era break, recovery in later quarters, concentration in high-volume counties, and a seasonal peak in median Q3 demand. These findings supported chronological evaluation rather than a random train-test split.</p>
 </section>
-<section id="leakage-safe-features" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="leakage-safe-features"><span class="header-section-number">4.2</span> Leakage-Safe Features</h2>
-<p>I screened 25 candidate predictors and selected 20 using pre-holdout validation. The features included:</p>
+<section id="sql-analytical-layer" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sql-analytical-layer"><span class="header-section-number">6.2</span> SQL Analytical Layer</h2>
+<p>The original analysis pipeline was refactored so that reusable data preparation happens in <strong>Oracle SQL</strong> before modeling and reporting.</p>
+<p>The SQL layer:</p>
 <ul>
-<li>Demand history from the previous one to four quarters</li>
-<li>Lagged facility count</li>
-<li>Lagged demographic and socioeconomic context</li>
-<li>Lagged precipitation, snow, hot-day, wet-day, and freeze-day measures</li>
-<li>Geographic and regional indicators</li>
+<li>stages and cleans the source tables;</li>
+<li>joins ED, geography, ACS, and weather data;</li>
+<li>enforces a county-quarter analytical grain;</li>
+<li>creates exact quarter lags and lagged contextual features;</li>
+<li>calculates reusable QoQ, YoY, regional, and per-100K fields; and</li>
+<li>exports the final analytical dataset used by Python and Power BI.</li>
+</ul>
+<p>This design separates <strong>data engineering and business logic</strong> from model development and dashboard presentation.</p>
+</section>
+<section id="leakage-safe-features" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="leakage-safe-features"><span class="header-section-number">6.3</span> Leakage-Safe Features</h2>
+<p>I screened 25 candidate predictors and selected 20 using pre-holdout validation. The selected feature set included:</p>
+<ul>
+<li>demand history from the previous one to four quarters;</li>
+<li>lagged facility count;</li>
+<li>lagged demographic and socioeconomic context;</li>
+<li>lagged precipitation, snow, hot-day, wet-day, and freeze-day measures; and</li>
+<li>geographic and regional indicators.</li>
 </ul>
 <p>Expanding training windows used only information available before each forecast quarter. Feature selection and model tuning were completed before the full 2024 holdout was evaluated. Recent demand—especially the previous quarter—was the strongest signal in the XGBoost diagnostics.</p>
 </section>
 </section>
-<section id="model-evaluation" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Model Evaluation</h1>
-<section id="pre-holdout-model-selection" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="pre-holdout-model-selection"><span class="header-section-number">5.1</span> Pre-Holdout Model Selection</h2>
-<p>Previous-quarter persistence achieved the lowest mean rolling-validation MAE at <strong>2,419 encounters</strong>, ahead of tuned XGBoost and Random Forest at about 2,989 and 2,993. This result was established before opening the locked 2024 holdout and supported using persistence as the operational benchmark.</p>
+<section id="model-evaluation" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Model Evaluation</h1>
+<section id="pre-holdout-model-selection" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="pre-holdout-model-selection"><span class="header-section-number">7.1</span> Pre-Holdout Model Selection</h2>
+<p>Previous-quarter persistence achieved the lowest mean rolling-validation MAE at <strong>2,419 encounters</strong>. Among the machine-learning candidates, XGBoost had the lowest mean rolling-origin MAE at <strong>2,991.4</strong>, narrowly ahead of Random Forest at <strong>2,992.7</strong>. This selection identified the strongest ML candidate under the common validation design, but it did not imply that ML beat persistence overall.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/projects/predicting-emergency-department-demand/rolling_validation_mae.png" class="img-fluid figure-img" style="width:90.0%" alt="Horizontal bar chart showing previous-quarter persistence with the lowest mean rolling-validation MAE."></p>
@@ -408,8 +475,8 @@ Important
 </figure>
 </div>
 </section>
-<section id="final-2024-holdout" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="final-2024-holdout"><span class="header-section-number">5.2</span> Final 2024 Holdout</h2>
+<section id="final-2024-holdout" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="final-2024-holdout"><span class="header-section-number">7.2</span> Final 2024 Holdout</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -436,11 +503,11 @@ Important
 <td style="text-align: right;"><strong>0.00</strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Tuned XGBoost - level</td>
-<td style="text-align: right;">2,158</td>
-<td style="text-align: right;">5.78%</td>
-<td style="text-align: right;">0.9928</td>
-<td style="text-align: right;">-0.72</td>
+<td style="text-align: left;">Tuned XGBoost — level</td>
+<td style="text-align: right;">2,144</td>
+<td style="text-align: right;">5.75%</td>
+<td style="text-align: right;">0.9930</td>
+<td style="text-align: right;">-0.71</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Same-quarter previous-year persistence</td>
@@ -451,11 +518,11 @@ Important
 </tr>
 </tbody>
 </table>
-<p><strong>MAE</strong> is the average absolute miss in encounter units. <strong>WAPE</strong> expresses total absolute error as a percentage of total observed volume. <strong>Skill</strong> is the relative reduction in MAE compared with previous-quarter persistence: positive skill favors the competing model, while negative skill favors persistence. For example, -0.72 means 72% more MAE than the benchmark.</p>
-<p>XGBoost captured the broad volume differences between small and large counties, which explains its high R-squared. However, persistence produced substantially smaller point-by-point errors. This is an important modeling result: the most accurate evaluated method was also transparent and easy for stakeholders to audit.</p>
+<p><strong>MAE</strong> is the average absolute miss in encounter units. <strong>WAPE</strong> expresses total absolute error as a percentage of total observed volume. <strong>Skill</strong> is measured against previous-quarter persistence: positive skill means the competing method reduces MAE relative to the benchmark, while negative skill means it performs worse.</p>
+<p>The tuned XGBoost model did <strong>not</strong> beat previous-quarter persistence on the final holdout. This is an important modeling result: the strongest evaluated method was also transparent, inexpensive, and easy for stakeholders to audit.</p>
 </section>
-<section id="xgboost-diagnostic-views" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="xgboost-diagnostic-views"><span class="header-section-number">5.3</span> XGBoost Diagnostic Views</h2>
+<section id="xgboost-diagnostic-views" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="xgboost-diagnostic-views"><span class="header-section-number">7.3</span> XGBoost Diagnostic Views</h2>
 <p>The 2024 actual-versus-predicted points mostly follow the diagonal, confirming that XGBoost captured the large differences in scale across counties. Its largest misses occurred among high-volume observations, which is why a high R-squared did not translate into the lowest MAE or WAPE.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -472,27 +539,31 @@ Important
 </div>
 </section>
 </section>
-<section id="technologies" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Technologies</h1>
+<section id="technologies" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Technologies</h1>
 <ul>
-<li><strong>Analysis:</strong> Python, Pandas, NumPy, Scikit-learn, XGBoost, SHAP</li>
-<li><strong>Data:</strong> SPARCS, U.S. Census ACS, Open-Meteo, Census Gazetteer</li>
+<li><strong>Data engineering and SQL:</strong> Oracle Database Free, SQL Developer, Oracle SQL</li>
+<li><strong>Analysis and machine learning:</strong> Python, Pandas, NumPy, Scikit-learn, XGBoost, SHAP</li>
+<li><strong>Business intelligence:</strong> Power BI, DAX</li>
 <li><strong>Application:</strong> Flask, HTML/CSS, Joblib</li>
-<li><strong>Deployment and reproducibility:</strong> Render, Git, GitHub, automated smoke testing</li>
+<li><strong>Deployment and reproducibility:</strong> Render, Git, GitHub, Quarto, automated smoke testing</li>
 </ul>
 </section>
-<section id="limitations-and-next-steps" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Limitations and Next Steps</h1>
-<p>This is a retrospective prototype built from public quarterly data, not a live hospital operations system. Public suppression may understate totals in affected facility county-quarters, and quarterly aggregation cannot represent daily or hourly arrival peaks. The data also lacks patient acuity, staffed beds, shift coverage, and other hospital-specific constraints.</p>
+<section id="limitations-and-next-steps" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Limitations and Next Steps</h1>
+<p>This is a retrospective prototype built from public quarterly data, not a live hospital operations system. Public suppression may understate totals in affected facility county-quarters, and quarterly aggregation cannot represent daily or hourly arrival peaks. The final holdout covers only one complete calendar year. The data also lacks patient acuity, staffed beds, shift coverage, and other hospital-specific constraints.</p>
 <p>A production version would require a current internal encounter feed, automated predictor refreshes, performance monitoring, access controls, and stakeholder governance. Hospital-level staffing, capacity, acuity, and arrival-pattern data would be necessary before translating demand forecasts into operational staffing recommendations.</p>
 </section>
-<section id="final-takeaway" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Final Takeaway</h1>
-<p>This project demonstrates the full path from public-data integration and leakage-safe forecasting to a deployed stakeholder application. The final recommendation is deliberately evidence-based: <strong>use previous-quarter persistence for the prototype forecast and retain XGBoost for historical evaluation and diagnostics</strong>.</p>
+<section id="final-takeaway" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Final Takeaway</h1>
+<p>This project demonstrates an end-to-end analytics workflow from <strong>public-data integration and Oracle SQL transformation</strong> through <strong>leakage-safe forecasting, Power BI reporting, and Flask deployment</strong>.</p>
+<p>The final recommendation is deliberately evidence-based: <strong>use previous-quarter persistence for the prototype forecast and retain XGBoost for historical evaluation and diagnostics</strong>. The simpler benchmark achieved the best out-of-time holdout performance, showing why transparent baselines should remain central to practical forecasting work.</p>
 
 
 </section>
-</section></section></main></div>
+</section></section></section></main></div>
+
+
 
 
 

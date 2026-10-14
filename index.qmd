@@ -1,12 +1,15 @@
 ---
 title: "Hien Bui"
-subtitle: "Data Analyst | Turning complex data into practical decisions"
 toc: false
 ---
 
 :::: {.grid}
 
 ::: {.g-col-12 .g-col-md-8}
+
+<div style="font-size:1.65rem; line-height:1.25; margin-bottom:2.2rem;">
+Data Analyst | Turning complex data into practical decisions
+</div>
 
 M.S. Data Science graduate with a B.A. in Economics and 3 years of project management experience. I use SQL, Power BI, Python, and statistical analysis to build dashboards and decision-support tools from multi-source data.
 
@@ -16,7 +19,7 @@ M.S. Data Science graduate with a B.A. in Economics and 3 years of project manag
 
 :::
 
-::: {.g-col-12 .g-col-md-4 style="display:flex; justify-content:center; align-items:flex-start; margin-top:-0.8rem;"}
+::: {.g-col-12 .g-col-md-4 style="display:flex; justify-content:center; align-items:flex-start;"}
 
 <img src="images/projects/index/hien_bui.jpeg"
      alt="Professional headshot of Hien Bui"
