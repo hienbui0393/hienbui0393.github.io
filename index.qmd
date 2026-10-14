@@ -36,21 +36,21 @@ M.S. Data Science graduate with a B.A. in Economics and 3 years of project manag
 Built an end-to-end healthcare analytics and forecasting project for New York facility-county ED demand. Used Oracle SQL to prepare a county-quarter analytical dataset, Power BI for stakeholder reporting, and Python to compare forecasting benchmarks with tuned XGBoost. Previous-quarter persistence achieved the best 2024 holdout performance (**MAE 1,253; WAPE 3.36%**). Deployed the forecasting workflow as a Flask application on Render.
 
 **Tools:** Oracle SQL, Power BI, DAX, Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render  
-[View Project](projects/predicting-emergency-department-demand.html) | [Power BI Demo](videos/projects/ed-demand/ed-demand-powerbi-demo.mp4){target="_blank"} | [App Demo](videos/projects/ed-demand/ed-demand-app-demo.mp4){target="_blank"} | [Open Live App](https://ny-quarterly-ed-demand-app.onrender.com/){target="_blank"}
+[View Project](projects/predicting-emergency-department-demand.html) | [Power BI Demo](videos/projects/ed-demand/ed-demand-powerbi-demo.mp4){target="_blank"} | [App Demo](videos/projects/ed-demand/ed-demand-app-demo.mp4){target="_blank"} | [Live App](https://ny-quarterly-ed-demand-app.onrender.com/){target="_blank"}
 
 ### TMDB Movie Recommender
 
 Built a content-based recommendation system for 5,000 TMDB movies using plot summaries, genres, keywords, directors, and leading cast. Applied TF-IDF and cosine similarity to rank related titles; **90% of top-10 recommendations shared at least one genre** across 100 sampled movies. Deployed the interactive workflow as a Streamlit application on Render.
 
 **Tools:** Python, Pandas, Scikit-learn, TF-IDF, Streamlit, Render  
-[View Project](projects/movie-recommender.html) | [Watch Demo](videos/projects/movie-recommender/movie-recommender-app-demo.mp4){target="_blank"} | [Open Live App](https://tmdb-movie-recommender-app.onrender.com/){target="_blank"}
+[View Project](projects/movie-recommender.html) | [App Demo](videos/projects/movie-recommender/movie-recommender-app-demo.mp4){target="_blank"} | [Live App](https://tmdb-movie-recommender-app.onrender.com/){target="_blank"}
 
 ### News Headline Topic Modeling
 
 Built a semantic topic-modeling pipeline for 996 ABC News headlines using SentenceTransformer embeddings, t-SNE, HDBSCAN, c-TF-IDF, and MMR. Reduced an initial fragmented 29-cluster solution to **6 better-supported topics**, then trained a Linear SVM for live headline assignment (**CV Macro F1 0.846**). Deployed the interactive workflow as a Streamlit application on Render.
 
 **Tools:** Python, SentenceTransformers, Scikit-learn, t-SNE, HDBSCAN, c-TF-IDF, MMR, Streamlit, Render  
-[View Project](projects/news-headline-topic-modeling.html) | [Watch Demo](videos/projects/news-headline-topic-modeling/news-topic-app-demo.mp4){target="_blank"} | [Open Live App](https://news-topic-app.onrender.com/){target="_blank"}
+[View Project](projects/news-headline-topic-modeling.html) | [App Demo](videos/projects/news-headline-topic-modeling/news-topic-app-demo.mp4){target="_blank"} | [Live App](https://news-topic-app.onrender.com/){target="_blank"}
 
 ## Technical Skills
 
