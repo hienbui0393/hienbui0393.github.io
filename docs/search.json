@@ -371,71 +371,71 @@
     "text": "3.1 Tkinter Desktop App\n# 1) Create & activate a virtual environment\npython -m venv .venv\n# Windows\n.venv\\Scripts\\activate\n# macOS/Linux\n# source .venv/bin/activate\n\n# 2) Install requirements\npip install -r requirements.txt\n\n# 3) Run desktop GUI\npython main.py"
   },
   {
-    "objectID": "projects/student-performance.html",
-    "href": "projects/student-performance.html",
+    "objectID": "projects/student-performance-statistical-analysis.html",
+    "href": "projects/student-performance-statistical-analysis.html",
     "title": "Student Performance Statistical Analysis in R",
     "section": "",
     "text": "This project revisits my statistics-in-R coursework as a more rigorous portfolio analysis of student mathematics performance. The goal is not only to fit a regression model, but to distinguish between early prediction, late prediction, statistical inference, and model diagnostics.\nThe analysis asks three questions:\n\nAssociation: Which academic and contextual variables are most strongly associated with students’ final mathematics grade (G3)?\nPrediction timing: How much predictive performance is gained when first-period (G1) and second-period (G2) grades become available?\nRobustness: Do the main conclusions remain reasonable after checking regression assumptions, influential observations, and the unusual zero-grade pattern?\n\nThe distinction between early and late prediction is important. Demographic and behavioral information is available earlier in the school year, while G1 and G2 can provide more accurate predictions but only after substantial academic performance has already been observed."
   },
   {
-    "objectID": "projects/student-performance.html#data-quality-audit",
-    "href": "projects/student-performance.html#data-quality-audit",
+    "objectID": "projects/student-performance-statistical-analysis.html#data-quality-audit",
+    "href": "projects/student-performance-statistical-analysis.html#data-quality-audit",
     "title": "Student Performance Statistical Analysis in R",
     "section": "2.1 Data-quality audit",
     "text": "2.1 Data-quality audit\nA notable pattern appears in the final-grade variable: 38 students (9.6%) have G3 = 0, and all 38 also have zero recorded absences.\n\n\n\nAudit item\nResult\n\n\n\n\nTotal students\n395\n\n\nStudents with G3 = 0\n38\n\n\nPercent with G3 = 0\n9.6%\n\n\nG3 = 0 students with zero absences\n38\n\n\nMean absences among G3 = 0 students\n0.00\n\n\nMean absences among G3 &gt; 0 students\n6.32\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe dataset does not document the reason for this zero-grade/zero-absence pattern. I therefore keep all valid records in the primary analysis but repeat the final model on students with G3 &gt; 0 as a sensitivity check."
   },
   {
-    "objectID": "projects/student-performance.html#grade-distributions",
-    "href": "projects/student-performance.html#grade-distributions",
+    "objectID": "projects/student-performance-statistical-analysis.html#grade-distributions",
+    "href": "projects/student-performance-statistical-analysis.html#grade-distributions",
     "title": "Student Performance Statistical Analysis in R",
     "section": "3.1 Grade distributions",
     "text": "3.1 Grade distributions\n\n\n\nGrade\nN\nMean\nSD\nQ1\nMedian\nQ3\nMin\nMax\n\n\n\n\nG1\n395\n10.9\n3.32\n8\n11\n13\n3\n19\n\n\nG2\n395\n10.7\n3.76\n9\n11\n13\n0\n19\n\n\nG3\n395\n10.4\n4.58\n8\n11\n14\n0\n20\n\n\n\n\n\n\nGrade distributions across the three assessment periods\n\n\nAverage grades are similar across assessment periods, but the final grade has the largest variability. The mass at G3 = 0 is especially important because it affects the residual distribution and the estimated absence coefficient."
   },
   {
-    "objectID": "projects/student-performance.html#prior-grades-and-final-performance",
-    "href": "projects/student-performance.html#prior-grades-and-final-performance",
+    "objectID": "projects/student-performance-statistical-analysis.html#prior-grades-and-final-performance",
+    "href": "projects/student-performance-statistical-analysis.html#prior-grades-and-final-performance",
     "title": "Student Performance Statistical Analysis in R",
     "section": "3.2 Prior grades and final performance",
     "text": "3.2 Prior grades and final performance\n\n\n\nFirst- and second-period grades compared with the final grade\n\n\nThe strongest bivariate relationships are academic:\n\nCorrelation between G1 and G3: 0.801\nCorrelation between G2 and G3: 0.905\n\nG2 is therefore expected to dominate late-stage prediction because it is both strongly related to the final grade and measured closest to the final assessment."
   },
   {
-    "objectID": "projects/student-performance.html#contextual-patterns",
-    "href": "projects/student-performance.html#contextual-patterns",
+    "objectID": "projects/student-performance-statistical-analysis.html#contextual-patterns",
+    "href": "projects/student-performance-statistical-analysis.html#contextual-patterns",
     "title": "Student Performance Statistical Analysis in R",
     "section": "3.3 Contextual patterns",
     "text": "3.3 Contextual patterns\n\n\n\n\n\n\nFinal grade by number of past class failures\n\n\n\n\n\n\n\nFinal grade by weekly study-time category\n\n\n\n\n\nPast failures have a clear negative raw association with final performance. Study time shows a weaker pattern and is not strictly monotonic across the four categories, so I treat it as a contextual predictor rather than assuming a strong linear effect."
   },
   {
-    "objectID": "projects/student-performance.html#correlation-overview",
-    "href": "projects/student-performance.html#correlation-overview",
+    "objectID": "projects/student-performance-statistical-analysis.html#correlation-overview",
+    "href": "projects/student-performance-statistical-analysis.html#correlation-overview",
     "title": "Student Performance Statistical Analysis in R",
     "section": "3.4 Correlation overview",
     "text": "3.4 Correlation overview\n\n\n\nCorrelation heatmap for selected academic and contextual variables\n\n\nThe heatmap reinforces the main EDA conclusion: previous grades contain much more direct information about G3 than most demographic, family, or lifestyle variables."
   },
   {
-    "objectID": "projects/student-performance.html#final-model",
-    "href": "projects/student-performance.html#final-model",
+    "objectID": "projects/student-performance-statistical-analysis.html#final-model",
+    "href": "projects/student-performance-statistical-analysis.html#final-model",
     "title": "Student Performance Statistical Analysis in R",
     "section": "5.1 Final model",
     "text": "5.1 Final model\nThe selected interpretive model is:\n\\[\nG3 = \\beta_0 + \\beta_1 G1 + \\beta_2 G2 +\n\\beta_3 \\text{Absences} + \\beta_4 \\text{Failures} + \\epsilon\n\\]\n\n5.1.1 HC3 robust coefficient estimates\n\n\n\nTerm\nEstimate\nHC3 SE\np-value\n95% CI\n\n\n\n\nIntercept\n-1.765\n0.430\n&lt;0.001\n[-2.610, -0.919]\n\n\nG1\n0.144\n0.041\n&lt;0.001\n[0.062, 0.225]\n\n\nG2\n0.978\n0.031\n&lt;0.001\n[0.918, 1.038]\n\n\nAbsences\n0.038\n0.014\n0.009\n[0.009, 0.066]\n\n\nFailures\n-0.257\n0.186\n0.168\n[-0.623, 0.109]\n\n\n\n\n\n\nFinal-model coefficients with HC3 robust confidence intervals\n\n\nG2 is the dominant conditional predictor. Holding G1, absences, and failures constant, a one-point increase in G2 is associated with approximately a 0.98-point increase in G3.\nG1 also adds independent information after G2 is controlled for. In contrast, the failures coefficient is negative but not statistically significant under HC3 robust inference (p = 0.168), so the analysis does not claim an independent failures effect after prior grades are included."
   },
   {
-    "objectID": "projects/student-performance.html#standard-diagnostic-plots",
-    "href": "projects/student-performance.html#standard-diagnostic-plots",
+    "objectID": "projects/student-performance-statistical-analysis.html#standard-diagnostic-plots",
+    "href": "projects/student-performance-statistical-analysis.html#standard-diagnostic-plots",
     "title": "Student Performance Statistical Analysis in R",
     "section": "6.1 Standard diagnostic plots",
     "text": "6.1 Standard diagnostic plots\n\n\n\nResidual, Q-Q, scale-location, and influence diagnostics for the final regression model\n\n\nThe diagnostic plots reveal two important issues:\n\nThe zero-grade observations create a heavy lower residual tail, so residual normality is imperfect.\nResidual spread is not constant across fitted values, motivating robust standard errors."
   },
   {
-    "objectID": "projects/student-performance.html#heteroscedasticity-and-multicollinearity",
-    "href": "projects/student-performance.html#heteroscedasticity-and-multicollinearity",
+    "objectID": "projects/student-performance-statistical-analysis.html#heteroscedasticity-and-multicollinearity",
+    "href": "projects/student-performance-statistical-analysis.html#heteroscedasticity-and-multicollinearity",
     "title": "Student Performance Statistical Analysis in R",
     "section": "6.2 Heteroscedasticity and multicollinearity",
     "text": "6.2 Heteroscedasticity and multicollinearity\n\n\n\n\n\n\n\n\nDiagnostic\nResult\nInterpretation\n\n\n\n\nBreusch-Pagan-style statistic\n27.079, df = 4\nEvidence of non-constant residual variance\n\n\nBreusch-Pagan-style p-value\n&lt;0.001\nUse robust inference\n\n\nMaximum VIF\n3.70\nModerate, not extreme\n\n\nCook’s distance threshold\n0.0101 (4/n)\nScreening threshold only\n\n\nObservations above Cook’s threshold\n31\nReview rather than automatically delete\n\n\nMaximum Cook’s distance\n0.0878\nInfluential but not a deletion rule\n\n\n\n\n6.2.1 VIF by predictor\n\n\n\nPredictor\nVIF\n\n\n\n\nG1\n3.69\n\n\nG2\n3.70\n\n\nAbsences\n1.00\n\n\nFailures\n1.16\n\n\n\nG1 and G2 are strongly related, so their VIF values are higher than those of the contextual variables. However, values around 3.7 are not extreme enough to make the regression unusable. Their coefficients should simply be interpreted conditionally: for example, the G1 coefficient describes differences in G3 holding G2 constant."
   },
   {
-    "objectID": "projects/student-performance.html#sensitivity-to-zero-final-grades",
-    "href": "projects/student-performance.html#sensitivity-to-zero-final-grades",
+    "objectID": "projects/student-performance-statistical-analysis.html#sensitivity-to-zero-final-grades",
+    "href": "projects/student-performance-statistical-analysis.html#sensitivity-to-zero-final-grades",
     "title": "Student Performance Statistical Analysis in R",
     "section": "6.3 Sensitivity to zero final grades",
     "text": "6.3 Sensitivity to zero final grades\nBecause every G3 = 0 observation also records zero absences, I repeat the final model after restricting the sample to G3 &gt; 0.\n\n\n\n\n\n\n\n\n\n\nTerm\nAll records: estimate\nAll records: HC3 p\nG3 &gt; 0: estimate\nG3 &gt; 0: HC3 p\n\n\n\n\nIntercept\n-1.765\n&lt;0.001\n0.310\n0.096\n\n\nG1\n0.144\n&lt;0.001\n0.122\n&lt;0.001\n\n\nG2\n0.978\n&lt;0.001\n0.873\n&lt;0.001\n\n\nAbsences\n0.038\n0.009\n-0.012\n0.019\n\n\nFailures\n-0.257\n0.168\n0.018\n0.841\n\n\n\nThis sensitivity check changes the interpretation of absences. In the full sample the conditional coefficient is slightly positive, but after removing the unusual zero-grade group it becomes slightly negative.\n\n\n\n\n\n\nWarning\n\n\n\nThe positive full-sample absence coefficient should not be interpreted as evidence that missing school improves grades. Its sign is sensitive to the unusual G3 = 0 / zero-absence structure in the dataset.\n\n\nThe sensitivity model for students with positive final grades has an adjusted R-squared of approximately 0.935, compared with 0.826 in the full sample. This further shows how strongly the zero-grade group affects the linear-model residual structure."

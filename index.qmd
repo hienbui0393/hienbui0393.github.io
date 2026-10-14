@@ -1,6 +1,6 @@
 ---
 title: "Hien Bui"
-subtitle: "Data Scientist | Turning complex data into practical decisions"
+subtitle: "Data Analyst | Turning complex data into practical decisions"
 toc: false
 ---
 
@@ -8,9 +8,7 @@ toc: false
 
 ::: {.g-col-12 .g-col-md-8}
 
-I have completed all requirements for an M.S. in Data Science at Drew University, with official degree conferral pending. I build practical analytics, forecasting, and machine-learning solutions using Python, SQL, and business intelligence tools. My work spans healthcare demand forecasting, content-based recommendation, and data storytelling.
-
-Before graduate school, I spent more than six years leading cross-functional VFX and animation teams. That experience strengthened my ability to manage complex projects, communicate with technical and creative stakeholders, and deliver polished work on schedule.
+M.S. Data Science graduate with a B.A. in Economics and 3 years of project management experience. I use SQL, Power BI, Python, and statistical analysis to build dashboards and decision-support tools from multi-source data.
 
 [View Resume](resume.qmd){.btn .btn-primary}
 [LinkedIn](https://www.linkedin.com/in/hien-bui-6273b010a/){.btn .btn-outline-secondary target="_blank"}
@@ -30,10 +28,10 @@ Before graduate school, I spent more than six years leading cross-functional VFX
 
 ### Predicting Emergency Department Demand
 
-Built a one-quarter-ahead forecasting prototype for total ED encounters across 57 New York facility counties and 28 quarters. Developed a leakage-safe data pipeline, compared machine-learning models with operational benchmarks, and found that previous-quarter persistence achieved the best 2024 holdout performance (**MAE 1,253; WAPE 3.36%**). Deployed the stakeholder workflow as a Flask application on Render.
+Built an end-to-end healthcare analytics and forecasting project for New York facility-county ED demand. Used Oracle SQL to prepare a county-quarter analytical dataset, Power BI for stakeholder reporting, and Python to compare forecasting benchmarks with tuned XGBoost. Previous-quarter persistence achieved the best 2024 holdout performance (**MAE 1,253; WAPE 3.36%**). Deployed the forecasting workflow as a Flask application on Render.
 
-**Tools:** Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render  
-[View Project](projects/predicting-emergency-department-demand.html) | [Watch Demo](videos/projects/ed-demand/ed-demand-app-demo.mp4){target="_blank"} | [Open Live App](https://ny-quarterly-ed-demand-app.onrender.com/){target="_blank"}
+**Tools:** Oracle SQL, Power BI, DAX, Python, Pandas, Scikit-learn, XGBoost, SHAP, Flask, Render  
+[View Project](projects/predicting-emergency-department-demand.html) | [Power BI Demo](videos/projects/ed-demand/ed-demand-powerbi-demo.mp4){target="_blank"} | [App Demo](videos/projects/ed-demand/ed-demand-app-demo.mp4){target="_blank"} | [Open Live App](https://ny-quarterly-ed-demand-app.onrender.com/){target="_blank"}
 
 ### TMDB Movie Recommender
 
@@ -60,6 +58,6 @@ Built a semantic topic-modeling pipeline for 996 ABC News headlines using Senten
 
 ## Let's Connect
 
-I am seeking entry-level data analyst and data scientist opportunities where I can combine technical analysis, clear communication, and project-delivery experience.
+I am seeking entry-level data analyst and BI opportunities where I can combine technical analysis, clear communication, and project-delivery experience.
 
 [Connect on LinkedIn](https://www.linkedin.com/in/hien-bui-6273b010a/){.btn .btn-primary target="_blank"}
